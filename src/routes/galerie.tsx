@@ -1,12 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Instagram } from "lucide-react";
-import {
-  staggerContainer,
-  staggerChild,
-  viewportOnce,
-} from "@/lib/motion";
-import { PhotoHoverCard } from "@/components/PhotoCards";
+import { ExternalLink } from "lucide-react";
+import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 import photoPavlova from "@/assets/photos/photo-pavlova.jpg";
@@ -31,8 +26,6 @@ export const Route = createFileRoute("/galerie")({
         property: "og:description",
         content: "Photographies des plats du restaurant à Grenoble.",
       },
-      { property: "og:image", content: photoSaintJacques },
-      { name: "twitter:image", content: photoSaintJacques },
     ],
   }),
   component: GaleriePage,
@@ -41,16 +34,16 @@ export const Route = createFileRoute("/galerie")({
 function GaleriePage() {
   return (
     <>
-      <GalerieHeader />
-      <MasonryGrid />
+      <Header />
+      <Masonry />
       <CtaStrip />
     </>
   );
 }
 
-function GalerieHeader() {
+function Header() {
   return (
-    <section className="pt-32 pb-16 text-center px-6">
+    <section className="pt-36 pb-16 text-center px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -70,45 +63,71 @@ function GalerieHeader() {
   );
 }
 
-function MasonryGrid() {
-  // 8 photos with row-spans giving a masonry feel on a 3-col grid (200px row)
-  const slots: { src: string; alt: string; caption: string; spanRows: number }[] = [
-    { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz noir vénéré", spanRows: 2 },
-    { src: photoPavlova, alt: "Pavlova mangue, sphères glacées", caption: "Pavlova mangue, sphères glacées", spanRows: 1 },
-    { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Viande, homard, sauce crémée", spanRows: 1 },
-    { src: photoPoisson, alt: "Truite, légumes frais de saison", caption: "Truite, légumes frais de saison", spanRows: 2 },
-    { src: photoVolaille, alt: "Volaille fermière, champignons et sauce", caption: "Volaille, champignons, sauce", spanRows: 1 },
-    { src: photoMenuPoulpe, alt: "Le menu signature et plat de poulpe", caption: "Le menu · Plat signature", spanRows: 1 },
-    { src: photoLegumes, alt: "Légumes du marché et champignons", caption: "Légumes du marché, champignons", spanRows: 1 },
-    { src: photoGaultMillau, alt: "Plaque Gault & Millau Table Gourmande 2026", caption: "Toque Gault & Millau 2026", spanRows: 1 },
-  ];
+const SLOTS = [
+  { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]" },
+  { src: photoPavlova, alt: "Pavlova mangue, sphères glacées", caption: "Pavlova mangue", aspect: "aspect-square" },
+  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square" },
+  { src: photoPoisson, alt: "Truite, légumes frais de saison", caption: "Truite & légumes", aspect: "aspect-[4/5]" },
+  { src: photoVolaille, alt: "Volaille fermière, champignons", caption: "Volaille & champignons", aspect: "aspect-square" },
+  { src: photoMenuPoulpe, alt: "Menu signature et plat de poulpe", caption: "Menu · Poulpe", aspect: "aspect-[4/5]" },
+  { src: photoLegumes, alt: "Légumes du marché et champignons", caption: "Légumes du marché", aspect: "aspect-square" },
+  { src: photoGaultMillau, alt: "Plaque Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square" },
+];
 
+function Masonry() {
   return (
-    <section className="px-6 md:px-12 pb-24">
+    <section className="px-3 md:px-6 pb-24">
       <motion.div
         variants={{
           hidden: {},
-          visible: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+          visible: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
         }}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-3 auto-rows-[220px] gap-3"
+        className="max-w-[1400px] mx-auto"
+        style={{
+          columnCount: 1,
+          columnGap: "12px",
+        }}
       >
-        {slots.map((s, i) => (
-          <motion.div
-            key={i}
-            variants={staggerChild}
-            className={s.spanRows === 2 ? "row-span-2" : ""}
-          >
-            <PhotoHoverCard
-              src={s.src}
-              alt={s.alt}
-              caption={s.caption}
-              className="w-full h-full"
-            />
-          </motion.div>
-        ))}
+        <style>{`
+          @media (min-width: 640px) { .gallery-cols { column-count: 2 !important; } }
+          @media (min-width: 1024px) { .gallery-cols { column-count: 3 !important; } }
+        `}</style>
+        <div className="gallery-cols" style={{ columnGap: "12px" }}>
+          {SLOTS.map((s, i) => (
+            <motion.div
+              key={i}
+              variants={staggerChild}
+              className="mb-3"
+              style={{ breakInside: "avoid" }}
+            >
+              <div
+                className={`relative overflow-hidden group cursor-default ${s.aspect}`}
+              >
+                <motion.img
+                  src={s.src}
+                  alt={s.alt}
+                  loading="lazy"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-full h-full object-cover"
+                />
+                <motion.div
+                  className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.5)] flex items-end"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <p className="text-ivory text-[11px] uppercase tracking-[0.18em] font-light pl-4 pb-4">
+                    {s.caption}
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </section>
   );
@@ -116,29 +135,18 @@ function MasonryGrid() {
 
 function CtaStrip() {
   return (
-    <section className="bg-surface py-16 text-center px-6">
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportOnce}
+    <section className="py-16 text-center px-6">
+      <p className="text-ivory-muted text-[14px] font-light mb-3">
+        Retrouvez-nous sur Instagram
+      </p>
+      <a
+        href="https://www.instagram.com/1semainesur2restaurant/"
+        target="_blank"
+        rel="noreferrer noopener"
+        className="gold-link"
       >
-        <motion.p variants={staggerChild} className="text-ivory text-lg mb-4">
-          Retrouvez-nous sur Instagram
-        </motion.p>
-        <motion.a
-          variants={staggerChild}
-          href="https://www.instagram.com/1semainesur2restaurant/"
-          target="_blank"
-          rel="noreferrer noopener"
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-3 text-gold text-base tracking-wider hover:opacity-80 transition-opacity"
-        >
-          <Instagram size={20} />
-          @1semainesur2restaurant
-        </motion.a>
-      </motion.div>
+        @1semainesur2restaurant <ExternalLink size={14} />
+      </a>
     </section>
   );
 }

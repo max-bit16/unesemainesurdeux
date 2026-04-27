@@ -61,7 +61,7 @@ function MenuPage() {
   return (
     <>
       <MenuHeader />
-      <MenuSections />
+      <MenuBody />
       <PhotoBreak />
       <Prices />
     </>
@@ -69,23 +69,16 @@ function MenuPage() {
 }
 
 function MenuHeader() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-
   return (
-    <section ref={ref} className="relative h-[55vh] min-h-[420px] overflow-hidden flex items-center justify-center">
-      <motion.img
+    <section className="relative h-[45vh] min-h-[380px] overflow-hidden flex items-center justify-center">
+      <img
         src={photoLegumes}
         alt="Légumes du marché — carte saisonnière"
         loading="eager"
-        style={{ y }}
-        className="absolute inset-0 w-full h-[120%] object-cover"
+        style={{ objectPosition: "center 30%" }}
+        className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-[oklch(0.115_0.005_60/0.75)]" />
+      <div className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.72)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -100,7 +93,7 @@ function MenuHeader() {
           <br />
           qui dit l'essentiel.
         </motion.h1>
-        <motion.p variants={staggerChild} className="text-ivory-muted text-[17px] max-w-xl mx-auto">
+        <motion.p variants={staggerChild} className="text-ivory-muted text-[16px] max-w-xl mx-auto">
           Renouvelée au fil des saisons. Tout est fait maison.
         </motion.p>
       </motion.div>
@@ -108,26 +101,24 @@ function MenuHeader() {
   );
 }
 
-function MenuSections() {
+function MenuBody() {
   return (
-    <section className="bg-background py-20">
-      <div className="max-w-4xl mx-auto px-6">
-        <Section title="Entrées" items={ENTREES.map((n) => ({ name: n }))} />
-        <Section title="Plats" items={PLATS} />
-        <Section title="Desserts" items={DESSERTS.map((n) => ({ name: n }))} last />
+    <section className="py-20 md:py-24 px-6">
+      <div className="max-w-3xl mx-auto">
+        <MenuSection title="Entrées" items={ENTREES.map((n) => ({ name: n }))} />
+        <MenuSection title="Plats" items={PLATS} />
+        <MenuSection title="Desserts" items={DESSERTS.map((n) => ({ name: n }))} />
       </div>
     </section>
   );
 }
 
-function Section({
+function MenuSection({
   title,
   items,
-  last,
 }: {
   title: string;
   items: { name: string; signature?: boolean }[];
-  last?: boolean;
 }) {
   return (
     <motion.div
@@ -135,29 +126,27 @@ function Section({
       initial="hidden"
       whileInView="visible"
       viewport={viewportOnce}
-      className={`bg-surface border-b border-border px-8 md:px-12 py-10 ${
-        last ? "rounded-b-2xl" : ""
-      } ${title === "Entrées" ? "rounded-t-2xl" : ""}`}
+      className="py-12"
     >
-      <motion.div
+      <motion.p
         variants={staggerChild}
-        className="flex items-center gap-4 mb-7"
+        className="text-[10px] uppercase tracking-[0.3em] text-gold pb-6 font-normal"
       >
-        <p className="eyebrow text-gold">— {title}</p>
-        <div className="h-px flex-1 bg-border" />
-      </motion.div>
+        {title}
+      </motion.p>
+      <div className="hairline mb-2" />
 
-      <div className="space-y-1">
+      <div>
         {items.map((item) => (
           <motion.div
             key={item.name}
             variants={staggerChild}
             whileHover="hovered"
             initial="initial"
-            className="relative pl-5 py-4 cursor-default flex items-center justify-between gap-4"
+            className="relative pl-5 py-4 cursor-default flex items-center justify-between gap-4 group"
           >
             <motion.div
-              className="absolute left-0 top-2 bottom-2 w-[2px] bg-gold"
+              className="absolute left-0 top-3 bottom-3 w-[2px] bg-gold"
               variants={{
                 initial: { scaleY: 0, opacity: 0 },
                 hovered: { scaleY: 1, opacity: 1 },
@@ -165,11 +154,17 @@ function Section({
               style={{ originY: 0 }}
               transition={{ duration: 0.25 }}
             />
-            <span className="font-serif text-[1.25rem] text-ivory leading-snug">
+            <motion.span
+              className="font-serif text-[1.25rem] font-light leading-snug transition-colors"
+              variants={{
+                initial: { color: "oklch(0.928 0.018 85)" },
+                hovered: { color: "oklch(0.703 0.106 65)" },
+              }}
+            >
               {item.name}
-            </span>
+            </motion.span>
             {item.signature && (
-              <span className="bg-green text-ivory text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-sm shrink-0">
+              <span className="inline-flex items-center text-[9px] uppercase tracking-[0.2em] px-2 py-0.5 rounded-full border border-green text-green ml-3 shrink-0">
                 Signature
               </span>
             )}
@@ -186,12 +181,12 @@ function PhotoBreak() {
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
   return (
     <section
       ref={ref}
-      className="relative h-[50vh] min-h-[360px] overflow-hidden flex items-center justify-center"
+      className="relative h-[40vh] min-h-[320px] overflow-hidden flex items-center justify-center"
     >
       <motion.img
         src={photoPavlova}
@@ -200,7 +195,13 @@ function PhotoBreak() {
         style={{ y }}
         className="absolute inset-0 w-full h-[120%] object-cover"
       />
-      <div className="absolute inset-0 bg-[oklch(0.115_0.005_60/0.55)]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, oklch(0.196 0.006 60 / 0.4), oklch(0.196 0.006 60 / 0.7))",
+        }}
+      />
       <motion.p
         variants={fadeUp}
         initial="hidden"
@@ -217,29 +218,29 @@ function PhotoBreak() {
 function Prices() {
   const items = [
     { icon: Utensils, label: "Plat du jour", price: "13,50 €" },
-    { icon: ChefHat, label: "Menu adulte", price: "À partir de 39 €" },
+    { icon: ChefHat, label: "Menu adulte", price: "Dès 39 €" },
     { icon: Users, label: "Menu enfant", price: "15 €" },
   ];
   return (
-    <section className="bg-surface-alt py-16">
+    <section className="py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="max-w-[1100px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6"
+        className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x divide-hairline"
       >
         {items.map(({ icon: Icon, label, price }) => (
           <motion.div
             key={label}
             variants={staggerChild}
-            whileHover={{ y: -4, borderColor: "oklch(0.703 0.106 65)" }}
-            transition={{ duration: 0.3 }}
-            className="bg-surface border border-border rounded-2xl p-10 text-center"
+            className="text-center px-6"
           >
-            <Icon size={32} className="text-gold mx-auto mb-5" strokeWidth={1.5} />
-            <p className="eyebrow mb-3">{label}</p>
-            <p className="font-serif text-[3rem] text-ivory leading-none">{price}</p>
+            <Icon size={16} className="text-gold mx-auto mb-4" strokeWidth={1.5} />
+            <p className="font-serif italic font-light text-[3rem] text-ivory leading-none mb-3">
+              {price}
+            </p>
+            <p className="eyebrow">{label}</p>
           </motion.div>
         ))}
       </motion.div>
