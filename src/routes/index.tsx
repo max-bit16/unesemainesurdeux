@@ -1,31 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Award,
-  Star,
   ArrowRight,
-  MapPin,
+  ChevronDown,
+  Leaf,
   Wine,
   Users,
+  ChefHat,
   Phone,
-  Clock,
+  MapPin,
+  Award,
 } from "lucide-react";
 import { useRef } from "react";
 import {
   fadeUp,
-  fadeIn,
   scaleUp,
   staggerContainer,
   staggerChild,
   viewportOnce,
 } from "@/lib/motion";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-import { PhotoStripCol } from "@/components/PhotoCards";
-import { SignatureFlourish } from "@/components/SvgFlourishes";
 
-import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
-import photoPavlova from "@/assets/photos/photo-pavlova.jpg";
 import photoVolaille from "@/assets/photos/photo-volaille.jpg";
 import photoPoisson from "@/assets/photos/photo-poisson.jpg";
 import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
@@ -45,15 +41,16 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Une Semaine Sur Deux — Restaurant gastronomique à Grenoble",
+        content:
+          "Une Semaine Sur Deux — Restaurant gastronomique à Grenoble",
       },
       {
         property: "og:description",
         content:
           "Cuisine bistronomique, produits frais, circuit court. Toque Gault & Millau 2026.",
       },
-      { property: "og:image", content: photoSaintJacques },
-      { name: "twitter:image", content: photoSaintJacques },
+      { property: "og:image", content: photoMenuPoulpe },
+      { name: "twitter:image", content: photoMenuPoulpe },
     ],
   }),
   component: HomePage,
@@ -63,9 +60,9 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <GaultMillauBanner />
+      <AwardSection />
       <SignatureDish />
-      <BentoGrid />
+      <Esprit />
       <PhotoStrip />
       <SocialProof />
       <HoursReservation />
@@ -73,32 +70,23 @@ function HomePage() {
   );
 }
 
-/* ─── HERO ──────────────────────────────────────────────────── */
+/* ─── HERO — typographic, no photo ─────────────────────────── */
 function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 600], [0, -80]);
-
   return (
-    <section
-      ref={ref}
-      className="relative min-h-[100svh] flex flex-col md:flex-row overflow-hidden"
-      style={{
-        background:
-          "radial-gradient(circle at 30% 50%, oklch(0.243 0.008 70 / 0.5), oklch(0.183 0.006 60) 70%)",
-      }}
-    >
-      {/* Left: typography */}
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 bg-background overflow-hidden">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 w-full md:w-[55%] flex flex-col justify-center px-6 md:px-16 lg:px-24 pt-28 md:pt-0 pb-16 md:pb-0 order-2 md:order-1"
+        className="relative z-10 max-w-3xl text-center"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-6">
+        <motion.div
+          variants={staggerChild}
+          className="gold-divider mx-auto mb-8"
+        />
+        <motion.p variants={staggerChild} className="eyebrow mb-8">
           N°01 — Gastronomie Grenobloise
         </motion.p>
-
         <motion.h1
           variants={staggerChild}
           className="display-h1 mb-8"
@@ -107,154 +95,125 @@ function Hero() {
           <br />
           saisons intactes.
         </motion.h1>
-
         <motion.p
           variants={staggerChild}
-          className="text-[17px] text-ivory-muted max-w-md mb-10 leading-relaxed"
+          className="text-[16px] text-ivory-muted mb-12"
         >
-          Restaurant gastronomique · Grenoble · Toque Gault &amp; Millau 2026
+          Restaurant · Grenoble · Gault &amp; Millau 2026
         </motion.p>
-
         <motion.div
           variants={staggerChild}
-          className="flex flex-wrap items-center gap-4 mb-10"
+          className="flex flex-wrap items-center justify-center gap-4"
         >
-          <motion.a
-            href="tel:+33476271375"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.2 }}
-            className="btn-primary"
-          >
+          <a href="tel:+33476271375" className="btn-primary">
             Réserver une table
-          </motion.a>
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Link to="/menu" className="btn-ghost-gold">
-              Voir la carte
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          variants={staggerChild}
-          transition={{ delay: 0.6 }}
-          className="gold-divider"
-        />
-
-        <motion.div variants={staggerChild} className="mt-10">
-          <SignatureFlourish />
+          </a>
+          <Link to="/menu" className="btn-ghost-gold">
+            Voir la carte
+          </Link>
         </motion.div>
       </motion.div>
 
-      {/* Right: photo with parallax */}
-      <div className="relative w-full md:w-[45%] h-[55vh] md:h-auto md:min-h-screen overflow-hidden order-1 md:order-2">
-        <motion.img
-          src={photoSaintJacques}
-          alt="Saint-Jacques, riz noir vénéré et moules — plat signature"
-          loading="eager"
-          style={{ y }}
-          className="w-full h-[110%] object-cover absolute inset-0"
-        />
-        {/* Left gradient blend */}
-        <div
-          className="absolute inset-y-0 left-0 w-[30%] pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, oklch(0.183 0.006 60), transparent)",
-          }}
-        />
-      </div>
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-ivory-muted"
+        aria-hidden
+      >
+        <ChevronDown size={18} strokeWidth={1.5} />
+      </motion.div>
     </section>
   );
 }
 
-/* ─── GAULT & MILLAU BANNER ─────────────────────────────────── */
-function GaultMillauBanner() {
+/* ─── AWARD — pure text on canvas ──────────────────────────── */
+function AwardSection() {
   return (
-    <motion.section
-      variants={fadeIn}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewportOnce}
-      className="bg-surface py-14"
-    >
-      <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
-        <div className="flex justify-center md:justify-start">
+    <section className="py-24 px-6">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        className="max-w-2xl mx-auto text-center"
+      >
+        <motion.p variants={staggerChild} className="eyebrow mb-6">
+          N°02 — Distinction
+        </motion.p>
+        <motion.div variants={staggerChild} className="flex justify-center mb-6">
           <img
             src={photoGaultMillau}
             alt="Plaque Gault & Millau Table Gourmande 2026"
             loading="lazy"
-            className="rounded-xl max-h-32 object-contain"
+            className="h-20 object-contain"
           />
-        </div>
-
-        <div className="text-center">
-          <p className="eyebrow text-gold mb-3">Distinction · 2026</p>
-          <p className="display-h2 text-[2.5rem] mb-3">Table Gourmande</p>
-          <p className="text-[15px] text-ivory-muted max-w-md mx-auto">
-            Attribuée au Chef Pierrick Vasseur pour la qualité de sa cuisine
-            bistronomique à Grenoble.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-center gap-4">
-          <Award size={40} className="text-gold" strokeWidth={1.5} />
-          <Star size={28} className="text-gold" strokeWidth={1.5} fill="currentColor" />
-        </div>
-      </div>
-    </motion.section>
+        </motion.div>
+        <motion.div variants={staggerChild} className="gold-divider mx-auto mb-6" />
+        <motion.h2 variants={staggerChild} className="display-h2 mb-4">
+          Table Gourmande
+        </motion.h2>
+        <motion.p variants={staggerChild} className="text-[15px] text-ivory-muted">
+          Attribuée au Chef Pierrick Vasseur · Gault &amp; Millau 2026
+        </motion.p>
+      </motion.div>
+      <div className="hairline max-w-5xl mx-auto mt-24" />
+    </section>
   );
 }
 
-/* ─── SIGNATURE DISH (full-bleed cinematic) ─────────────────── */
+/* ─── SIGNATURE DISH — cinematic contained ─────────────────── */
 function SignatureDish() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["-6%", "6%"]);
 
   return (
     <section
       ref={ref}
-      className="relative h-[70vh] min-h-[500px] w-full overflow-hidden"
+      className="relative h-[65vh] min-h-[480px] w-full overflow-hidden"
     >
       <motion.img
         src={photoMenuPoulpe}
         alt="Le plat signature — poulpe à la crème d'ail noir"
         loading="lazy"
-        variants={scaleUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportOnce}
-        style={{ y }}
-        className="absolute inset-0 w-full h-[120%] object-cover"
+        style={{ y, objectPosition: "center 40%" }}
+        className="absolute inset-0 w-full h-[115%] object-cover"
       />
-      <div className="absolute inset-0 bg-[oklch(0.115_0.005_60/0.65)]" />
-
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to bottom, oklch(0.196 0.006 60 / 0.3) 0%, oklch(0.196 0.006 60 / 0.78) 100%)",
+        }}
+      />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6 max-w-3xl mx-auto"
+        className="relative z-10 h-full flex flex-col justify-end max-w-2xl px-8 md:px-14 pb-14"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-5">
-          N°02 — Plat Signature
+          N°03 — Plat Signature
         </motion.p>
-        <motion.h2 variants={staggerChild} className="display-h2 text-white mb-6">
+        <motion.h2 variants={staggerChild} className="display-h2 mb-6">
           Le Poulpe à la crème d'ail noir,
           <br />
           risotto de riz vénéré.
         </motion.h2>
-        <motion.p variants={staggerChild} className="text-[17px] text-ivory-muted mb-7 max-w-xl">
+        <motion.p
+          variants={staggerChild}
+          className="text-[16px] text-ivory-muted max-w-lg mb-7"
+        >
           Le plat qui revient dans tous les avis. Cuisson parfaite, produits de
           saison, fait maison.
         </motion.p>
         <motion.div variants={staggerChild}>
-          <Link to="/menu" className="gold-link text-base">
-            Voir la carte complète <ArrowRight size={16} />
+          <Link to="/menu" className="gold-link">
+            Voir la carte complète <ArrowRight size={14} />
           </Link>
         </motion.div>
       </motion.div>
@@ -262,123 +221,90 @@ function SignatureDish() {
   );
 }
 
-/* ─── BENTO GRID — L'ESPRIT DU LIEU ─────────────────────────── */
-function BentoGrid() {
-  return (
-    <section className="bg-surface-alt py-28">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-        >
-          <motion.p variants={staggerChild} className="eyebrow mb-4 text-center">
-            N°03 — L'Esprit du Lieu
-          </motion.p>
-          <motion.h2 variants={staggerChild} className="display-h2 text-center mb-16">
-            Bistronomie sincère
-          </motion.h2>
+/* ─── L'ESPRIT — editorial text rows, no cards ─────────────── */
+function Esprit() {
+  const rows = [
+    {
+      icon: Leaf,
+      label: "Produits locaux",
+      body: "Produits frais, circuit court, de saison. Rien qui ne vient de loin.",
+    },
+    {
+      icon: Wine,
+      label: "Cave personnelle",
+      body: "Sélection viticole du chef à prix justes, renouvelée régulièrement.",
+    },
+    {
+      icon: Users,
+      label: "Privatisation",
+      body: "Le restaurant accueille vos événements privés sur demande.",
+    },
+    {
+      icon: ChefHat,
+      label: "Fait maison",
+      body: "Chaque plat, chaque dessert, préparé sur place par Pierrick Vasseur.",
+    },
+  ];
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[260px]">
-            {/* Card A — large photo (2 cols) */}
+  return (
+    <section className="py-32 md:py-40 px-6">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        className="max-w-4xl mx-auto"
+      >
+        <motion.p variants={staggerChild} className="eyebrow mb-16 text-center">
+          N°04 — L'Esprit du Lieu
+        </motion.p>
+
+        <div>
+          {rows.map(({ icon: Icon, label, body }, i) => (
             <motion.div
+              key={label}
               variants={staggerChild}
-              className="md:col-span-2 relative overflow-hidden rounded-2xl group cursor-default"
-              whileHover="hover"
+              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 md:gap-10 py-8 ${
+                i === 0 ? "border-t border-hairline" : ""
+              } border-b border-hairline`}
             >
-              <motion.img
-                src={photoPavlova}
-                alt="Pavlova mangue — desserts maison"
-                loading="lazy"
-                variants={{ hover: { scale: 1.05 } }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[oklch(0.115_0.005_60/0.85)] via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-8 max-w-md">
-                <p className="eyebrow text-gold mb-2">Desserts</p>
-                <h3 className="display-h3 italic mb-2">Bistronomie</h3>
-                <p className="text-ivory-muted text-sm leading-relaxed">
-                  Une carte courte, renouvelée au fil des saisons.
+              <div className="flex items-center gap-3">
+                <Icon size={16} className="text-gold shrink-0" strokeWidth={1.5} />
+                <p className="font-serif italic text-[1.375rem] text-ivory font-light">
+                  {label}
                 </p>
               </div>
-            </motion.div>
-
-            {/* Card B */}
-            <BentoCard
-              icon={<MapPin size={24} className="text-gold" strokeWidth={1.5} />}
-              title="Produits locaux"
-              body="Produits frais, circuit court, de saison."
-            />
-
-            {/* Card C */}
-            <BentoCard
-              icon={<Wine size={24} className="text-gold" strokeWidth={1.5} />}
-              title="Cave personnelle"
-              body="Sélection viticole du chef à prix justes."
-            />
-
-            {/* Card D */}
-            <BentoCard
-              icon={<Users size={24} className="text-gold" strokeWidth={1.5} />}
-              title="Privatisation"
-              body="Le restaurant peut accueillir vos événements privés."
-            />
-
-            {/* Card E — testimonial green */}
-            <motion.div
-              variants={staggerChild}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.3 }}
-              className="bg-green rounded-2xl p-8 flex flex-col justify-between"
-            >
-              <p className="pull-quote text-[1.3rem]">
-                "On se régale du début à la fin. Le poulpe était incroyable."
-              </p>
-              <p className="text-[13px] text-ivory-muted mt-4">
-                — E. Bagdassarian ★★★★★
+              <p className="text-[16px] text-ivory-muted font-light leading-relaxed">
+                {body}
               </p>
             </motion.div>
-          </div>
+          ))}
+        </div>
+
+        <motion.div
+          variants={fadeUp}
+          className="text-center pt-20 max-w-2xl mx-auto"
+        >
+          <p className="pull-quote text-[1.5rem]">
+            "On se régale du début à la fin."
+          </p>
+          <p className="text-[13px] text-ivory-muted mt-4">
+            — E. Bagdassarian ★★★★★
+          </p>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
 
-function BentoCard({
-  icon,
-  title,
-  body,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  body: string;
-}) {
-  return (
-    <motion.div
-      variants={staggerChild}
-      whileHover={{ y: -4, borderColor: "oklch(0.703 0.106 65)" }}
-      transition={{ duration: 0.3 }}
-      className="bg-surface border border-border rounded-2xl p-8 flex flex-col justify-between"
-    >
-      <div>{icon}</div>
-      <div>
-        <h3 className="display-h3 mb-2">{title}</h3>
-        <p className="text-ivory-muted text-sm leading-relaxed">{body}</p>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ─── PHOTO STRIP ───────────────────────────────────────────── */
+/* ─── PHOTO STRIP — 3 columns, no gap, contained height ────── */
 function PhotoStrip() {
   const items = [
     { src: photoVolaille, alt: "Volaille fermière, sauce crémée", caption: "Viandes & volailles" },
-    { src: photoPoisson, alt: "Truite et légumes frais de saison", caption: "Poissons & fruits de mer" },
+    { src: photoPoisson, alt: "Truite et légumes frais de saison", caption: "Poissons & saison" },
     { src: photoSurfTurf, alt: "Surf & turf — viande et homard", caption: "Plats du moment" },
   ];
+
   return (
     <motion.section
       variants={staggerContainer}
@@ -387,124 +313,102 @@ function PhotoStrip() {
       viewport={viewportOnce}
       className="grid grid-cols-1 md:grid-cols-3"
     >
-      {items.map((item, i) => (
-        <PhotoStripCol
+      {items.map((item) => (
+        <motion.div
           key={item.caption}
-          src={item.src}
-          alt={item.alt}
-          caption={item.caption}
-          index={i}
-        />
+          variants={staggerChild}
+          className="relative h-[240px] md:h-[340px] overflow-hidden group"
+          whileHover="hovered"
+          initial="initial"
+        >
+          <motion.img
+            src={item.src}
+            alt={item.alt}
+            loading="lazy"
+            variants={{
+              initial: { scale: 1 },
+              hovered: { scale: 1.03, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+            }}
+            className="w-full h-full object-cover"
+          />
+          <motion.div
+            className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.55)] flex items-end justify-center pb-6"
+            variants={{ initial: { opacity: 0 }, hovered: { opacity: 1 } }}
+            transition={{ duration: 0.4 }}
+          >
+            <p className="text-ivory text-[11px] uppercase tracking-[0.18em] font-light">
+              {item.caption}
+            </p>
+          </motion.div>
+        </motion.div>
       ))}
     </motion.section>
   );
 }
 
-/* ─── SOCIAL PROOF ──────────────────────────────────────────── */
+/* ─── SOCIAL PROOF — no card, hairlines top/bottom ─────────── */
 function SocialProof() {
   return (
-    <section className="bg-surface py-16">
-      <div className="max-w-[1100px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
-          <Stat>
-            <span className="font-serif italic text-gold text-[4.5rem] leading-none">
+    <section className="py-28 px-6">
+      <div className="max-w-3xl mx-auto">
+        <div className="hairline mb-16" />
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 md:divide-x divide-hairline"
+        >
+          <motion.div variants={staggerChild} className="text-center px-4">
+            <span className="stat-num">
               <AnimatedCounter target={96} suffix="%" />
             </span>
-            <p className="eyebrow mt-3">Recommandent ce restaurant</p>
-          </Stat>
-          <Stat>
-            <span className="font-serif italic text-gold text-[4.5rem] leading-none">
+            <p className="eyebrow mt-5">recommandent ce restaurant</p>
+          </motion.div>
+          <motion.div variants={staggerChild} className="text-center px-4">
+            <span className="stat-num">
               <AnimatedCounter target={204} />
             </span>
-            <p className="eyebrow mt-3">Avis Facebook</p>
-          </Stat>
-          <Stat>
-            <Award size={36} className="text-green" strokeWidth={1.5} />
-            <p className="eyebrow mt-3 max-w-[200px]">
-              Table Gourmande · Gault &amp; Millau 2026
-            </p>
-          </Stat>
-        </div>
+            <p className="eyebrow mt-5">avis facebook</p>
+          </motion.div>
+          <motion.div variants={staggerChild} className="text-center px-4 flex flex-col items-center">
+            <Award size={32} className="text-green mb-4" strokeWidth={1.5} />
+            <p className="display-h3">Table Gourmande</p>
+            <p className="eyebrow mt-3">Gault &amp; Millau 2026</p>
+          </motion.div>
+        </motion.div>
+        <div className="hairline mt-16" />
       </div>
     </section>
   );
 }
 
-function Stat({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex flex-col items-center justify-center text-center px-6 py-8">
-      {children}
-    </div>
-  );
-}
-
-/* ─── HOURS & RESERVATION ──────────────────────────────────── */
+/* ─── HOURS & RESERVATION — only bordered card on home ─────── */
 function HoursReservation() {
   return (
-    <section className="py-24 bg-background">
-      <div className="max-w-[1100px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+    <section className="py-32 px-6 bg-background">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <p className="eyebrow mb-3">N°04 — Informations</p>
-          <h2 className="display-h2 mb-8">Nous retrouver</h2>
-
-          <div className="space-y-5 text-[15px]">
-            <div className="flex items-start gap-4">
-              <Clock size={20} className="text-gold mt-1 shrink-0" strokeWidth={1.5} />
-              <div>
-                <p className="text-ivory">Tous les jours</p>
-                <p className="text-ivory-muted">12h – 14h · 19h – 21h30</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <MapPin size={20} className="text-gold mt-1 shrink-0" strokeWidth={1.5} />
-              <a
-                href="https://maps.google.com/?q=4+Place+Championnet+Grenoble"
-                target="_blank"
-                rel="noreferrer noopener"
-                className="text-ivory hover:text-gold transition-colors"
-              >
-                4 Place Championnet, Grenoble
-              </a>
-            </div>
-            <div className="flex items-start gap-4">
-              <Phone size={20} className="text-gold mt-1 shrink-0" strokeWidth={1.5} />
-              <a
-                href="tel:+33476271375"
-                className="text-ivory hover:text-gold transition-colors"
-              >
+          <p className="eyebrow mb-5">N°05 — Informations</p>
+          <h3 className="font-serif italic font-light text-[2rem] text-ivory mb-6">
+            Nous retrouver
+          </h3>
+          <div className="space-y-2 text-[16px] text-ivory font-light leading-loose">
+            <p>4 Place Championnet, 38000 Grenoble</p>
+            <p>
+              <a href="tel:+33476271375" className="hover:text-gold transition-colors">
                 +33 4 76 27 13 75
               </a>
-            </div>
+            </p>
+            <p className="text-ivory-muted">
+              Ouvert tous les jours · 12h–14h / 19h–21h30
+            </p>
           </div>
-        </motion.div>
-
-        <motion.div
-          variants={scaleUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="bg-surface border border-green rounded-xl p-10"
-        >
-          <p className="eyebrow text-gold mb-3">Réservation</p>
-          <h3 className="display-h3 mb-4 text-[2rem] italic font-normal font-serif">
-            Réserver votre table
-          </h3>
-          <p className="text-ivory-muted mb-8 text-[15px]">
-            Sur place ou par téléphone. Confirmation immédiate.
-          </p>
-          <motion.a
-            href="tel:+33476271375"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="btn-primary w-full !py-3.5"
-          >
-            <Phone size={16} /> Appeler le restaurant
-          </motion.a>
           <a
             href="https://maps.google.com/?q=4+Place+Championnet+Grenoble"
             target="_blank"
@@ -512,6 +416,34 @@ function HoursReservation() {
             className="gold-link mt-6"
           >
             Voir sur Google Maps <ArrowRight size={14} />
+          </a>
+        </motion.div>
+
+        <motion.div
+          variants={scaleUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="bg-surface border border-hairline rounded-3xl p-10"
+          style={{ borderColor: "oklch(0.703 0.106 65 / 0.3)" }}
+        >
+          <h3 className="font-serif italic font-light text-[1.75rem] text-ivory mb-4">
+            Réserver votre table
+          </h3>
+          <p className="text-ivory-muted mb-7 text-[15px] font-light leading-relaxed">
+            Sur place ou par téléphone. Confirmation immédiate.
+          </p>
+          <a
+            href="tel:+33476271375"
+            className="btn-primary w-full !py-3.5"
+          >
+            <Phone size={16} /> Appeler le restaurant
+          </a>
+          <a
+            href="mailto:restaurant1sur2@gmail.com"
+            className="gold-link mt-5 text-[13px]"
+          >
+            <MapPin size={12} /> restaurant1sur2@gmail.com
           </a>
         </motion.div>
       </div>

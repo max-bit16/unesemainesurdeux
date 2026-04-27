@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
-import { Award, Leaf, Sprout, Sun, ChefHat } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight, Sprout, Sun, ChefHat } from "lucide-react";
 import {
-  scaleUp,
+  fadeUp,
   staggerContainer,
   staggerChild,
   viewportOnce,
 } from "@/lib/motion";
 
-import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
+import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
@@ -25,8 +26,8 @@ export const Route = createFileRoute("/chef")({
         content:
           "Cuisine bistronomique, ancrée dans la saison et le territoire. Toque Gault & Millau 2026.",
       },
-      { property: "og:image", content: photoMenuPoulpe },
-      { name: "twitter:image", content: photoMenuPoulpe },
+      { property: "og:image", content: photoSurfTurf },
+      { name: "twitter:image", content: photoSurfTurf },
     ],
   }),
   component: ChefPage,
@@ -43,20 +44,31 @@ function ChefPage() {
 }
 
 function ChefHero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+
   return (
-    <section className="relative min-h-[100svh] flex flex-col md:flex-row pt-[68px] md:pt-0">
-      <div className="relative w-full md:w-[45%] h-[55vh] md:h-auto md:min-h-screen overflow-hidden">
-        <img
-          src={photoMenuPoulpe}
-          alt="Le menu signé du Chef Pierrick Vasseur"
+    <section
+      ref={ref}
+      className="relative min-h-[100svh] flex flex-col md:flex-row pt-[68px] md:pt-0"
+    >
+      <div className="relative w-full md:w-1/2 h-[45vh] md:h-auto md:min-h-screen overflow-hidden">
+        <motion.img
+          src={photoSurfTurf}
+          alt="Plat du chef — viande et homard, cave à vin"
           loading="eager"
-          className="w-full h-full object-cover"
+          style={{ y }}
+          className="w-full h-[115%] object-cover absolute inset-0"
         />
         <div
-          className="absolute inset-y-0 right-0 w-[30%] pointer-events-none hidden md:block"
+          className="absolute inset-y-0 right-0 w-[25%] pointer-events-none hidden md:block"
           style={{
             background:
-              "linear-gradient(to left, oklch(0.183 0.006 60), transparent)",
+              "linear-gradient(to left, oklch(0.196 0.006 60), transparent)",
           }}
         />
       </div>
@@ -65,9 +77,9 @@ function ChefHero() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="w-full md:w-[55%] flex flex-col justify-center px-6 md:px-16 py-16 md:py-0"
+        className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-16 md:py-0"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-5">
+        <motion.p variants={staggerChild} className="eyebrow mb-6">
           N°01 — Derrière les fourneaux
         </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1 mb-8">
@@ -75,101 +87,105 @@ function ChefHero() {
           <br />
           cuisiner avec intention.
         </motion.h1>
-        <motion.p variants={staggerChild} className="text-ivory-muted text-[16px] mb-5 max-w-xl leading-relaxed">
+        <motion.p
+          variants={staggerChild}
+          className="text-ivory-muted text-[16px] mb-5 max-w-md font-light leading-loose"
+        >
           Depuis l'ouverture, Pierrick Vasseur défend une cuisine bistronomique
           ancrée dans la saison et le territoire. Pas de carte longue — une
-          sélection courte, renouvelée, où chaque plat est travaillé jusqu'à
-          l'essentiel.
+          sélection courte, où chaque plat est travaillé jusqu'à l'essentiel.
         </motion.p>
-        <motion.p variants={staggerChild} className="text-ivory-muted text-[16px] mb-8 max-w-xl leading-relaxed">
+        <motion.p
+          variants={staggerChild}
+          className="text-ivory-muted text-[16px] mb-8 max-w-md font-light leading-loose"
+        >
           Distingué par une toque Gault &amp; Millau 2026, il s'appuie sur des
           produits en circuit court et une sélection viticole personnelle à prix
           justes.
         </motion.p>
-        <motion.div variants={staggerChild} className="flex flex-wrap gap-4">
-          <Badge icon={<Award size={16} />} text="Toque Gault & Millau 2026" />
-          <Badge icon={<Leaf size={16} />} text="Circuit court" />
+        <motion.div variants={staggerChild} className="flex flex-wrap gap-x-8 gap-y-3">
+          <span className="gold-link">
+            Toque Gault &amp; Millau 2026 <ArrowRight size={14} />
+          </span>
+          <span className="gold-link">
+            Circuit court <ArrowRight size={14} />
+          </span>
         </motion.div>
       </motion.div>
     </section>
   );
 }
 
-function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-sm border border-gold/40 text-gold text-[13px] tracking-wide">
-      {icon}
-      {text}
-    </span>
-  );
-}
-
 function PullQuote() {
   return (
-    <section className="bg-surface py-24">
+    <section className="py-32 px-6">
       <motion.div
-        variants={scaleUp}
+        variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="max-w-3xl mx-auto px-6 text-center"
+        className="max-w-2xl mx-auto text-center"
       >
-        <div className="gold-divider mx-auto mb-10" />
-        <p className="pull-quote text-[2.2rem] mb-8">
+        <div className="gold-divider mx-auto mb-12" />
+        <p className="pull-quote text-[2.2rem] mb-6">
           "Tout est fait maison, jusqu'aux desserts."
         </p>
-        <p className="text-ivory-muted text-sm tracking-wide mb-10">
-          — Chef Pierrick Vasseur
-        </p>
-        <div className="gold-divider mx-auto" />
+        <p className="text-[14px] text-ivory-muted">— Chef Pierrick Vasseur</p>
+        <div className="gold-divider mx-auto mt-12" />
       </motion.div>
     </section>
   );
 }
 
 function Values() {
-  const items = [
+  const rows = [
     {
       icon: Sprout,
-      title: "Produits frais",
-      body: "Fruits, légumes et viandes sourcés localement.",
+      label: "Produits frais",
+      body: "Fruits, légumes et viandes sourcés localement, au fil des arrivages.",
     },
     {
       icon: Sun,
-      title: "Saisons respectées",
-      body: "La carte change quand les saisons changent.",
+      label: "Saisons respectées",
+      body: "La carte évolue quand les saisons changent. Pas l'inverse.",
     },
     {
       icon: ChefHat,
-      title: "Fait maison",
-      body: "Chaque plat, chaque dessert, préparé sur place.",
+      label: "Fait maison",
+      body: "Chaque plat préparé sur place. Chaque dessert pensé par le chef.",
     },
   ];
 
   return (
-    <section className="bg-surface-alt py-20">
+    <section className="py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="max-w-[1100px] mx-auto px-6"
+        className="max-w-3xl mx-auto"
       >
         <motion.p variants={staggerChild} className="eyebrow text-center mb-12">
           N°02 — Nos engagements
         </motion.p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {items.map(({ icon: Icon, title, body }) => (
+        <div>
+          {rows.map(({ icon: Icon, label, body }, i) => (
             <motion.div
-              key={title}
+              key={label}
               variants={staggerChild}
-              whileHover={{ y: -4, borderColor: "oklch(0.703 0.106 65)" }}
-              transition={{ duration: 0.3 }}
-              className="bg-surface border border-border rounded-2xl p-10 text-center"
+              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 md:gap-10 py-8 ${
+                i === 0 ? "border-t border-hairline" : ""
+              } border-b border-hairline`}
             >
-              <Icon size={36} className="text-gold mx-auto mb-5" strokeWidth={1.5} />
-              <h3 className="display-h3 mb-3">{title}</h3>
-              <p className="text-ivory-muted text-sm leading-relaxed">{body}</p>
+              <div className="flex items-center gap-3">
+                <Icon size={16} className="text-gold shrink-0" strokeWidth={1.5} />
+                <p className="font-serif italic text-[1.375rem] text-ivory font-light">
+                  {label}
+                </p>
+              </div>
+              <p className="text-[16px] text-ivory-muted font-light leading-relaxed">
+                {body}
+              </p>
             </motion.div>
           ))}
         </div>
