@@ -4,19 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
+/* ────────────────────────────────────────────────────────────────────
+   Une Semaine Sur Deux — Design System
+   Cinematic dark restaurant · Cormorant Garamond + DM Sans
+   All colors in oklch. Brand colors mapped from spec hex.
+   ──────────────────────────────────────────────────────────────────── */
+
+/* Google Fonts — Cormorant Garamond + DM Sans */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap");
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -25,7 +20,7 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -46,90 +41,72 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand semantic tokens */
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-deep: var(--surface-deep);
+  --color-ivory: var(--ivory);
+  --color-ivory-muted: var(--ivory-muted);
+  --color-green: var(--green);
+  --color-green-hover: var(--green-hover);
+  --color-gold: var(--gold);
+  --color-gold-dim: var(--gold-dim);
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 0.5rem;
+
+  /* Spec hex → oklch
+     #1A1714 background      → oklch(0.183 0.006 60)
+     #252118 surface         → oklch(0.243 0.008 70)
+     #1F1C18 surface-alt     → oklch(0.213 0.007 65)
+     #0E0C09 surface-deep    → oklch(0.115 0.005 60)
+     #F5EFE0 ivory          → oklch(0.949 0.018 90)
+     #9E9080 ivory-muted    → oklch(0.642 0.017 75)
+     #2C4A3E green          → oklch(0.378 0.038 160)
+     #3A5F52 green-hover    → oklch(0.461 0.038 162)
+     #C8965A gold           → oklch(0.703 0.106 65)
+     #2E2A24 border         → oklch(0.275 0.008 70)
+  */
+  --background: oklch(0.183 0.006 60);
+  --foreground: oklch(0.949 0.018 90);
+  --surface: oklch(0.243 0.008 70);
+  --surface-alt: oklch(0.213 0.007 65);
+  --surface-deep: oklch(0.115 0.005 60);
+  --ivory: oklch(0.949 0.018 90);
+  --ivory-muted: oklch(0.642 0.017 75);
+  --green: oklch(0.378 0.038 160);
+  --green-hover: oklch(0.461 0.038 162);
+  --gold: oklch(0.703 0.106 65);
+  --gold-dim: oklch(0.703 0.106 65 / 0.15);
+
+  --card: var(--surface);
+  --card-foreground: var(--ivory);
+  --popover: var(--surface);
+  --popover-foreground: var(--ivory);
+  --primary: var(--green);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--surface-alt);
+  --secondary-foreground: var(--ivory);
+  --muted: var(--surface-alt);
+  --muted-foreground: var(--ivory-muted);
+  --accent: var(--gold);
+  --accent-foreground: var(--background);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --destructive-foreground: var(--ivory);
+  --border: oklch(0.275 0.008 70);
+  --input: oklch(0.275 0.008 70);
+  --ring: var(--gold);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  /* Site is dark by default — keep aliased to root values */
+  --background: oklch(0.183 0.006 60);
+  --foreground: oklch(0.949 0.018 90);
 }
 
 @layer base {
@@ -137,8 +114,145 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--gold);
+    color: var(--background);
+  }
+}
+
+@layer components {
+  /* Editorial label: "N°01 — TITLE" */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ivory-muted);
+    font-weight: 400;
+  }
+
+  /* Display headings — Cormorant italic */
+  .display {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ivory);
+  }
+
+  .display-h1 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ivory);
+    font-size: clamp(3rem, 7vw, 6rem);
+  }
+
+  .display-h2 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ivory);
+    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  }
+
+  .display-h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--ivory);
+    font-size: 1.625rem;
+  }
+
+  .pull-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ivory);
+    line-height: 1.3;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--green);
+    color: var(--ivory);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2px;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+    cursor: pointer;
+    border: 1px solid var(--green);
+  }
+  .btn-primary:hover {
+    background-color: var(--green-hover);
+    border-color: var(--green-hover);
+  }
+
+  .btn-ghost-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+    cursor: pointer;
+  }
+  .btn-ghost-gold:hover {
+    background-color: var(--gold-dim);
+  }
+
+  .gold-link {
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.02em;
+    transition: gap 0.25s ease, opacity 0.2s ease;
+  }
+  .gold-link:hover {
+    gap: 0.7rem;
+    opacity: 0.85;
+  }
+
+  .gold-divider {
+    width: 80px;
+    height: 1px;
+    background-color: var(--gold);
+    opacity: 0.5;
   }
 }
