@@ -425,7 +425,6 @@ function HoursReservation() {
           whileInView="visible"
           viewport={viewportOnce}
           className="bg-surface border border-hairline rounded-3xl p-10"
-          style={{ borderColor: "oklch(0.703 0.106 65 / 0.3)" }}
         >
           <h3 className="font-serif italic font-light text-[1.75rem] text-ivory mb-4">
             Réserver votre table

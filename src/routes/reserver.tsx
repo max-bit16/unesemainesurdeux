@@ -118,8 +118,7 @@ function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="bg-surface rounded-3xl p-10"
-          style={{ border: "1px solid oklch(0.703 0.106 65 / 0.3)" }}
+          className="bg-surface rounded-3xl p-10 border border-hairline"
         >
           <h2 className="font-serif italic font-light text-[1.75rem] text-ivory mb-3">
             Par téléphone
