@@ -157,8 +157,8 @@ function MenuSection({
             <motion.span
               className="font-serif text-[1.25rem] font-light leading-snug transition-colors"
               variants={{
-                initial: { color: "oklch(0.928 0.018 85)" },
-                hovered: { color: "oklch(0.703 0.106 65)" },
+                initial: { color: "oklch(0.300 0.005 160)" },
+                hovered: { color: "oklch(0.570 0.030 150)" },
               }}
             >
               {item.name}
