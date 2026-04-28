@@ -53,7 +53,7 @@ function Header() {
         style={{ objectPosition: "center 60%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.78)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.55)] via-[oklch(0.985_0.003_90/0.7)] to-[oklch(0.985_0.003_90/0.92)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"

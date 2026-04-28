@@ -68,7 +68,7 @@ function ChefHero() {
           className="absolute inset-y-0 right-0 w-[25%] pointer-events-none hidden md:block"
           style={{
             background:
-              "linear-gradient(to left, oklch(0.196 0.006 60), transparent)",
+              "linear-gradient(to left, oklch(0.985 0.003 90), transparent)",
           }}
         />
       </div>

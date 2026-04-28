@@ -186,7 +186,7 @@ function SignatureDish() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.196 0.006 60 / 0.3) 0%, oklch(0.196 0.006 60 / 0.78) 100%)",
+            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.25) 0%, oklch(0.985 0.003 90 / 0.88) 100%)",
         }}
       />
       <motion.div
