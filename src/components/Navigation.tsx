@@ -28,7 +28,7 @@ export function Navigation() {
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "backdrop-blur-md bg-[oklch(0.196_0.006_60/0.92)] border-b border-hairline"
+          ? "backdrop-blur-md bg-[oklch(0.985_0.003_90/0.85)] border-b border-hairline"
           : "bg-transparent"
       }`}
     >
