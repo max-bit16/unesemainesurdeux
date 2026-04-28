@@ -186,7 +186,7 @@ function SignatureDish() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.196 0.006 60 / 0.3) 0%, oklch(0.196 0.006 60 / 0.78) 100%)",
+            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.25) 0%, oklch(0.985 0.003 90 / 0.88) 100%)",
         }}
       />
       <motion.div
@@ -332,7 +332,7 @@ function PhotoStrip() {
             className="w-full h-full object-cover"
           />
           <motion.div
-            className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.55)] flex items-end justify-center pb-6"
+            className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end justify-center pb-6"
             variants={{ initial: { opacity: 0 }, hovered: { opacity: 1 } }}
             transition={{ duration: 0.4 }}
           >
@@ -425,7 +425,6 @@ function HoursReservation() {
           whileInView="visible"
           viewport={viewportOnce}
           className="bg-surface border border-hairline rounded-3xl p-10"
-          style={{ borderColor: "oklch(0.703 0.106 65 / 0.3)" }}
         >
           <h3 className="font-serif italic font-light text-[1.75rem] text-ivory mb-4">
             Réserver votre table

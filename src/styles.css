@@ -6,9 +6,22 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ────────────────────────────────────────────────────────────────────
-   Une Semaine Sur Deux — Editorial Light v3.0
-   Warm dark canvas · Cormorant 300/400 italic · DM Sans 300/400
-   No filled cards. Hairline dividers. Pill buttons.
+   Une Semaine Sur Deux — Bright Editorial v4.0
+   Palette: off-white · pearl grey · sage green · soft anthracite
+   No dark backgrounds. No gold/bronze/copper. Minimal & premium.
+
+   NOTE: Token NAMES (ivory, gold, surface…) are kept for stability,
+   but their VALUES were remapped to the new bright palette:
+     - background → off-white #FAFAF7
+     - surface    → pearl     #F2F1EC
+     - surface-deep → soft mineral #ECEAE3
+     - ivory      → soft anthracite #2A2D2B (primary text)
+     - ivory-muted → mid grey #6F726E (secondary text)
+     - ivory-ghost → pale grey #A8AAA5 (faint text)
+     - gold       → muted sage green #6B8270 (accent — was gold)
+     - gold-dim   → very pale sage tint
+     - hairline   → soft silver-sage line
+     - green      → deeper sage for primary buttons
    ──────────────────────────────────────────────────────────────────── */
 
 @theme inline {
@@ -40,7 +53,7 @@
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
 
-  /* Brand semantic tokens */
+  /* Brand semantic tokens (names preserved) */
   --color-surface: var(--surface);
   --color-surface-deep: var(--surface-deep);
   --color-ivory: var(--ivory);
@@ -59,52 +72,59 @@
 :root {
   --radius: 0.5rem;
 
-  /* Spec hex → oklch
-     #1C1814 background       → oklch(0.196 0.006 60)
-     #221E1A surface          → oklch(0.227 0.006 60)
-     #141210 surface-deep     → oklch(0.150 0.005 60)
-     #F0E8DC ivory            → oklch(0.928 0.018 85)
-     #8A7A6A ivory-muted      → oklch(0.567 0.020 70)
-     #5A4E44 ivory-ghost      → oklch(0.380 0.014 65)
-     #2C4A3E green            → oklch(0.378 0.038 160)
-     #3A5F52 green-hover      → oklch(0.461 0.038 162)
-     #C8965A gold             → oklch(0.703 0.106 65)
+  /* Bright editorial palette — oklch values
+     #FAFAF7 off-white       → oklch(0.985 0.003 90)
+     #F2F1EC pearl surface   → oklch(0.954 0.005 90)
+     #ECEAE3 mineral         → oklch(0.928 0.006 90)
+     #2A2D2B anthracite text → oklch(0.300 0.005 160)
+     #6F726E mid grey        → oklch(0.520 0.005 150)
+     #A8AAA5 pale grey       → oklch(0.720 0.005 140)
+     #6B8270 sage accent     → oklch(0.570 0.030 150)
+     #5A7160 deeper sage     → oklch(0.500 0.034 150)
+     #4C6354 sage hover      → oklch(0.440 0.036 152)
   */
-  --background: oklch(0.196 0.006 60);
-  --foreground: oklch(0.928 0.018 85);
-  --surface: oklch(0.227 0.006 60);
-  --surface-deep: oklch(0.150 0.005 60);
-  --ivory: oklch(0.928 0.018 85);
-  --ivory-muted: oklch(0.567 0.020 70);
-  --ivory-ghost: oklch(0.380 0.014 65);
-  --green: oklch(0.378 0.038 160);
-  --green-hover: oklch(0.461 0.038 162);
-  --gold: oklch(0.703 0.106 65);
-  --gold-dim: oklch(0.703 0.106 65 / 0.12);
-  --hairline: oklch(0.703 0.106 65 / 0.18);
+  --background: oklch(0.985 0.003 90);
+  --foreground: oklch(0.300 0.005 160);
+  --surface: oklch(0.954 0.005 90);
+  --surface-deep: oklch(0.928 0.006 90);
+  --ivory: oklch(0.300 0.005 160);
+  --ivory-muted: oklch(0.520 0.005 150);
+  --ivory-ghost: oklch(0.720 0.005 140);
+
+  /* Sage accent (replaces gold everywhere) */
+  --gold: oklch(0.570 0.030 150);
+  --gold-dim: oklch(0.570 0.030 150 / 0.10);
+
+  /* Primary (deeper sage for buttons) */
+  --green: oklch(0.500 0.034 150);
+  --green-hover: oklch(0.440 0.036 152);
+
+  /* Hairline: soft silver-sage */
+  --hairline: oklch(0.300 0.005 160 / 0.14);
 
   --card: var(--surface);
   --card-foreground: var(--ivory);
   --popover: var(--surface);
   --popover-foreground: var(--ivory);
   --primary: var(--green);
-  --primary-foreground: var(--ivory);
+  --primary-foreground: oklch(0.985 0.003 90);
   --secondary: var(--surface);
   --secondary-foreground: var(--ivory);
   --muted: var(--surface);
   --muted-foreground: var(--ivory-muted);
   --accent: var(--gold);
-  --accent-foreground: var(--background);
+  --accent-foreground: oklch(0.985 0.003 90);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: var(--ivory);
-  --border: oklch(0.703 0.106 65 / 0.18);
-  --input: oklch(0.703 0.106 65 / 0.18);
+  --destructive-foreground: oklch(0.985 0.003 90);
+  --border: var(--hairline);
+  --input: var(--hairline);
   --ring: var(--gold);
 }
 
+/* Keep .dark inert — site is light-only now */
 .dark {
-  --background: oklch(0.196 0.006 60);
-  --foreground: oklch(0.928 0.018 85);
+  --background: oklch(0.985 0.003 90);
+  --foreground: oklch(0.300 0.005 160);
 }
 
 @layer base {
@@ -128,7 +148,7 @@
 
   ::selection {
     background-color: var(--gold);
-    color: var(--background);
+    color: oklch(0.985 0.003 90);
   }
 }
 
@@ -197,7 +217,7 @@
     justify-content: center;
     gap: 0.5rem;
     background-color: var(--green);
-    color: var(--ivory);
+    color: oklch(0.985 0.003 90);
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 400;
@@ -220,7 +240,7 @@
     gap: 0.5rem;
     background-color: transparent;
     color: var(--gold);
-    border: 1px solid oklch(0.703 0.106 65 / 0.5);
+    border: 1px solid oklch(0.570 0.030 150 / 0.45);
     font-family: var(--font-sans);
     font-size: 0.875rem;
     font-weight: 400;
@@ -254,7 +274,7 @@
   }
   .btn-outline-green:hover {
     background-color: var(--green);
-    color: var(--ivory);
+    color: oklch(0.985 0.003 90);
   }
 
   .gold-link {
@@ -269,14 +289,14 @@
   }
   .gold-link:hover {
     gap: 0.7rem;
-    opacity: 0.85;
+    opacity: 0.8;
   }
 
   .gold-divider {
     width: 48px;
     height: 1px;
     background-color: var(--gold);
-    opacity: 0.5;
+    opacity: 0.55;
   }
 
   .hairline {

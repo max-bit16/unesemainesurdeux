@@ -78,7 +78,7 @@ function MenuHeader() {
         style={{ objectPosition: "center 30%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.72)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.5)] via-[oklch(0.985_0.003_90/0.7)] to-[oklch(0.985_0.003_90/0.9)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -157,8 +157,8 @@ function MenuSection({
             <motion.span
               className="font-serif text-[1.25rem] font-light leading-snug transition-colors"
               variants={{
-                initial: { color: "oklch(0.928 0.018 85)" },
-                hovered: { color: "oklch(0.703 0.106 65)" },
+                initial: { color: "oklch(0.300 0.005 160)" },
+                hovered: { color: "oklch(0.570 0.030 150)" },
               }}
             >
               {item.name}
@@ -199,7 +199,7 @@ function PhotoBreak() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.196 0.006 60 / 0.4), oklch(0.196 0.006 60 / 0.7))",
+            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.4), oklch(0.985 0.003 90 / 0.85))",
         }}
       />
       <motion.p

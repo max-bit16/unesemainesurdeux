@@ -115,7 +115,7 @@ function Masonry() {
                   className="w-full h-full object-cover"
                 />
                 <motion.div
-                  className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.5)] flex items-end"
+                  className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end"
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.35 }}

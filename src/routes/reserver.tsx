@@ -53,7 +53,7 @@ function Header() {
         style={{ objectPosition: "center 60%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.78)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.55)] via-[oklch(0.985_0.003_90/0.7)] to-[oklch(0.985_0.003_90/0.92)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -118,8 +118,7 @@ function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="bg-surface rounded-3xl p-10"
-          style={{ border: "1px solid oklch(0.703 0.106 65 / 0.3)" }}
+          className="bg-surface rounded-3xl p-10 border border-hairline"
         >
           <h2 className="font-serif italic font-light text-[1.75rem] text-ivory mb-3">
             Par téléphone
