@@ -332,7 +332,7 @@ function PhotoStrip() {
             className="w-full h-full object-cover"
           />
           <motion.div
-            className="absolute inset-0 bg-[oklch(0.196_0.006_60/0.55)] flex items-end justify-center pb-6"
+            className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end justify-center pb-6"
             variants={{ initial: { opacity: 0 }, hovered: { opacity: 1 } }}
             transition={{ duration: 0.4 }}
           >
