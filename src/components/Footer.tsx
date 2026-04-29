@@ -19,15 +19,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-12 text-center md:text-left">
           <div className="space-y-2">
             <p className="eyebrow mb-3">Adresse</p>
-            <p className="text-ivory-muted text-[13px] font-light leading-loose">
+            <address className="not-italic text-ivory-muted text-[13px] font-light leading-loose">
               4 Place Championnet
               <br />38000 Grenoble
-            </p>
-            <p className="text-ivory-muted text-[13px] font-light">
+              <br />
               <a href="tel:+33476271375" className="hover:text-ivory transition-colors">
                 +33 4 76 27 13 75
               </a>
-            </p>
+            </address>
           </div>
 
           <div className="space-y-2">
@@ -39,7 +38,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="space-y-2">
+          <nav aria-label="Navigation pied de page" className="space-y-2">
             <p className="eyebrow mb-3">Navigation</p>
             <ul className="space-y-1.5 text-[13px] font-light">
               {[
@@ -67,7 +66,7 @@ export function Footer() {
                 aria-label="Instagram"
                 className="text-ivory-muted hover:text-gold transition-colors"
               >
-                <Instagram size={16} strokeWidth={1.5} />
+                <Instagram size={16} strokeWidth={1.5} aria-hidden="true" />
               </a>
               <a
                 href="https://www.facebook.com/1sur2grenoble/"
@@ -76,16 +75,25 @@ export function Footer() {
                 aria-label="Facebook"
                 className="text-ivory-muted hover:text-gold transition-colors"
               >
-                <Facebook size={16} strokeWidth={1.5} />
+                <Facebook size={16} strokeWidth={1.5} aria-hidden="true" />
               </a>
             </div>
-          </div>
+          </nav>
         </div>
 
         <div className="hairline mb-6" />
-        <p className="text-[11px] text-ivory-ghost text-center font-light tracking-wider">
-          © 2026 Une Semaine Sur Deux · Grenoble · Site par Yamen Global
-        </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-ivory-ghost font-light tracking-wider">
+          <p className="text-center md:text-left">
+            © 2026 Une Semaine Sur Deux · Grenoble · Site par Yamen Global
+          </p>
+          <Link
+            to="/mentions-legales"
+            className="text-ivory-ghost hover:text-ivory transition-colors"
+            style={{ fontSize: "12px" }}
+          >
+            Mentions légales
+          </Link>
+        </div>
       </div>
     </footer>
   );
