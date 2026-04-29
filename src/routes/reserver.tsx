@@ -10,8 +10,8 @@ import {
 } from "@/lib/motion";
 
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
-// Hero "Réserver votre table" : table dressée bistronomique, lumière chaude
-const photoTable = "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1100&dpr=1";
+// Hero "Réserver votre table" : salle bistronomique chaleureuse (générée IA)
+import photoTable from "@/assets/photos/photo-salle.jpg";
 
 export const Route = createFileRoute("/reserver")({
   head: () => ({

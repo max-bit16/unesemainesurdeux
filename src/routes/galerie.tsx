@@ -3,15 +3,16 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 
-// Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
+// Photos — mix d'originales restaurant + Pexels libre de droits + génération IA pour combler.
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
+import photoSalle from "@/assets/photos/photo-salle.jpg";
+import photoChefDressage from "@/assets/photos/photo-chef-dressage.jpg";
 const photoDessert = "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
 const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
 const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
 const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
 const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1500&dpr=1";
 const photoMarche = "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
-const photoSalle = "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
 export const Route = createFileRoute("/galerie")({
@@ -69,15 +70,16 @@ function Header() {
 }
 
 const SLOTS = [
-  { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]" },
-  { src: photoDessert, alt: "Dessert maison, dressage soigné", caption: "Desserts maison", aspect: "aspect-[4/3]" },
-  { src: photoMenuPoulpe, alt: "Plat signature : poulpe à la crème d'ail noir", caption: "Poulpe · signature", aspect: "aspect-[4/5]" },
-  { src: photoPoisson, alt: "Poisson grillé, légumes frais de saison", caption: "Poisson & saison", aspect: "aspect-[4/5]" },
-  { src: photoVolaille, alt: "Pièce de viande, légumes de saison & sauce poivre", caption: "Viande & légumes", aspect: "aspect-square" },
-  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square" },
-  { src: photoSalle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]" },
-  { src: photoMarche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]" },
-  { src: photoGaultMillau, alt: "Plaque Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square" },
+  { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
+  { src: photoChefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoDessert, alt: "Dessert maison, dressage soigné", caption: "Desserts maison", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: photoMenuPoulpe, alt: "Plat signature : poulpe à la crème d'ail noir", caption: "Poulpe · signature", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoSalle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: photoPoisson, alt: "Poisson grillé, légumes frais de saison", caption: "Poisson & saison", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoVolaille, alt: "Pièce de viande, légumes de saison & sauce poivre", caption: "Viande & légumes", aspect: "aspect-square", position: "object-center" },
+  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square", position: "object-center" },
+  { src: photoMarche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: photoGaultMillau, alt: "Plaque Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
 ];
 
 function Masonry() {
@@ -118,7 +120,7 @@ function Masonry() {
                   loading="lazy"
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${s.position}`}
                 />
                 <motion.div
                   className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end"
