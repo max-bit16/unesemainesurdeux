@@ -171,17 +171,17 @@
     line-height: 1.05;
     letter-spacing: -0.015em;
     color: var(--ivory);
-    font-size: clamp(3.25rem, 7.5vw, 5.5rem);
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
   }
 
   .display-h2 {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 300;
-    line-height: 1.08;
+    line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--ivory);
-    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    font-size: clamp(1.85rem, 6vw, 3.25rem);
   }
 
   .display-h3 {
