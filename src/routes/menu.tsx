@@ -143,7 +143,7 @@ function MenuSection({
             variants={staggerChild}
             whileHover="hovered"
             initial="initial"
-            className="relative pl-5 py-4 cursor-default flex items-center justify-between gap-4 group"
+            className="relative pl-4 md:pl-5 py-3.5 md:py-4 cursor-default flex items-start justify-between gap-3 md:gap-4 group"
           >
             <motion.div
               className="absolute left-0 top-3 bottom-3 w-[2px] bg-gold"
@@ -155,7 +155,7 @@ function MenuSection({
               transition={{ duration: 0.25 }}
             />
             <motion.span
-              className="font-serif text-[1.25rem] font-light leading-snug transition-colors"
+              className="font-serif text-[1.1rem] md:text-[1.25rem] font-light leading-snug transition-colors flex-1 min-w-0"
               variants={{
                 initial: { color: "oklch(0.300 0.005 160)" },
                 hovered: { color: "oklch(0.570 0.030 150)" },
@@ -164,7 +164,7 @@ function MenuSection({
               {item.name}
             </motion.span>
             {item.signature && (
-              <span className="inline-flex items-center text-[9px] uppercase tracking-[0.2em] px-2 py-0.5 rounded-full border border-green text-green ml-3 shrink-0">
+              <span className="inline-flex items-center text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border border-green text-green shrink-0 mt-1.5">
                 Signature
               </span>
             )}
