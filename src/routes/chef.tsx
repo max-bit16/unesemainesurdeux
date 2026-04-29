@@ -9,9 +9,9 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 
-// Photo temporaire — Pexels CDN (libre de droits). À remplacer par photo originale du chef.
-// Geste de cuisine (sans visage identifiable) — pour ne pas se faire passer pour le chef Pierrick Vasseur.
-const photoChef = "https://images.pexels.com/photos/3217156/pexels-photo-3217156.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1750&dpr=1";
+// Photo originale du restaurant : Saint-Jacques signature.
+// Mieux qu'une photo stock pour incarner la cuisine du chef Pierrick Vasseur.
+import photoChef from "@/assets/photos/photo-saint-jacques.jpg";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
@@ -62,10 +62,10 @@ function ChefHero() {
       <div className="relative w-full md:w-1/2 h-[40vh] md:h-auto md:min-h-screen overflow-hidden">
         <motion.img
           src={photoChef}
-          alt="Chef Pierrick Vasseur dressant une assiette en cuisine"
+          alt="Saint-Jacques, plat signature du chef Pierrick Vasseur"
           loading="eager"
           fetchPriority="high"
-          style={{ y, objectPosition: "center 35%" }}
+          style={{ y, objectPosition: "center center" }}
           className="w-full h-[115%] object-cover absolute inset-0"
         />
         <div
