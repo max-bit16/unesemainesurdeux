@@ -15,17 +15,17 @@ import photoPavlova from "@/assets/photos/photo-pavlova.jpg";
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "La Carte Une Semaine Sur Deux · Restaurant à Grenoble" },
+      { title: "Carte du restaurant Une Semaine Sur Deux Grenoble · Bistronomie de saison" },
       {
         name: "description",
         content:
-          "Carte courte, renouvelée au fil des saisons. Entrées, plats, desserts faits maison. Plat du jour 13,50€, menu adulte dès 39€.",
+          "Découvrez la carte du restaurant Une Semaine Sur Deux à Grenoble. Entrées, plats, desserts faits maison. Poulpe signature, truite, mousse au chocolat Valrhona.",
       },
-      { property: "og:title", content: "La Carte Une Semaine Sur Deux" },
+      { property: "og:title", content: "Carte du restaurant Une Semaine Sur Deux Grenoble" },
       {
         property: "og:description",
         content:
-          "Une carte bistronomique, courte et de saison. Faite maison à Grenoble.",
+          "Entrées, plats, desserts faits maison. Bistronomie de saison à Grenoble.",
       },
       { property: "og:image", content: photoLegumes },
       { name: "twitter:image", content: photoLegumes },
