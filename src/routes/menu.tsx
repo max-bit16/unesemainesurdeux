@@ -222,7 +222,7 @@ function Prices() {
     { icon: Users, label: "Menu enfant", price: "15 €" },
   ];
   return (
-    <section className="py-24 px-6">
+    <section className="py-20 md:py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -237,7 +237,7 @@ function Prices() {
             className="text-center px-6"
           >
             <Icon size={16} className="text-gold mx-auto mb-4" strokeWidth={1.5} />
-            <p className="font-serif italic font-light text-[3rem] text-ivory leading-none mb-3">
+            <p className="font-serif italic font-light text-[2.5rem] md:text-[3rem] text-ivory leading-none mb-3">
               {price}
             </p>
             <p className="eyebrow">{label}</p>
