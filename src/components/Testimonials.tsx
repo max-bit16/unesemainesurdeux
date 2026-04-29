@@ -48,7 +48,7 @@ const FRAGMENTS: Testimonial[] = [
   { name: "Giovanni Cascone", short: "Une très belle découverte. Je recommande à 100%." },
   { name: "Ozzy Makeo", short: "Accueillies chaleureusement, un vrai régal." },
   { name: "Seulki Choi", short: "Le thon est également très bon. Service sympathique." },
-  { name: "S.D.", show: undefined as never, ...{ short: "Un régal pour les yeux aussi." } as Partial<Testimonial> } as Testimonial,
+  { name: "S.D.", short: "Un régal pour les yeux aussi." },
   { name: "Anthony Cascone", short: "Une adresse à retenir et à recommander." },
 ];
 
