@@ -20,6 +20,7 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
+import { BackgroundGradientAnimation } from "@/components/BackgroundGradientAnimation";
 
 import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
 import photoVolaille from "@/assets/photos/photo-volaille.jpg";
@@ -74,6 +75,19 @@ function HomePage() {
 function Hero() {
   return (
     <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 bg-background overflow-hidden">
+      <BackgroundGradientAnimation
+        containerClassName="absolute inset-0 z-0"
+        interactive={false}
+      />
+      {/* soft ivory veil to keep text crisp */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(250,250,247,0.55) 0%, rgba(250,250,247,0.85) 70%, rgba(250,250,247,0.95) 100%)",
+        }}
+        aria-hidden
+      />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
