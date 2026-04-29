@@ -155,6 +155,47 @@
     background-color: var(--gold);
     color: oklch(0.985 0.003 90);
   }
+
+  /* Global keyboard focus ring — accessible, on-brand */
+  :focus { outline: none; }
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* Skip-to-content link — visible only on keyboard focus */
+  .skip-link {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    z-index: 100;
+    background-color: var(--green);
+    color: oklch(0.985 0.003 90);
+    padding: 0.625rem 1.25rem;
+    border-radius: 0 0 9999px 9999px;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s ease;
+  }
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translate(-50%, 0);
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
 }
 
 @layer components {
