@@ -20,11 +20,19 @@ import {
 } from "@/lib/motion";
 import { Testimonials } from "@/components/Testimonials";
 
-import heroGrenoble from "@/assets/photos/hero-grenoble.jpg";
-import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
-import photoVolaille from "@/assets/photos/photo-volaille.jpg";
-import photoPoisson from "@/assets/photos/photo-poisson.jpg";
-import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
+/*
+  PHOTOS TEMPORAIRES — Pexels CDN (libre de droits)
+  Ces photos sont des substituts haute qualité.
+  Remplacer par les photos originales du restaurant
+  une fois reçues en format RAW ou JPEG non compressé.
+  Contact : restaurant1sur2@gmail.com
+  Date de remplacement prévue : à confirmer avec le client
+*/
+const heroGrenoble = "https://images.pexels.com/photos/3534750/pexels-photo-3534750.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1";
+const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
+const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
+const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
 export const Route = createFileRoute("/")({

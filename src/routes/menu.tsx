@@ -9,8 +9,9 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 
-import photoLegumes from "@/assets/photos/photo-legumes.jpg";
-import photoPavlova from "@/assets/photos/photo-pavlova.jpg";
+// Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
+const photoLegumes = "https://images.pexels.com/photos/32615777/pexels-photo-32615777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const photoPavlova = "https://images.pexels.com/photos/3740177/pexels-photo-3740177.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
