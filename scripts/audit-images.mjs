@@ -59,19 +59,38 @@ function normalize(src) {
 }
 
 /** Extrait toutes les images d'un fichier source. */
-function extractImages(filePath) {
+function resolveModule(importPath) {
+  if (!importPath.startsWith("@/")) return null;
+  const base = join(ROOT, "src", importPath.slice(2));
+  for (const ext of [".ts", ".tsx", "/index.ts", "/index.tsx"]) {
+    try {
+      const p = base + ext;
+      statSync(p);
+      return p;
+    } catch {}
+  }
+  return null;
+}
+
+function extractImages(filePath, _depth = 0) {
   const text = readFileSync(filePath, "utf8");
   const lines = text.split("\n");
-  const refs = new Map(); // normalized -> { raw, kind, line }
-  const localImports = new Map(); // varName -> path
+  const refs = new Map();
+  const localImports = new Map();
+  const moduleImports = [];
 
-  // 1) imports : import xyz from "@/assets/photos/foo.jpg";
   for (const line of lines) {
     const m = line.match(/^\s*import\s+(\w+)\s+from\s+["']([^"']+\.(?:jpe?g|png|webp|avif|svg))["']/i);
     if (m) localImports.set(m[1], m[2]);
   }
 
-  // 2) URLs http(s) directes (Pexels etc.)
+  const namedImportRe = /import\s*(?:type\s+)?\{([^}]+)\}\s*from\s*["'](@\/[^"']+)["']/g;
+  let im;
+  while ((im = namedImportRe.exec(text))) {
+    const names = im[1].split(",").map((s) => s.trim().split(/\s+as\s+/)[0]).filter(Boolean);
+    moduleImports.push({ names, path: im[2] });
+  }
+
   const urlRe = /https?:\/\/[^\s"'`)]+\.(?:jpe?g|png|webp|avif|svg)(?:\?[^\s"'`)]*)?/gi;
   let match;
   while ((match = urlRe.exec(text))) {
@@ -82,20 +101,53 @@ function extractImages(filePath) {
     if (!refs.has(norm)) refs.set(norm, { raw: match[0], kind: "url", line: lineIdx + 1 });
   }
 
-  // 3) usages JSX d'imports locaux : src={photoXyz}
   for (const [varName, path] of localImports) {
-    const usageRe = new RegExp(`(?:src=\\{|src:\\s*|content:\\s*)${varName}\\b`, "g");
-    let used = false;
-    while (usageRe.exec(text)) used = true;
-    if (!used) continue;
-    // Vérifie qu'au moins UNE utilisation est non-méta.
-    const visible = text.split("\n").some((line, i) => {
-      const re = new RegExp(`(?:src=\\{|src:\\s*)${varName}\\b`);
-      return re.test(line) && !META_LINE.test(line);
-    });
+    const re = new RegExp(`(?:src=\\{|src:\\s*)${varName}\\b`);
+    const visible = lines.some((line) => re.test(line) && !META_LINE.test(line));
     if (!visible) continue;
     const norm = normalize(path);
     if (!refs.has(norm)) refs.set(norm, { raw: path, kind: "asset", line: 0 });
+  }
+
+  // Suivi des modules locaux (ex: GALLERY_ONLY.saintJacques)
+  if (_depth < 2) {
+    for (const { names, path } of moduleImports) {
+      const resolved = resolveModule(path);
+      if (!resolved) continue;
+      const subText = readFileSync(resolved, "utf8");
+      const subImports = new Map();
+      for (const line of subText.split("\n")) {
+        const im2 = line.match(/^\s*import\s+(\w+)\s+from\s+["']([^"']+\.(?:jpe?g|png|webp|avif|svg))["']/i);
+        if (im2) subImports.set(im2[1], im2[2]);
+      }
+
+      for (const name of names) {
+        // Quels membres sont utilisés ? "GALLERY_ONLY.saintJacques", "PEXELS.poulpe"
+        const memberRe = new RegExp(`\\b${name}\\.(\\w+)`, "g");
+        const usedKeys = new Set();
+        let mm;
+        while ((mm = memberRe.exec(text))) usedKeys.add(mm[1]);
+        if (usedKeys.size === 0) continue;
+
+        // Cherche l'objet exporté
+        const objRe = new RegExp(`(?:export\\s+const|const)\\s+${name}\\s*[:=][^=]*?=\\s*\\{([\\s\\S]*?)\\}\\s*as\\s+const`);
+        const objMatch = subText.match(objRe);
+        if (!objMatch) continue;
+        const body = objMatch[1];
+        const propRe = /(\w+)\s*:\s*(?:(\w+)|"([^"]+)"|`([^`]+)`)/g;
+        let pm;
+        while ((pm = propRe.exec(body))) {
+          const key = pm[1];
+          if (!usedKeys.has(key)) continue;
+          const ident = pm[2];
+          const literal = pm[3] || pm[4];
+          const imgPath = literal || (ident && subImports.get(ident));
+          if (!imgPath) continue;
+          const norm = normalize(imgPath);
+          if (!refs.has(norm)) refs.set(norm, { raw: imgPath, kind: "via-module", line: 0 });
+        }
+      }
+    }
   }
 
   return refs;
