@@ -130,7 +130,7 @@ function extractImages(filePath, _depth = 0) {
         if (usedKeys.size === 0) continue;
 
         // Cherche l'objet exporté
-        const objRe = new RegExp(`(?:export\\s+const|const)\\s+${name}\\s*[:=][^=]*?=\\s*\\{([\\s\\S]*?)\\}\\s*as\\s+const`);
+        const objRe = new RegExp(`(?:export\\s+const|const)\\s+${name}\\b[^=]*?=\\s*\\{([\\s\\S]*?)\\}\\s*(?:as\\s+const)?\\s*;`);
         const objMatch = subText.match(objRe);
         if (!objMatch) continue;
         const body = objMatch[1];
