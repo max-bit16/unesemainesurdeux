@@ -84,7 +84,7 @@ function Contact() {
           viewport={viewportOnce}
         >
           <p className="eyebrow mb-5 md:mb-6">Coordonnées</p>
-          <div className="space-y-4 md:space-y-5 text-[15px] md:text-[16px] font-light">
+          <address className="not-italic space-y-4 md:space-y-5 text-[15px] md:text-[16px] font-light">
             <Row icon={<MapPin size={15} className="text-gold" strokeWidth={1.5} aria-hidden="true" />}>
               4 Place Championnet, 38000 Grenoble
             </Row>
@@ -104,7 +104,7 @@ function Contact() {
             <Row icon={<Clock size={15} className="text-gold" strokeWidth={1.5} aria-hidden="true" />}>
               Ouvert tous les jours · 12h–14h / 19h–21h30
             </Row>
-          </div>
+          </address>
           <a
             href="https://maps.google.com/?q=4+Place+Championnet+Grenoble"
             target="_blank"
