@@ -194,9 +194,9 @@ function PhotoBreak() {
     >
       <motion.img
         src={photoPavlova}
-        alt="Pavlova mangue desserts maison"
+        alt="Pavlova framboises et meringue, dessert maison"
         loading="lazy"
-        style={{ y }}
+        style={{ y, objectPosition: "center 75%" }}
         className="absolute inset-0 w-full h-[120%] object-cover"
       />
       <div
