@@ -5,7 +5,7 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 
 // Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
-const photoPavlova = "https://images.pexels.com/photos/3740177/pexels-photo-3740177.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const photoPavlova = "https://images.pexels.com/photos/31500975/pexels-photo-31500975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
@@ -72,7 +72,7 @@ const SLOTS = [
   { src: photoPavlova, alt: "Pavlova mangue, sphères glacées", caption: "Pavlova mangue", aspect: "aspect-square" },
   { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square" },
   { src: photoPoisson, alt: "Truite, légumes frais de saison", caption: "Truite & légumes", aspect: "aspect-[4/5]" },
-  { src: photoVolaille, alt: "Volaille fermière, champignons", caption: "Volaille & champignons", aspect: "aspect-square" },
+  { src: photoVolaille, alt: "Pièce de viande, légumes de saison & sauce poivre", caption: "Viande & légumes", aspect: "aspect-square" },
   { src: photoMenuPoulpe, alt: "Menu signature et plat de poulpe", caption: "Menu · Poulpe", aspect: "aspect-[4/5]" },
   { src: photoLegumes, alt: "Légumes du marché et champignons", caption: "Légumes du marché", aspect: "aspect-square" },
   { src: photoGaultMillau, alt: "Plaque Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square" },

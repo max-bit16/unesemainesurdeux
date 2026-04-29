@@ -11,7 +11,7 @@ import {
 
 // Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
 const photoLegumes = "https://images.pexels.com/photos/32615777/pexels-photo-32615777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-const photoPavlova = "https://images.pexels.com/photos/3740177/pexels-photo-3740177.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const photoPavlova = "https://images.pexels.com/photos/31500975/pexels-photo-31500975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({

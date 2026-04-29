@@ -407,7 +407,7 @@ function Esprit() {
 /* ─── PHOTO STRIP — 3 columns, no gap, contained height ────── */
 function PhotoStrip() {
   const items = [
-    { src: photoVolaille, alt: "Volaille fermière, sauce crémée", caption: "Viandes & volailles" },
+    { src: photoVolaille, alt: "Pièce de viande, légumes & sauce poivre", caption: "Viandes & saison" },
     { src: photoPoisson, alt: "Truite et légumes frais de saison", caption: "Poissons & saison" },
     { src: photoSurfTurf, alt: "Surf & turf viande et homard", caption: "Plats du moment" },
   ];
