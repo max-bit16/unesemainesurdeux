@@ -297,17 +297,6 @@ function Esprit() {
           ))}
         </div>
 
-        <motion.div
-          variants={fadeUp}
-          className="text-center pt-20 max-w-2xl mx-auto"
-        >
-          <p className="pull-quote text-[1.5rem]">
-            "On se régale du début à la fin."
-          </p>
-          <p className="text-[13px] text-ivory-muted mt-4">
-            — E. Bagdassarian ★★★★★
-          </p>
-        </motion.div>
       </motion.div>
     </section>
   );
@@ -458,7 +447,7 @@ function HoursReservation() {
             href="mailto:restaurant1sur2@gmail.com"
             className="gold-link mt-5 text-[13px]"
           >
-            <MapPin size={12} /> <span>restaurant1sur2@gmail.com</span>
+            <MapPin size={12} /><span>&nbsp;restaurant1sur2@gmail.com</span>
           </a>
         </motion.div>
       </div>
