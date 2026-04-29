@@ -76,18 +76,27 @@ function HomePage() {
 /* ─── HERO — typographic, no photo ─────────────────────────── */
 function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 pt-24 pb-16 md:py-0 overflow-hidden">
       {/* Hero photograph — Grenoble bubbles */}
       <img
         src={heroGrenoble}
         alt="Téléphériques de Grenoble surplombant la ville au coucher de soleil"
         loading="eager"
         fetchPriority="high"
-        className="absolute inset-0 z-0 w-full h-full object-cover object-[70%_center] md:object-center"
+        className="absolute inset-0 z-0 w-full h-full object-cover object-[68%_center] md:object-center"
       />
-      {/* Refined ivory veil — keeps the photo readable but preserves atmosphere */}
+      {/* Mobile-first ivory veil — stronger center wash for full readability */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(250,250,247,0.72) 0%, rgba(250,250,247,0.86) 55%, rgba(242,241,236,0.94) 100%)",
+        }}
+        aria-hidden
+      />
+      {/* Desktop veil — lighter to keep atmosphere */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none hidden md:block"
         style={{
           background:
             "radial-gradient(ellipse at center, rgba(250,250,247,0.55) 0%, rgba(250,250,247,0.78) 65%, rgba(242,241,236,0.88) 100%)",
@@ -99,7 +108,7 @@ function Hero() {
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(250,250,247,0.35) 0%, rgba(250,250,247,0) 25%, rgba(250,250,247,0) 75%, rgba(250,250,247,0.6) 100%)",
+            "linear-gradient(to bottom, rgba(250,250,247,0.45) 0%, rgba(250,250,247,0) 25%, rgba(250,250,247,0) 75%, rgba(250,250,247,0.7) 100%)",
         }}
         aria-hidden
       />
@@ -107,18 +116,18 @@ function Hero() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-3xl text-center"
+        className="relative z-10 max-w-3xl text-center w-full"
       >
         <motion.div
           variants={staggerChild}
-          className="gold-divider mx-auto mb-8"
+          className="gold-divider mx-auto mb-6 md:mb-8"
         />
-        <motion.p variants={staggerChild} className="eyebrow mb-8">
+        <motion.p variants={staggerChild} className="eyebrow mb-6 md:mb-8">
           N°01 — Gastronomie Grenobloise
         </motion.p>
         <motion.h1
           variants={staggerChild}
-          className="display-h1 mb-8"
+          className="display-h1 mb-6 md:mb-8"
         >
           Cuisine vivante,
           <br />
@@ -126,18 +135,18 @@ function Hero() {
         </motion.h1>
         <motion.p
           variants={staggerChild}
-          className="text-[16px] text-ivory-muted mb-12"
+          className="text-[14px] md:text-[16px] text-ivory-muted mb-9 md:mb-12 px-2"
         >
           Restaurant · Grenoble · Gault &amp; Millau 2026
         </motion.p>
         <motion.div
           variants={staggerChild}
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto"
         >
-          <a href="tel:+33476271375" className="btn-primary">
+          <a href="tel:+33476271375" className="btn-primary !py-3.5">
             Réserver une table
           </a>
-          <Link to="/menu" className="btn-ghost-gold">
+          <Link to="/menu" className="btn-ghost-gold !py-3.5">
             Voir la carte
           </Link>
         </motion.div>
@@ -146,7 +155,7 @@ function Hero() {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-ivory-muted"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-ivory-muted"
         aria-hidden
       >
         <ChevronDown size={18} strokeWidth={1.5} />
