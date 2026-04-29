@@ -3,16 +3,10 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 
-// Photos — mix d'originales restaurant + Pexels libre de droits + génération IA pour combler.
-import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
-import photoSalle from "@/assets/photos/photo-salle.jpg";
-import photoChefDressage from "@/assets/photos/photo-chef-dressage.jpg";
-// Visuels uniques à la galerie (pas réutilisés ailleurs sur le site)
-const photoTartare = "https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
-const photoCave = "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
-const photoDressageGrosPlan = "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
-const photoMarche = "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
-import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
+// Pool large déclaré ici. La règle "pas de doublon avec /, /menu, /chef, /reserver"
+// est appliquée automatiquement par galleryPool() qui filtre les slots déjà utilisés
+// ailleurs (registre central : src/lib/site-images.ts).
+import { galleryPool, GALLERY_ONLY, type GallerySlot } from "@/lib/site-images";
 import ogGalerie from "@/assets/photos/og-galerie.jpg";
 
 export const Route = createFileRoute("/galerie")({
@@ -71,16 +65,22 @@ function Header() {
   );
 }
 
-const SLOTS = [
-  { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
-  { src: photoChefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
-  { src: photoTartare, alt: "Tartare de poisson, dressage soigné", caption: "Tartare & fraîcheur", aspect: "aspect-[4/5]", position: "object-center" },
-  { src: photoSalle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
-  { src: photoDressageGrosPlan, alt: "Gros plan d'une assiette finale, sauce dressée", caption: "Détail dressage", aspect: "aspect-square", position: "object-center" },
-  { src: photoMarche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]", position: "object-center" },
-  { src: photoCave, alt: "Cave personnelle, sélection viticole du chef", caption: "Cave & vins", aspect: "aspect-[4/5]", position: "object-center" },
-  { src: photoGaultMillau, alt: "Plat dressé à l'assiette, distinction Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
+// Pool large : on déclare TOUS les visuels candidats. galleryPool() retire
+// automatiquement ceux qui sont déjà affichés sur les autres pages
+// (chef-dressage et salle p.ex. seront retirés ici à la compile).
+const POOL: GallerySlot[] = [
+  { src: GALLERY_ONLY.saintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
+  { src: GALLERY_ONLY.chefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: GALLERY_ONLY.tartare, alt: "Tartare de poisson, dressage soigné", caption: "Tartare & fraîcheur", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: GALLERY_ONLY.salle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: GALLERY_ONLY.dressageGros, alt: "Gros plan d'une assiette finale, sauce dressée", caption: "Détail dressage", aspect: "aspect-square", position: "object-center" },
+  { src: GALLERY_ONLY.marche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: GALLERY_ONLY.cave, alt: "Cave personnelle, sélection viticole du chef", caption: "Cave & vins", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: GALLERY_ONLY.gaultMillau, alt: "Plat dressé à l'assiette, distinction Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
 ];
+
+// Filtre runtime : la galerie ne montre QUE les visuels qui lui sont propres.
+const SLOTS = galleryPool(POOL);
 
 function Masonry() {
   return (
