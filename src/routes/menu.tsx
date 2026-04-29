@@ -70,7 +70,7 @@ function MenuPage() {
 
 function MenuHeader() {
   return (
-    <section className="relative h-[45vh] min-h-[380px] overflow-hidden flex items-center justify-center">
+    <section className="relative h-[55vh] md:h-[45vh] min-h-[420px] md:min-h-[380px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
       <img
         src={photoLegumes}
         alt="Légumes du marché — carte saisonnière"
@@ -78,22 +78,22 @@ function MenuHeader() {
         style={{ objectPosition: "center 30%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.5)] via-[oklch(0.985_0.003_90/0.7)] to-[oklch(0.985_0.003_90/0.9)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.65)] via-[oklch(0.985_0.003_90/0.78)] to-[oklch(0.985_0.003_90/0.95)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center px-6 max-w-3xl pt-20"
+        className="relative z-10 text-center px-6 max-w-3xl"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-4">
           N°01 — La Carte
         </motion.p>
-        <motion.h1 variants={staggerChild} className="display-h1 mb-6">
+        <motion.h1 variants={staggerChild} className="display-h1 mb-5 md:mb-6">
           Une carte courte,
           <br />
           qui dit l'essentiel.
         </motion.h1>
-        <motion.p variants={staggerChild} className="text-ivory-muted text-[16px] max-w-xl mx-auto">
+        <motion.p variants={staggerChild} className="text-ivory-muted text-[14px] md:text-[16px] max-w-xl mx-auto">
           Renouvelée au fil des saisons. Tout est fait maison.
         </motion.p>
       </motion.div>
