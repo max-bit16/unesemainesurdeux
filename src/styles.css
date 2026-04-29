@@ -89,7 +89,7 @@
   --surface-deep: oklch(0.928 0.006 90);
   --ivory: oklch(0.300 0.005 160);
   --ivory-muted: oklch(0.520 0.005 150);
-  --ivory-ghost: oklch(0.720 0.005 140);
+  --ivory-ghost: oklch(0.560 0.005 140);
 
   /* Sage accent (replaces gold everywhere) */
   --gold: oklch(0.570 0.030 150);
