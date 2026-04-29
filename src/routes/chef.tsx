@@ -86,7 +86,7 @@ function ChefHero() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-14 md:py-0"
+        className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-14 md:py-24 md:pt-32"
       >
         <motion.p variants={staggerChild} className="eyebrow mb-5 md:mb-6">
           N°01 Derrière les fourneaux
