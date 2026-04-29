@@ -183,18 +183,18 @@ export function Testimonials() {
         </div>
 
         {/* Hairlines + meta */}
-        <div className="hairline mb-10" />
+        <div className="hairline mb-8 md:mb-10" />
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center mb-16"
+          className="flex flex-wrap items-center justify-center gap-x-5 md:gap-x-8 gap-y-3 text-center mb-12 md:mb-16"
         >
           <span className="eyebrow !text-ivory">96% de recommandations</span>
-          <span className="text-ivory-ghost">·</span>
+          <span className="text-ivory-ghost hidden sm:inline">·</span>
           <span className="eyebrow !text-ivory">204 avis ★ 5/5</span>
-          <span className="text-ivory-ghost">·</span>
+          <span className="text-ivory-ghost hidden sm:inline">·</span>
           <span className="eyebrow !text-ivory">Gault &amp; Millau 2026</span>
         </motion.div>
       </div>
