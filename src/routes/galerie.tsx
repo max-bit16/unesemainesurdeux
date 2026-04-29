@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 
+// Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
-import photoPavlova from "@/assets/photos/photo-pavlova.jpg";
-import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
-import photoPoisson from "@/assets/photos/photo-poisson.jpg";
-import photoVolaille from "@/assets/photos/photo-volaille.jpg";
-import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
-import photoLegumes from "@/assets/photos/photo-legumes.jpg";
+const photoPavlova = "https://images.pexels.com/photos/3740177/pexels-photo-3740177.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
+const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
+const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
+const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const photoLegumes = "https://images.pexels.com/photos/32615777/pexels-photo-32615777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
 export const Route = createFileRoute("/galerie")({
