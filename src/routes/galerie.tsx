@@ -7,11 +7,10 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 import photoSalle from "@/assets/photos/photo-salle.jpg";
 import photoChefDressage from "@/assets/photos/photo-chef-dressage.jpg";
-const photoDessert = "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
-const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
-const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
-const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
-const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1500&dpr=1";
+// Visuels uniques à la galerie (pas réutilisés ailleurs sur le site)
+const photoTartare = "https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
+const photoCave = "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
+const photoDressageGrosPlan = "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
 const photoMarche = "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
