@@ -11,7 +11,8 @@ import {
 
 // Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
 const photoLegumes = "https://images.pexels.com/photos/32615777/pexels-photo-32615777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-const photoPavlova = "https://images.pexels.com/photos/31500975/pexels-photo-31500975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+// Dessert horizontal net (gros plan assiette)
+const photoDessert = "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -193,17 +194,17 @@ function PhotoBreak() {
       className="relative h-[34vh] md:h-[40vh] min-h-[260px] md:min-h-[320px] overflow-hidden flex items-center justify-center"
     >
       <motion.img
-        src={photoPavlova}
-        alt="Pavlova framboises et meringue, dessert maison"
+        src={photoDessert}
+        alt="Dessert maison, gros plan dressage"
         loading="lazy"
-        style={{ y, objectPosition: "center 75%" }}
+        style={{ y, objectPosition: "center center" }}
         className="absolute inset-0 w-full h-[120%] object-cover"
       />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.4), oklch(0.985 0.003 90 / 0.85))",
+            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.15), oklch(0.985 0.003 90 / 0.55))",
         }}
       />
       <motion.p
@@ -211,7 +212,7 @@ function PhotoBreak() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl"
+        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl text-ivory drop-shadow-[0_2px_12px_rgba(255,255,255,0.6)]"
       >
         "Tout est fait maison, jusqu'aux desserts."
       </motion.p>

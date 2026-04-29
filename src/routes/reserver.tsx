@@ -10,6 +10,8 @@ import {
 } from "@/lib/motion";
 
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
+// Hero "Réserver votre table" : table dressée bistronomique, lumière chaude
+const photoTable = "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1800&h=1100&dpr=1";
 
 export const Route = createFileRoute("/reserver")({
   head: () => ({
@@ -48,14 +50,14 @@ function Header() {
   return (
     <section className="relative h-[42vh] md:h-[40vh] min-h-[340px] md:min-h-[320px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
       <img
-        src={photoSaintJacques}
-        alt="Saint-Jacques signature"
+        src={photoTable}
+        alt="Table dressée au restaurant Une Semaine Sur Deux à Grenoble"
         loading="eager"
         fetchPriority="high"
-        style={{ objectPosition: "center 60%" }}
+        style={{ objectPosition: "center 55%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.7)] via-[oklch(0.985_0.003_90/0.8)] to-[oklch(0.985_0.003_90/0.95)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.45)] via-[oklch(0.985_0.003_90/0.55)] to-[oklch(0.985_0.003_90/0.85)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
