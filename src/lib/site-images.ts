@@ -31,6 +31,9 @@ export const PEXELS = {
   dressageGros:  "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1",
 } as const;
 
+const photoSaintJacques = PEXELS.saintJacques;
+const photoGaultMillau = PEXELS.gaultMillau;
+
 /**
  * Identifiant logique d'une image (la valeur Vite-importée OU l'URL Pexels).
  * Utiliser cette clé pour déduplication. Pour les imports locaux, Vite renvoie
@@ -125,8 +128,8 @@ export function galleryPool(slots: GallerySlot[]): GallerySlot[] {
  * apparaissent déjà sur /reserver et /chef.
  */
 export const GALLERY_ONLY = {
-  saintJacques: PEXELS.saintJacques,
-  gaultMillau: PEXELS.gaultMillau,
+  saintJacques: photoSaintJacques,
+  gaultMillau: photoGaultMillau,
   tartare: PEXELS.tartare,
   cave: PEXELS.cave,
   dressageGros: PEXELS.dressageGros,
