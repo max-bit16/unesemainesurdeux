@@ -27,7 +27,14 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Restaurant",
   name: "Une Semaine Sur Deux",
+  description:
+    "Restaurant bistronomique à Grenoble. Cuisine faite maison, produits frais en circuit court. Toque Gault & Millau 2026.",
   image: "https://restaurant1sur2.fr/og.jpg",
+  url: "https://restaurant1sur2.fr/",
+  telephone: "+33476271375",
+  email: "restaurant1sur2@gmail.com",
+  servesCuisine: ["French", "Bistronomique"],
+  priceRange: "€€",
   address: {
     "@type": "PostalAddress",
     streetAddress: "4 Place Championnet",
@@ -35,13 +42,30 @@ const jsonLd = {
     postalCode: "38000",
     addressCountry: "FR",
   },
-  telephone: "+33476271375",
-  email: "restaurant1sur2@gmail.com",
-  servesCuisine: "French",
-  priceRange: "€€",
-  openingHours: "Mo-Su 12:00-14:00, 19:00-21:30",
-  url: "https://restaurant1sur2.fr",
-  award: "Gault & Millau Table Gourmande 2026",
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 45.1857,
+    longitude: 5.7224,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "12:00",
+      closes: "14:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "19:00",
+      closes: "21:30",
+    },
+  ],
+  sameAs: [
+    "https://www.instagram.com/1semainesur2restaurant/",
+    "https://www.facebook.com/1sur2grenoble/",
+  ],
+  award: "Table Gourmande · Gault & Millau 2026",
 };
 
 export const Route = createRootRoute({

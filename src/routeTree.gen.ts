@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ReserverRouteImport } from './routes/reserver'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as GalerieRouteImport } from './routes/galerie'
 import { Route as ChefRouteImport } from './routes/chef'
 import { Route as IndexRouteImport } from './routes/index'
@@ -37,6 +38,11 @@ const MenuRoute = MenuRouteImport.update({
   path: '/menu',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalerieRoute = GalerieRouteImport.update({
   id: '/galerie',
   path: '/galerie',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chef': typeof ChefRoute
   '/galerie': typeof GalerieRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/menu': typeof MenuRoute
   '/reserver': typeof ReserverRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chef': typeof ChefRoute
   '/galerie': typeof GalerieRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/menu': typeof MenuRoute
   '/reserver': typeof ReserverRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/chef': typeof ChefRoute
   '/galerie': typeof GalerieRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/menu': typeof MenuRoute
   '/reserver': typeof ReserverRoute
   '/robots.txt': typeof RobotsDottxtRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/chef'
     | '/galerie'
+    | '/mentions-legales'
     | '/menu'
     | '/reserver'
     | '/robots.txt'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/chef'
     | '/galerie'
+    | '/mentions-legales'
     | '/menu'
     | '/reserver'
     | '/robots.txt'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/chef'
     | '/galerie'
+    | '/mentions-legales'
     | '/menu'
     | '/reserver'
     | '/robots.txt'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChefRoute: typeof ChefRoute
   GalerieRoute: typeof GalerieRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   MenuRoute: typeof MenuRoute
   ReserverRoute: typeof ReserverRoute
   RobotsDottxtRoute: typeof RobotsDottxtRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MenuRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/galerie': {
       id: '/galerie'
       path: '/galerie'
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChefRoute: ChefRoute,
   GalerieRoute: GalerieRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   MenuRoute: MenuRoute,
   ReserverRoute: ReserverRoute,
   RobotsDottxtRoute: RobotsDottxtRoute,

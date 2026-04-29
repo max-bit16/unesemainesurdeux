@@ -15,16 +15,16 @@ import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 export const Route = createFileRoute("/galerie")({
   head: () => ({
     meta: [
-      { title: "Galerie Une Semaine Sur Deux · Photos · Restaurant Grenoble" },
+      { title: "Galerie Restaurant Une Semaine Sur Deux · Grenoble" },
       {
         name: "description",
         content:
-          "Galerie photo des plats du restaurant Une Semaine Sur Deux à Grenoble. Saint-Jacques, poulpe, pavlova et plats de saison.",
+          "Photos des plats et de l'ambiance du restaurant Une Semaine Sur Deux à Grenoble. Cuisine bistronomique, dressage soigné, produits frais.",
       },
-      { property: "og:title", content: "Galerie Une Semaine Sur Deux" },
+      { property: "og:title", content: "Galerie Restaurant Une Semaine Sur Deux Grenoble" },
       {
         property: "og:description",
-        content: "Photographies des plats du restaurant à Grenoble.",
+        content: "Photos des plats et de l'ambiance du restaurant à Grenoble.",
       },
       { property: "og:image", content: photoSaintJacques },
       { name: "twitter:image", content: photoSaintJacques },
@@ -148,7 +148,7 @@ function CtaStrip() {
         rel="noreferrer noopener"
         className="gold-link"
       >
-        @1semainesur2restaurant <ExternalLink size={14} />
+        @1semainesur2restaurant <ExternalLink size={14} aria-hidden="true" />
       </a>
     </section>
   );

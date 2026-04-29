@@ -95,7 +95,7 @@ export function Navigation() {
                   exit={{ rotate: 45, opacity: 0 }}
                   transition={{ duration: 0.18 }}
                 >
-                  <X size={22} strokeWidth={1.5} />
+                  <X size={22} strokeWidth={1.5} aria-hidden="true" />
                 </motion.span>
               ) : (
                 <motion.span
@@ -105,7 +105,7 @@ export function Navigation() {
                   exit={{ rotate: -45, opacity: 0 }}
                   transition={{ duration: 0.18 }}
                 >
-                  <Menu size={22} strokeWidth={1.5} />
+                  <Menu size={22} strokeWidth={1.5} aria-hidden="true" />
                 </motion.span>
               )}
             </AnimatePresence>
@@ -165,7 +165,7 @@ export function Navigation() {
                 onClick={() => setOpen(false)}
                 className="btn-primary w-full !py-4 text-[15px]"
               >
-                <Phone size={16} /> +33 4 76 27 13 75
+                <Phone size={16} aria-hidden="true" /> +33 4 76 27 13 75
               </a>
               <p className="text-center eyebrow mt-5">
                 Ouvert 7/7 · 12h–14h · 19h–21h30

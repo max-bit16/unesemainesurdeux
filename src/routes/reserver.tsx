@@ -14,16 +14,16 @@ import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 export const Route = createFileRoute("/reserver")({
   head: () => ({
     meta: [
-      { title: "Réserver Une Semaine Sur Deux · Restaurant à Grenoble" },
+      { title: "Réserver une table Restaurant Une Semaine Sur Deux · Grenoble" },
       {
         name: "description",
         content:
-          "Réservez votre table au restaurant Une Semaine Sur Deux à Grenoble. Par téléphone : 04 76 27 13 75. Ouvert tous les jours, midi et soir.",
+          "Réservez votre table au restaurant Une Semaine Sur Deux, 4 Place Championnet, Grenoble. ☎ 04 76 27 13 75. Ouvert tous les jours.",
       },
-      { property: "og:title", content: "Réserver Une Semaine Sur Deux" },
+      { property: "og:title", content: "Réserver une table Restaurant Une Semaine Sur Deux Grenoble" },
       {
         property: "og:description",
-        content: "Réservation par téléphone · 04 76 27 13 75 · Ouvert 7/7.",
+        content: "Réservation par téléphone 04 76 27 13 75. Ouvert 7/7 à Grenoble.",
       },
       { property: "og:image", content: photoSaintJacques },
       { name: "twitter:image", content: photoSaintJacques },
@@ -84,16 +84,16 @@ function Contact() {
           viewport={viewportOnce}
         >
           <p className="eyebrow mb-5 md:mb-6">Coordonnées</p>
-          <div className="space-y-4 md:space-y-5 text-[15px] md:text-[16px] font-light">
-            <Row icon={<MapPin size={15} className="text-gold" strokeWidth={1.5} />}>
+          <address className="not-italic space-y-4 md:space-y-5 text-[15px] md:text-[16px] font-light">
+            <Row icon={<MapPin size={15} className="text-gold" strokeWidth={1.5} aria-hidden="true" />}>
               4 Place Championnet, 38000 Grenoble
             </Row>
-            <Row icon={<Phone size={15} className="text-gold" strokeWidth={1.5} />}>
+            <Row icon={<Phone size={15} className="text-gold" strokeWidth={1.5} aria-hidden="true" />}>
               <a href="tel:+33476271375" className="text-ivory hover:text-gold transition-colors">
                 +33 4 76 27 13 75
               </a>
             </Row>
-            <Row icon={<Mail size={15} className="text-gold" strokeWidth={1.5} />}>
+            <Row icon={<Mail size={15} className="text-gold" strokeWidth={1.5} aria-hidden="true" />}>
               <a
                 href="mailto:restaurant1sur2@gmail.com"
                 className="text-ivory hover:text-gold transition-colors break-all"
@@ -101,17 +101,17 @@ function Contact() {
                 restaurant1sur2@gmail.com
               </a>
             </Row>
-            <Row icon={<Clock size={15} className="text-gold" strokeWidth={1.5} />}>
+            <Row icon={<Clock size={15} className="text-gold" strokeWidth={1.5} aria-hidden="true" />}>
               Ouvert tous les jours · 12h–14h / 19h–21h30
             </Row>
-          </div>
+          </address>
           <a
             href="https://maps.google.com/?q=4+Place+Championnet+Grenoble"
             target="_blank"
             rel="noreferrer noopener"
             className="btn-outline-green mt-8"
           >
-            <MapPin size={14} /> Voir sur Google Maps
+            <MapPin size={14} aria-hidden="true" /> Voir sur Google Maps
           </a>
         </motion.div>
 
@@ -132,7 +132,7 @@ function Contact() {
             href="tel:+33476271375"
             className="btn-primary w-full !py-4"
           >
-            <Phone size={16} /> Appeler maintenant
+            <Phone size={16} aria-hidden="true" /> Appeler maintenant
           </a>
 
           <div className="hairline my-7 md:my-8" />
@@ -147,7 +147,7 @@ function Contact() {
             href="mailto:restaurant1sur2@gmail.com"
             className="gold-link"
           >
-            Nous écrire <ArrowRight size={14} />
+            Nous écrire <ArrowRight size={14} aria-hidden="true" />
           </a>
         </motion.div>
       </div>
@@ -230,7 +230,7 @@ function Social() {
           rel="noreferrer noopener"
           className="gold-link"
         >
-          Instagram <ExternalLink size={13} />
+          Instagram <ExternalLink size={13} aria-hidden="true" />
         </a>
         <a
           href="https://www.facebook.com/1sur2grenoble/"
@@ -238,7 +238,7 @@ function Social() {
           rel="noreferrer noopener"
           className="gold-link"
         >
-          Facebook <ExternalLink size={13} />
+          Facebook <ExternalLink size={13} aria-hidden="true" />
         </a>
       </div>
     </section>

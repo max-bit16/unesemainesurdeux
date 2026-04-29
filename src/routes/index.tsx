@@ -37,17 +37,17 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Restaurant bistronomique à Grenoble. Produits frais, circuit court, fait maison. Toque Gault & Millau 2026. Chef Pierrick Vasseur. ☎ 04 76 27 13 75",
+          "Restaurant bistronomique à Grenoble. Produits frais, circuit court, cuisine faite maison. Toque Gault & Millau 2026. Chef Pierrick Vasseur. ☎ 04 76 27 13 75",
       },
       {
         property: "og:title",
         content:
-          "Une Semaine Sur Deux Restaurant gastronomique à Grenoble",
+          "Restaurant Une Semaine Sur Deux à Grenoble Cuisine Bistronomique · Gault & Millau 2026",
       },
       {
         property: "og:description",
         content:
-          "Cuisine bistronomique, produits frais, circuit court. Toque Gault & Millau 2026.",
+          "Restaurant bistronomique à Grenoble. Produits frais, circuit court, cuisine faite maison. Toque Gault & Millau 2026.",
       },
       { property: "og:image", content: photoMenuPoulpe },
       { name: "twitter:image", content: photoMenuPoulpe },
@@ -127,9 +127,9 @@ function Hero() {
           variants={staggerChild}
           className="display-h1 mb-6 md:mb-8"
         >
-          Cuisine vivante,
+          Restaurant à Grenoble,
           <br />
-          saisons intactes.
+          cuisine vivante.
         </motion.h1>
         <motion.p
           variants={staggerChild}
@@ -304,7 +304,7 @@ function SignatureDish() {
         </motion.p>
         <motion.div variants={staggerChild}>
           <Link to="/menu" className="gold-link">
-            Voir la carte complète <ArrowRight size={14} />
+            Voir la carte complète <ArrowRight size={14} aria-hidden="true" />
           </Link>
         </motion.div>
       </motion.div>
@@ -477,7 +477,7 @@ function HoursReservation() {
             rel="noreferrer noopener"
             className="gold-link mt-6"
           >
-            Voir sur Google Maps <ArrowRight size={14} />
+            Voir sur Google Maps <ArrowRight size={14} aria-hidden="true" />
           </a>
         </motion.div>
 
@@ -498,13 +498,13 @@ function HoursReservation() {
             href="tel:+33476271375"
             className="btn-primary w-full !py-4"
           >
-            <Phone size={16} /> Appeler le restaurant
+            <Phone size={16} aria-hidden="true" /> Appeler le restaurant
           </a>
           <a
             href="mailto:restaurant1sur2@gmail.com"
             className="gold-link mt-5 text-[13px] break-all"
           >
-            <MapPin size={12} className="shrink-0" /><span>&nbsp;restaurant1sur2@gmail.com</span>
+            <MapPin size={12} className="shrink-0" aria-hidden="true" /><span>&nbsp;restaurant1sur2@gmail.com</span>
           </a>
         </motion.div>
       </div>

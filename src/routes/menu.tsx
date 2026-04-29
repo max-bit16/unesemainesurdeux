@@ -15,17 +15,17 @@ import photoPavlova from "@/assets/photos/photo-pavlova.jpg";
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "La Carte Une Semaine Sur Deux · Restaurant à Grenoble" },
+      { title: "Carte du restaurant Une Semaine Sur Deux Grenoble · Bistronomie de saison" },
       {
         name: "description",
         content:
-          "Carte courte, renouvelée au fil des saisons. Entrées, plats, desserts faits maison. Plat du jour 13,50€, menu adulte dès 39€.",
+          "Découvrez la carte du restaurant Une Semaine Sur Deux à Grenoble. Entrées, plats, desserts faits maison. Poulpe signature, truite, mousse au chocolat Valrhona.",
       },
-      { property: "og:title", content: "La Carte Une Semaine Sur Deux" },
+      { property: "og:title", content: "Carte du restaurant Une Semaine Sur Deux Grenoble" },
       {
         property: "og:description",
         content:
-          "Une carte bistronomique, courte et de saison. Faite maison à Grenoble.",
+          "Entrées, plats, desserts faits maison. Bistronomie de saison à Grenoble.",
       },
       { property: "og:image", content: photoLegumes },
       { name: "twitter:image", content: photoLegumes },
@@ -130,17 +130,17 @@ function MenuSection({
       viewport={viewportOnce}
       className="py-12"
     >
-      <motion.p
+      <motion.h2
         variants={staggerChild}
         className="text-[10px] uppercase tracking-[0.3em] text-gold pb-6 font-normal"
       >
         {title}
-      </motion.p>
+      </motion.h2>
       <div className="hairline mb-2" />
 
-      <div>
+      <ul className="list-none p-0 m-0">
         {items.map((item) => (
-          <motion.div
+          <motion.li
             key={item.name}
             variants={staggerChild}
             whileHover="hovered"
@@ -155,6 +155,7 @@ function MenuSection({
               }}
               style={{ originY: 0 }}
               transition={{ duration: 0.25 }}
+              aria-hidden="true"
             />
             <motion.span
               className="font-serif text-[1.1rem] md:text-[1.25rem] font-light leading-snug transition-colors flex-1 min-w-0"
@@ -170,9 +171,9 @@ function MenuSection({
                 Signature
               </span>
             )}
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ul>
     </motion.div>
   );
 }
