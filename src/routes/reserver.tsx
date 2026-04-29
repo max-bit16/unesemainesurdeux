@@ -57,7 +57,15 @@ function Header() {
         style={{ objectPosition: "center 55%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.45)] via-[oklch(0.985_0.003_90/0.55)] to-[oklch(0.985_0.003_90/0.85)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.72)] via-[oklch(0.985_0.003_90/0.82)] to-[oklch(0.985_0.003_90/0.95)]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, oklch(0.985 0.003 90 / 0.45) 0%, oklch(0.985 0.003 90 / 0) 70%)",
+        }}
+        aria-hidden
+      />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
