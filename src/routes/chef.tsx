@@ -9,9 +9,8 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 
-// Photo originale du restaurant : Saint-Jacques signature.
-// Mieux qu'une photo stock pour incarner la cuisine du chef Pierrick Vasseur.
-import photoChef from "@/assets/photos/photo-saint-jacques.jpg";
+// Photo générée — geste de dressage du chef, ambiance bistronomique premium.
+import photoChef from "@/assets/photos/photo-chef-dressage.jpg";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
@@ -62,10 +61,10 @@ function ChefHero() {
       <div className="relative w-full md:w-1/2 h-[40vh] md:h-auto md:min-h-screen overflow-hidden">
         <motion.img
           src={photoChef}
-          alt="Saint-Jacques, plat signature du chef Pierrick Vasseur"
+          alt="Le chef dressant une assiette signature"
           loading="eager"
           fetchPriority="high"
-          style={{ y, objectPosition: "center 80%" }}
+          style={{ y, objectPosition: "center center" }}
           className="w-full h-[115%] object-cover absolute inset-0"
         />
         <div
