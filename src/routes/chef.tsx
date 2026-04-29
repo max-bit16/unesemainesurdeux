@@ -9,7 +9,8 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 
-import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
+// Photo temporaire — Pexels CDN (libre de droits). À remplacer par photo originale du restaurant.
+const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
