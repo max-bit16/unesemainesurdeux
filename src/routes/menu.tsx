@@ -204,7 +204,7 @@ function PhotoBreak() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.15), oklch(0.985 0.003 90 / 0.55))",
+            "radial-gradient(ellipse at center, rgba(20,20,18,0.55) 0%, rgba(20,20,18,0.65) 60%, rgba(20,20,18,0.75) 100%)",
         }}
       />
       <motion.p
@@ -212,7 +212,7 @@ function PhotoBreak() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl text-ivory drop-shadow-[0_2px_12px_rgba(255,255,255,0.6)]"
+        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
       >
         "Tout est fait maison, jusqu'aux desserts."
       </motion.p>
