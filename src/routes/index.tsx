@@ -211,37 +211,15 @@ function SignatureDish() {
   return (
     <section
       ref={ref}
-      className="relative h-[70vh] md:h-[65vh] min-h-[520px] md:min-h-[480px] w-full overflow-hidden"
+      className="relative w-full grid grid-cols-1 md:grid-cols-2 overflow-hidden bg-[oklch(0.78_0.03_155)]"
     >
-      <motion.img
-        src={photoMenuPoulpe}
-        alt="Le plat signature — poulpe à la crème d'ail noir"
-        loading="lazy"
-        style={{ y, objectPosition: "30% 75%" }}
-        className="absolute inset-0 w-full h-[115%] object-cover md:object-[center_70%]"
-      />
-      {/* Right-side ivory veil keeps text readable while the dish stays visible on the left */}
-      <div
-        className="absolute inset-0 hidden md:block"
-        style={{
-          background:
-            "linear-gradient(to right, oklch(0.985 0.003 90 / 0.92) 0%, oklch(0.985 0.003 90 / 0.78) 35%, oklch(0.985 0.003 90 / 0.20) 70%, oklch(0.985 0.003 90 / 0.05) 100%)",
-        }}
-      />
-      {/* Mobile: vertical veil — text sits at the bottom over the plate, so we lift contrast there */}
-      <div
-        className="absolute inset-0 md:hidden"
-        style={{
-          background:
-            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.15) 0%, oklch(0.985 0.003 90 / 0.55) 40%, oklch(0.985 0.003 90 / 0.94) 100%)",
-        }}
-      />
+      {/* LEFT — sage panel with text */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 h-full flex flex-col justify-end max-w-2xl px-6 md:px-14 pb-12 md:pb-14"
+        className="relative z-10 flex flex-col justify-center px-6 py-16 md:px-14 md:py-24 lg:px-20 bg-[oklch(0.78_0.03_155)]"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-5">
           N°03 — Plat Signature
@@ -264,6 +242,25 @@ function SignatureDish() {
           </Link>
         </motion.div>
       </motion.div>
+
+      {/* RIGHT — photo, naturally framed (square asset, contained height) */}
+      <div className="relative w-full h-[60vw] max-h-[640px] md:h-auto md:max-h-none md:min-h-[560px] overflow-hidden">
+        <motion.img
+          src={photoMenuPoulpe}
+          alt="Le plat signature — poulpe à la crème d'ail noir"
+          loading="lazy"
+          style={{ y }}
+          className="absolute inset-0 w-full h-[110%] object-cover object-center"
+        />
+        {/* Subtle blend toward the sage panel on the left edge */}
+        <div
+          className="absolute inset-y-0 left-0 w-16 hidden md:block pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, oklch(0.78 0.03 155 / 0.55) 0%, oklch(0.78 0.03 155 / 0) 100%)",
+          }}
+        />
+      </div>
     </section>
   );
 }
