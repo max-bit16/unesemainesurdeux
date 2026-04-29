@@ -7,11 +7,10 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 import photoSalle from "@/assets/photos/photo-salle.jpg";
 import photoChefDressage from "@/assets/photos/photo-chef-dressage.jpg";
-const photoDessert = "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
-const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
-const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
-const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
-const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1500&dpr=1";
+// Visuels uniques à la galerie (pas réutilisés ailleurs sur le site)
+const photoTartare = "https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
+const photoCave = "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
+const photoDressageGrosPlan = "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
 const photoMarche = "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
@@ -72,13 +71,11 @@ function Header() {
 const SLOTS = [
   { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
   { src: photoChefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
-  { src: photoDessert, alt: "Dessert maison, dressage soigné", caption: "Desserts maison", aspect: "aspect-[4/3]", position: "object-center" },
-  { src: photoMenuPoulpe, alt: "Plat signature : poulpe à la crème d'ail noir", caption: "Poulpe · signature", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoTartare, alt: "Tartare de poisson, dressage soigné", caption: "Tartare & fraîcheur", aspect: "aspect-[4/5]", position: "object-center" },
   { src: photoSalle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
-  { src: photoPoisson, alt: "Poisson grillé, légumes frais de saison", caption: "Poisson & saison", aspect: "aspect-[4/5]", position: "object-center" },
-  { src: photoVolaille, alt: "Pièce de viande, légumes de saison & sauce poivre", caption: "Viande & légumes", aspect: "aspect-square", position: "object-center" },
-  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square", position: "object-center" },
+  { src: photoDressageGrosPlan, alt: "Gros plan d'une assiette finale, sauce dressée", caption: "Détail dressage", aspect: "aspect-square", position: "object-center" },
   { src: photoMarche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: photoCave, alt: "Cave personnelle, sélection viticole du chef", caption: "Cave & vins", aspect: "aspect-[4/5]", position: "object-center" },
   { src: photoGaultMillau, alt: "Plat dressé à l'assiette, distinction Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
 ];
 
