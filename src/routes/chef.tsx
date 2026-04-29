@@ -28,8 +28,10 @@ export const Route = createFileRoute("/chef")({
         content:
           "Cuisine bistronomique, produits locaux et de saison. Toque Gault & Millau 2026.",
       },
-      { property: "og:image", content: photoChef },
-      { name: "twitter:image", content: photoChef },
+      { property: "og:image", content: ogChef },
+      { name: "twitter:image", content: ogChef },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
     ],
     links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/chef" }],
   }),
