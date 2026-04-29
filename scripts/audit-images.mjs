@@ -206,11 +206,13 @@ console.log(`${C.bold}🚫 Règle galerie : aucun doublon avec /, /menu, /chef, 
 if (galleryViolations.length === 0) {
   console.log(`  ${C.green}✓ OK — la galerie ne réutilise aucune image des autres pages${C.reset}`);
 } else {
-  console.log(`  ${C.red}✗ ${galleryViolations.length} violation(s) :${C.reset}`);
+  console.log(`  ${C.yellow}⚠ ${galleryViolations.length} entrée(s) déclarée(s) en doublon dans le pool galerie :${C.reset}`);
   for (const d of galleryViolations) {
     console.log(`    • ${d.img}`);
     console.log(`      ${C.dim}vu sur :${C.reset} ${d.pages.join(", ")}`);
   }
+  console.log(`  ${C.dim}Ces entrées sont automatiquement filtrées au render par galleryPool()${C.reset}`);
+  console.log(`  ${C.dim}— elles n'apparaissent PAS sur /galerie côté utilisateur.${C.reset}`);
 }
 
 bar();
