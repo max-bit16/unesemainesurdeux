@@ -117,14 +117,20 @@ export function galleryPool(slots: GallerySlot[]): GallerySlot[] {
   return kept;
 }
 
-/** Pool propre à la galerie (jamais référencé sur les autres pages). */
+/**
+ * Pool propre à la galerie. Les clés `salle` et `chefDressage` sont
+ * volontairement présentes pour rappeler ces visuels existent — mais elles
+ * seront automatiquement filtrées par `galleryPool()` puisqu'elles
+ * apparaissent déjà sur /reserver et /chef.
+ */
 export const GALLERY_ONLY = {
   saintJacques: photoSaintJacques,
-  salle: photoSalle, // utilisée /reserver -> sera filtrée par galleryPool
-  chefDressage: photoChefDressage, // utilisée /chef -> sera filtrée par galleryPool
   gaultMillau: photoGaultMillau,
   tartare: PEXELS.tartare,
   cave: PEXELS.cave,
   dressageGros: PEXELS.dressageGros,
   marche: PEXELS.marche,
+  // Filtrés automatiquement (doublons /chef et /reserver) :
+  salle: photoSalle,
+  chefDressage: photoChefDressage,
 } as const;
