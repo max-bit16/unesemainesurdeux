@@ -3,16 +3,10 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 
-// Photos — mix d'originales restaurant + Pexels libre de droits + génération IA pour combler.
-import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
-import photoSalle from "@/assets/photos/photo-salle.jpg";
-import photoChefDressage from "@/assets/photos/photo-chef-dressage.jpg";
-// Visuels uniques à la galerie (pas réutilisés ailleurs sur le site)
-const photoTartare = "https://images.pexels.com/photos/2233729/pexels-photo-2233729.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
-const photoCave = "https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
-const photoDressageGrosPlan = "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
-const photoMarche = "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
-import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
+// Pool large déclaré ici. La règle "pas de doublon avec /, /menu, /chef, /reserver"
+// est appliquée automatiquement par galleryPool() qui filtre les slots déjà utilisés
+// ailleurs (registre central : src/lib/site-images.ts).
+import { galleryPool, GALLERY_ONLY, type GallerySlot } from "@/lib/site-images";
 import ogGalerie from "@/assets/photos/og-galerie.jpg";
 
 export const Route = createFileRoute("/galerie")({
