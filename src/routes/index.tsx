@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   ChevronDown,
@@ -15,8 +15,11 @@ import {
   fadeUp,
   scaleUp,
   staggerContainer,
+  staggerFast,
   staggerChild,
   viewportOnce,
+  spring,
+  dividerReveal,
 } from "@/lib/motion";
 import { Testimonials } from "@/components/Testimonials";
 
@@ -29,6 +32,7 @@ import { Testimonials } from "@/components/Testimonials";
   Date de remplacement prévue : à confirmer avec le client
 */
 import heroGrenoble from "@/assets/photos/hero-grenoble-bulles.jpg";
+import heroGrenobleWebp from "@/assets/photos/hero-grenoble-bulles.webp";
 const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
@@ -79,74 +83,119 @@ function HomePage() {
   );
 }
 
-/* ─── HERO — typographic, no photo ─────────────────────────── */
+const HERO_LINES = [
+  ["Restaurant", "à", "Grenoble,"],
+  ["cuisine", "vivante."],
+];
+
+const wordContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.055, delayChildren: 0.3 } },
+};
+const WORD_EASE = [0.22, 1, 0.36, 1] as const;
+const wordSlide = {
+  hidden: { y: "108%", opacity: 0 },
+  visible: { y: "0%", opacity: 1, transition: { duration: 0.72, ease: WORD_EASE } },
+};
+
+/* ─── HERO — scroll-driven narrative ───────────────────────── */
 function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, prefersReducedMotion ? 0 : -80]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, prefersReducedMotion ? 1 : 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.5], [0, prefersReducedMotion ? 0 : -32]);
+
   return (
-    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 pt-24 pb-16 md:py-0 overflow-hidden">
-      {/* Hero photograph — Grenoble bubbles */}
-      <img
-        src={heroGrenoble}
-        alt="Téléphériques de Grenoble surplombant la ville au coucher de soleil"
-        loading="eager"
-        fetchPriority="high"
-        className="absolute inset-0 z-0 w-full h-full object-cover object-[68%_center] md:object-center"
-      />
-      {/* Mobile-first ivory veil — stronger center wash for full readability */}
+    <section
+      ref={ref}
+      className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 pt-24 pb-16 md:py-0 overflow-hidden"
+    >
+      {/* Hero photograph — parallax layer */}
+      <motion.div
+        style={{ top: "-40px", bottom: "-40px", y: imageY }}
+        className="absolute inset-x-0 z-0"
+      >
+        <picture>
+          <source srcSet={heroGrenobleWebp} type="image/webp" />
+          <img
+            src={heroGrenoble}
+            alt="Téléphériques de Grenoble surplombant la ville au coucher de soleil"
+            loading="eager"
+            fetchPriority="high"
+            className="w-full h-full object-cover object-[68%_center] md:object-center"
+          />
+        </picture>
+      </motion.div>
+
+      {/* Veils */}
       <div
         className="absolute inset-0 z-0 pointer-events-none md:hidden"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(250,250,247,0.85) 0%, rgba(250,250,247,0.93) 55%, rgba(242,241,236,0.98) 100%)",
-        }}
+        style={{ background: "radial-gradient(ellipse at center, rgba(250,250,247,0.85) 0%, rgba(250,250,247,0.93) 55%, rgba(242,241,236,0.98) 100%)" }}
         aria-hidden
       />
-      {/* Desktop veil — lighter to keep atmosphere */}
       <div
         className="absolute inset-0 z-0 pointer-events-none hidden md:block"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(250,250,247,0.72) 0%, rgba(250,250,247,0.88) 65%, rgba(242,241,236,0.95) 100%)",
-        }}
+        style={{ background: "radial-gradient(ellipse at center, rgba(250,250,247,0.72) 0%, rgba(250,250,247,0.88) 65%, rgba(242,241,236,0.95) 100%)" }}
         aria-hidden
       />
-      {/* Subtle top/bottom fade to blend with page */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(250,250,247,0.45) 0%, rgba(250,250,247,0) 25%, rgba(250,250,247,0) 75%, rgba(250,250,247,0.7) 100%)",
-        }}
+        style={{ background: "linear-gradient(to bottom, rgba(250,250,247,0.45) 0%, rgba(250,250,247,0) 25%, rgba(250,250,247,0) 75%, rgba(250,250,247,0.7) 100%)" }}
         aria-hidden
       />
+
+      {/* Content — fades + drifts up as user scrolls away */}
       <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 max-w-3xl text-center w-full"
+        style={{ opacity: contentOpacity, y: contentY }}
+        className="relative z-10 max-w-5xl text-center w-full"
       >
         <motion.div
-          variants={staggerChild}
-          className="gold-divider mx-auto mb-6 md:mb-8"
+          variants={dividerReveal}
+          initial="hidden"
+          animate="visible"
+          className="gold-divider mx-auto mb-8 md:mb-10"
+          style={{ transformOrigin: "center" }}
         />
-        <motion.p variants={staggerChild} className="eyebrow mb-6 md:mb-8">
-          N°01 Gastronomie Grenobloise
-        </motion.p>
+
+        {/* Word-by-word reveal */}
         <motion.h1
-          variants={staggerChild}
+          variants={wordContainer}
+          initial="hidden"
+          animate="visible"
           className="display-h1 mb-6 md:mb-8"
         >
-          Restaurant à Grenoble,
-          <br />
-          cuisine vivante.
+          {HERO_LINES.map((words, li) => (
+            <span key={li} className="block">
+              {words.map((word, wi) => (
+                <span
+                  key={wi}
+                  style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom" }}
+                >
+                  <motion.span variants={wordSlide} style={{ display: "inline-block" }}>
+                    {word}{wi < words.length - 1 ? "\u00A0" : ""}
+                  </motion.span>
+                </span>
+              ))}
+            </span>
+          ))}
         </motion.h1>
+
         <motion.p
-          variants={staggerChild}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="text-[14px] md:text-[16px] text-ivory-muted mb-9 md:mb-12 px-2"
         >
           Restaurant · Grenoble · Gault &amp; Millau 2026
         </motion.p>
+
         <motion.div
-          variants={staggerChild}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto"
         >
           <a href="tel:+33476271375" className="btn-primary !py-3.5">
@@ -158,7 +207,9 @@ function Hero() {
         </motion.div>
       </motion.div>
 
+      {/* Scroll hint — fades with content */}
       <motion.div
+        style={{ opacity: contentOpacity }}
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-ivory-muted"
@@ -202,10 +253,9 @@ function AwardSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
-        className="bg-surface flex flex-col justify-center px-6 py-12 md:px-16 md:py-20"
+        className="bg-surface flex flex-col justify-center px-6 py-16 md:px-16 md:py-28"
       >
-        <p className="eyebrow">N°02 Distinction</p>
-        <div className="my-4 h-px w-10 bg-gold opacity-60" />
+        <div className="mb-6 h-px w-10 bg-gold opacity-60" />
         <h2 className="display-h2">Table Gourmande</h2>
         <p className="mt-4 max-w-xs text-[15px] text-ivory-muted font-light leading-relaxed">
           Distinction attribuée au Chef Pierrick Vasseur pour la qualité de sa cuisine bistronomique à Grenoble.
@@ -221,7 +271,7 @@ function AwardSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
-        className="bg-surface-deep flex flex-col md:flex-row items-center md:justify-start gap-10 md:gap-12 px-6 py-10 md:px-16 md:py-20"
+        className="bg-surface-deep flex flex-col md:flex-row items-center md:justify-start gap-10 md:gap-12 px-6 py-16 md:px-16 md:py-28"
       >
         <motion.div
           variants={scaleUp}
@@ -303,11 +353,8 @@ function SignatureDish() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 flex flex-col justify-center px-6 py-16 md:px-14 md:py-24 lg:px-20 bg-[oklch(0.78_0.03_155)]"
+        className="relative z-10 flex flex-col justify-center px-6 py-20 md:px-14 md:py-32 lg:px-20 bg-[oklch(0.78_0.03_155)]"
       >
-        <motion.p variants={staggerChild} className="eyebrow text-gold mb-5">
-          N°03 Plat Signature
-        </motion.p>
         <motion.h2 variants={staggerChild} className="display-h2 mb-5 md:mb-6">
           Le Poulpe à la crème
           <br className="hidden sm:block" />
@@ -375,24 +422,23 @@ function Esprit() {
   ];
 
   return (
-    <section className="py-24 md:py-40 px-6">
+    <section className="py-32 md:py-48 px-6">
       <motion.div
-        variants={staggerContainer}
+        variants={staggerFast}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
         className="max-w-4xl mx-auto"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-12 md:mb-16 text-center">
-          N°04 L'Esprit du Lieu
-        </motion.p>
 
         <div>
           {rows.map(({ icon: Icon, label, body }, i) => (
             <motion.div
               key={label}
               variants={staggerChild}
-              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-3 md:gap-10 py-7 md:py-8 ${
+              whileHover={{ x: 6 }}
+              transition={spring}
+              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-3 md:gap-10 py-7 md:py-8 cursor-default ${
                 i === 0 ? "border-t border-hairline" : ""
               } border-b border-hairline`}
             >
@@ -434,7 +480,7 @@ function PhotoStrip() {
         <motion.div
           key={item.caption}
           variants={staggerChild}
-          className="relative h-[200px] md:h-[340px] overflow-hidden group"
+          className="relative h-[240px] md:h-[420px] overflow-hidden group"
           whileHover="hovered"
           initial="initial"
         >
@@ -466,7 +512,7 @@ function PhotoStrip() {
 /* ─── HOURS & RESERVATION — only bordered card on home ─────── */
 function HoursReservation() {
   return (
-    <section className="py-24 md:py-32 px-6 bg-background">
+    <section className="py-32 md:py-40 px-6 bg-background">
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-14 items-start">
         <motion.div
           variants={fadeUp}
@@ -474,7 +520,6 @@ function HoursReservation() {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <p className="eyebrow mb-5">N°05 Informations</p>
           <h3 className="font-serif italic font-light text-[1.75rem] md:text-[2rem] text-ivory mb-6">
             Nous retrouver
           </h3>
@@ -505,6 +550,8 @@ function HoursReservation() {
           whileInView="visible"
           viewport={viewportOnce}
           className="bg-surface border border-hairline rounded-3xl p-7 md:p-10 w-full"
+          whileHover={{ y: -6, boxShadow: "0 24px 48px oklch(0.300 0.005 160 / 0.07)" }}
+          transition={spring}
         >
           <h3 className="font-serif italic font-light text-[1.5rem] md:text-[1.75rem] text-ivory mb-3 md:mb-4">
             Réserver votre table

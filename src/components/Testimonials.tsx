@@ -4,8 +4,11 @@ import { Quote, Star } from "lucide-react";
 import {
   fadeUp,
   staggerContainer,
+  staggerFast,
   staggerChild,
   viewportOnce,
+  spring,
+  dividerReveal,
 } from "@/lib/motion";
 
 /* ─── Testimonials data — sourced from real customer reviews ─── */
@@ -87,10 +90,11 @@ export function Testimonials() {
           viewport={viewportOnce}
           className="text-center mb-14 md:mb-28"
         >
-          <motion.div variants={staggerChild} className="gold-divider mx-auto mb-6 md:mb-8" />
-          <motion.p variants={staggerChild} className="eyebrow mb-5 md:mb-6">
-            N°06 Ce qu'ils en disent
-          </motion.p>
+          <motion.div
+            variants={dividerReveal}
+            className="gold-divider mx-auto mb-8 md:mb-10"
+            style={{ transformOrigin: "center" }}
+          />
           <motion.h2 variants={staggerChild} className="display-h2">
             Une cuisine
             <br />
@@ -163,7 +167,9 @@ export function Testimonials() {
               <motion.figure
                 key={t.name + t.short}
                 variants={staggerChild}
-                className="group"
+                whileHover={{ x: 5 }}
+                transition={spring}
+                className="group cursor-default"
               >
                 <Stars small />
                 <blockquote className="font-serif italic font-light text-ivory text-[1.15rem] md:text-[1.375rem] leading-snug mt-3 md:mt-4">
@@ -234,11 +240,26 @@ export function Testimonials() {
 function Stars({ small = false }: { small?: boolean }) {
   const size = small ? 11 : 13;
   return (
-    <div className="flex items-center gap-1 text-gold" aria-label="5 étoiles sur 5">
+    <motion.div
+      className="flex items-center gap-1 text-gold"
+      aria-label="5 étoiles sur 5"
+      variants={staggerFast}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-40px" }}
+    >
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} size={size} strokeWidth={1.25} className="fill-current" />
+        <motion.span
+          key={i}
+          variants={{
+            hidden: { opacity: 0, scale: 0.5 },
+            visible: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } },
+          }}
+        >
+          <Star size={size} strokeWidth={1.25} className="fill-current" />
+        </motion.span>
       ))}
-    </div>
+    </motion.div>
   );
 }
 

@@ -12,6 +12,7 @@ import {
 
 // Hero "Réserver votre table" : salle bistronomique chaleureuse (générée IA)
 import photoTable from "@/assets/photos/photo-salle.jpg";
+import photoTableWebp from "@/assets/photos/photo-salle.webp";
 import ogReserver from "@/assets/photos/og-reserver.jpg";
 
 export const Route = createFileRoute("/reserver")({
@@ -52,14 +53,17 @@ function ReserverPage() {
 function Header() {
   return (
     <section className="relative h-[42vh] md:h-[40vh] min-h-[340px] md:min-h-[320px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
-      <img
-        src={photoTable}
-        alt="Table dressée au restaurant Une Semaine Sur Deux à Grenoble"
-        loading="eager"
-        fetchPriority="high"
-        style={{ objectPosition: "center 55%" }}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <picture>
+        <source srcSet={photoTableWebp} type="image/webp" />
+        <img
+          src={photoTable}
+          alt="Table dressée au restaurant Une Semaine Sur Deux à Grenoble"
+          loading="eager"
+          fetchPriority="high"
+          style={{ objectPosition: "center 55%" }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
       <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.72)] via-[oklch(0.985_0.003_90/0.82)] to-[oklch(0.985_0.003_90/0.95)]" />
       <div
         className="absolute inset-0"
@@ -75,9 +79,6 @@ function Header() {
         animate="visible"
         className="relative z-10 text-center px-6"
       >
-        <motion.p variants={staggerChild} className="eyebrow text-gold mb-4">
-          N°01 Venez nous voir
-        </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1">
           Réservez votre table.
         </motion.h1>
@@ -88,7 +89,7 @@ function Header() {
 
 function Contact() {
   return (
-    <section className="py-20 md:py-32 px-6">
+    <section className="py-28 md:py-40 px-6">
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-14 items-start">
         <motion.div
           variants={fadeUp}
@@ -138,7 +139,7 @@ function Contact() {
           <h2 className="font-serif italic font-light text-[1.5rem] md:text-[1.75rem] text-ivory mb-3">
             Par téléphone
           </h2>
-          <p className="text-ivory-muted text-[14.5px] md:text-[15px] font-light leading-relaxed mb-6">
+          <p className="text-ivory-muted text-[15px] font-light leading-relaxed mb-6">
             La meilleure façon de réserver. Nous confirmons immédiatement.
           </p>
           <a
@@ -153,7 +154,7 @@ function Contact() {
           <h3 className="font-serif italic font-light text-[1.35rem] md:text-[1.5rem] text-ivory mb-3">
             Événements privés
           </h3>
-          <p className="text-ivory-muted text-[14.5px] md:text-[15px] font-light leading-relaxed mb-5">
+          <p className="text-ivory-muted text-[15px] font-light leading-relaxed mb-5">
             Le restaurant peut être privatisé pour vos événements.
           </p>
           <a
@@ -197,7 +198,7 @@ function Testimonials() {
   ];
 
   return (
-    <section className="py-20 md:py-32 px-6">
+    <section className="py-28 md:py-40 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -205,9 +206,6 @@ function Testimonials() {
         viewport={viewportOnce}
         className="max-w-3xl mx-auto"
       >
-        <motion.p variants={staggerChild} className="eyebrow text-center mb-10 md:mb-16">
-          N°02 Ils en parlent
-        </motion.p>
         <div>
           {items.map((t, i) => (
             <motion.div
@@ -216,7 +214,7 @@ function Testimonials() {
               className={`py-8 md:py-10 ${i === 0 ? "border-t border-hairline" : ""} border-b border-hairline`}
             >
               <p className="pull-quote text-[1.15rem] md:text-[1.3rem] mb-4">"{t.quote}"</p>
-              <p className="text-[12.5px] md:text-[13px] text-ivory-muted">
+              <p className="text-[13px] text-ivory-muted">
                 {t.author} <span className="text-gold ml-1">★★★★★</span>
               </p>
             </motion.div>
@@ -224,7 +222,7 @@ function Testimonials() {
         </div>
         <motion.p
           variants={staggerChild}
-          className="text-center text-ivory-muted text-[12.5px] md:text-[13px] font-light mt-10 md:mt-12"
+          className="text-center text-ivory-muted text-[13px] font-light mt-10 md:mt-12"
         >
           96% des clients recommandent · 204 avis Facebook
         </motion.p>
@@ -235,7 +233,7 @@ function Testimonials() {
 
 function Social() {
   return (
-    <section className="py-16 text-center px-6">
+    <section className="py-20 text-center px-6">
       <div className="flex items-center justify-center gap-8 text-[13px]">
         <a
           href="https://www.instagram.com/1semainesur2restaurant/"

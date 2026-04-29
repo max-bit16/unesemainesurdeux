@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft } from "lucide-react";
 
 export const Route = createFileRoute("/mentions-legales")({
   head: () => ({
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/mentions-legales")({
 function MentionsLegales() {
   return (
     <section className="pt-32 pb-24 px-6 max-w-3xl mx-auto">
-      <p className="eyebrow mb-5">Informations</p>
+      <div className="gold-divider mb-8" />
       <h1 className="display-h1 mb-10">Mentions légales</h1>
 
       <div className="space-y-10 text-[15px] text-ivory font-light leading-loose">
@@ -103,7 +104,7 @@ function MentionsLegales() {
 
       <div className="mt-14">
         <Link to="/" className="gold-link">
-          ← Retour à l'accueil
+          <ArrowLeft size={14} aria-hidden="true" /> Retour à l'accueil
         </Link>
       </div>
     </section>

@@ -1,6 +1,5 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
-import appCss from "../styles.css?url";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
@@ -8,12 +7,12 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <p className="eyebrow">N°404 INTROUVABLE</p>
-        <h1 className="display-h1 mt-3">Page non trouvée</h1>
-        <p className="mt-4 text-ivory-muted">
+        <div className="gold-divider mx-auto mb-8" />
+        <h1 className="display-h1">Page non trouvée</h1>
+        <p className="mt-5 text-[15px] text-ivory-muted font-light leading-relaxed">
           La page que vous cherchez n'existe pas ou a été déplacée.
         </p>
-        <div className="mt-8">
+        <div className="mt-10">
           <Link to="/" className="btn-primary">
             Retour à l'accueil
           </Link>
@@ -84,20 +83,14 @@ export const Route = createRootRoute({
           "Restaurant bistronomique à Grenoble. Produits frais, circuit court, fait maison. Toque Gault & Millau 2026. Chef Pierrick Vasseur. ☎ 04 76 27 13 75",
       },
       { name: "author", content: "Une Semaine Sur Deux" },
-      { property: "og:type", content: "restaurant" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://restaurant1sur2.fr/" },
       { property: "og:locale", content: "fr_FR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "Une semaine sur deux" },
-      { property: "og:title", content: "Une semaine sur deux" },
-      { name: "twitter:title", content: "Une semaine sur deux" },
-      { name: "description", content: "Restaurant bistronomique à Grenoble. Cuisine faite maison, produits de saison. Toque Gault & Millau 2026. Réservations : 04 76 27 13 75." },
       { property: "og:description", content: "Restaurant bistronomique à Grenoble. Cuisine faite maison, produits de saison. Toque Gault & Millau 2026. Réservations : 04 76 27 13 75." },
       { name: "twitter:description", content: "Restaurant bistronomique à Grenoble. Cuisine faite maison, produits de saison. Toque Gault & Millau 2026. Réservations : 04 76 27 13 75." },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/89896d88-a1c4-4050-a008-f962707d5464" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/89896d88-a1c4-4050-a008-f962707d5464" },
-    ],
-    links: [
-      { rel: "stylesheet", href: appCss },
     ],
     scripts: [
       {
@@ -106,28 +99,14 @@ export const Route = createRootRoute({
       },
     ],
   }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
 
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="fr">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 function RootComponent() {
   return (
     <div className="min-h-screen bg-background text-ivory">
+      <div className="scroll-progress" aria-hidden="true" />
       <a href="#main-content" className="skip-link">Aller au contenu</a>
       <Navigation />
       <main id="main-content">

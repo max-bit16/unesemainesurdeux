@@ -45,15 +45,12 @@ function GaleriePage() {
 
 function Header() {
   return (
-    <section className="pt-36 pb-16 text-center px-6">
+    <section className="pt-40 pb-20 text-center px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-4">
-          N°01 Dans l'assiette
-        </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1 mb-5">
           Un régal pour les yeux aussi.
         </motion.h1>
@@ -118,8 +115,9 @@ function Masonry() {
                   src={s.src}
                   alt={s.alt}
                   loading="lazy"
-                  whileHover={{ scale: 1.03 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.99 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 26 }}
                   className={`w-full h-full object-cover ${s.position}`}
                 />
                 <motion.div
@@ -143,7 +141,7 @@ function Masonry() {
 
 function CtaStrip() {
   return (
-    <section className="py-16 text-center px-6">
+    <section className="py-20 text-center px-6">
       <p className="text-ivory-muted text-[14px] font-light mb-3">
         Retrouvez-nous sur Instagram
       </p>

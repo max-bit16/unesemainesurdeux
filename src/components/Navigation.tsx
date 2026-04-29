@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { spring } from "@/lib/motion";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 
@@ -51,7 +52,7 @@ export function Navigation() {
           <Link
             to="/"
             onClick={() => setOpen(false)}
-            className="font-serif italic text-[16px] md:text-[18px] font-light text-ivory hover:text-gold transition-colors"
+            className="font-serif italic text-[17px] md:text-[20px] font-light text-ivory hover:text-gold transition-colors tracking-tight"
           >
             Une Semaine Sur Deux
           </Link>
@@ -62,8 +63,8 @@ export function Navigation() {
               <Link
                 key={l.to}
                 to={l.to}
-                className="text-[13px] tracking-[0.1em] uppercase text-ivory-muted hover:text-ivory transition-colors font-light"
-                activeProps={{ className: "text-ivory", "aria-current": "page" }}
+                className="nav-link text-[13px] tracking-[0.1em] uppercase text-ivory-muted hover:text-ivory transition-colors font-light"
+                activeProps={{ className: "nav-link text-ivory", "aria-current": "page" }}
               >
                 {l.label}
               </Link>
@@ -71,12 +72,15 @@ export function Navigation() {
           </div>
 
           {/* Desktop reserve pill */}
-          <a
+          <motion.a
             href="tel:+33476271375"
             className="hidden md:inline-flex items-center justify-center text-[13px] font-light tracking-[0.04em] text-gold border border-gold rounded-full px-5 py-2 hover:bg-gold-dim transition-colors"
+            whileHover={{ scale: 1.04, y: -1 }}
+            whileTap={{ scale: 0.97 }}
+            transition={spring}
           >
             Réserver
-          </a>
+          </motion.a>
 
           {/* Mobile burger */}
           <button

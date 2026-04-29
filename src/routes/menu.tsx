@@ -7,6 +7,7 @@ import {
   staggerContainer,
   staggerChild,
   viewportOnce,
+  spring,
 } from "@/lib/motion";
 
 // Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
@@ -97,9 +98,6 @@ function MenuHeader() {
         animate="visible"
         className="relative z-10 text-center px-6 max-w-3xl"
       >
-        <motion.p variants={staggerChild} className="eyebrow text-gold mb-4">
-          N°01 La Carte
-        </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1 mb-5 md:mb-6">
           Une carte courte,
           <br />
@@ -115,7 +113,7 @@ function MenuHeader() {
 
 function MenuBody() {
   return (
-    <section className="py-20 md:py-24 px-6">
+    <section className="py-20 md:py-28 px-6">
       <div className="max-w-3xl mx-auto">
         <MenuSection title="Entrées" items={ENTREES.map((n) => ({ name: n }))} />
         <MenuSection title="Plats" items={PLATS} />
@@ -142,7 +140,7 @@ function MenuSection({
     >
       <motion.h2
         variants={staggerChild}
-        className="text-[10px] uppercase tracking-[0.3em] text-gold pb-6 font-normal"
+        className="text-[10px] uppercase tracking-[0.25em] text-gold pb-6 font-light"
       >
         {title}
       </motion.h2>
@@ -164,20 +162,20 @@ function MenuSection({
                 hovered: { scaleY: 1, opacity: 1 },
               }}
               style={{ originY: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ type: "spring", stiffness: 400, damping: 30 }}
               aria-hidden="true"
             />
             <motion.span
               className="font-serif text-[1.1rem] md:text-[1.25rem] font-light leading-snug transition-colors flex-1 min-w-0"
               variants={{
-                initial: { color: "oklch(0.300 0.005 160)" },
-                hovered: { color: "oklch(0.570 0.030 150)" },
+                initial: { color: "var(--ivory)" },
+                hovered: { color: "var(--gold)" },
               }}
             >
               {item.name}
             </motion.span>
             {item.signature && (
-              <span className="inline-flex items-center text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border border-green text-green shrink-0 mt-1.5">
+              <span className="inline-flex items-center text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border border-green text-green shrink-0 mt-1.5">
                 Signature
               </span>
             )}
@@ -220,7 +218,7 @@ function PhotoBreak() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)]"
+        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl text-[oklch(0.985_0.003_90)] drop-shadow-[0_2px_20px_oklch(0.15_0.005_160/0.45)]"
       >
         "Tout est fait maison, jusqu'aux desserts."
       </motion.p>
@@ -235,7 +233,7 @@ function Prices() {
     { icon: Users, label: "Menu enfant", price: "15 €" },
   ];
   return (
-    <section className="py-20 md:py-24 px-6">
+    <section className="py-28 md:py-36 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -247,7 +245,9 @@ function Prices() {
           <motion.div
             key={label}
             variants={staggerChild}
-            className="text-center px-6"
+            whileHover={{ y: -6 }}
+            transition={spring}
+            className="text-center px-6 cursor-default"
           >
             <Icon size={16} className="text-gold mx-auto mb-4" strokeWidth={1.5} />
             <p className="font-serif italic font-light text-[2.5rem] md:text-[3rem] text-ivory leading-none mb-3">

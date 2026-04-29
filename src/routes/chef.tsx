@@ -5,12 +5,16 @@ import { ArrowRight, Sprout, Sun, ChefHat } from "lucide-react";
 import {
   fadeUp,
   staggerContainer,
+  staggerFast,
   staggerChild,
   viewportOnce,
+  spring,
+  dividerReveal,
 } from "@/lib/motion";
 
 // Photo générée — geste de dressage du chef, ambiance bistronomique premium.
 import photoChef from "@/assets/photos/photo-chef-dressage.jpg";
+import photoChefWebp from "@/assets/photos/photo-chef-dressage.webp";
 import ogChef from "@/assets/photos/og-chef.jpg";
 
 export const Route = createFileRoute("/chef")({
@@ -62,14 +66,17 @@ function ChefHero() {
       className="relative min-h-[100svh] flex flex-col md:flex-row pt-[60px] md:pt-0"
     >
       <div className="relative w-full md:w-1/2 h-[40vh] md:h-auto md:min-h-screen overflow-hidden">
-        <motion.img
-          src={photoChef}
-          alt="Le chef dressant une assiette signature"
-          loading="eager"
-          fetchPriority="high"
-          style={{ y, objectPosition: "center center" }}
-          className="w-full h-[115%] object-cover absolute inset-0"
-        />
+        <picture>
+          <source srcSet={photoChefWebp} type="image/webp" />
+          <motion.img
+            src={photoChef}
+            alt="Le chef dressant une assiette signature"
+            loading="eager"
+            fetchPriority="high"
+            style={{ y, objectPosition: "center center" }}
+            className="w-full h-[115%] object-cover absolute inset-0"
+          />
+        </picture>
         <div
           className="absolute inset-y-0 right-0 w-[25%] pointer-events-none hidden md:block"
           style={{
@@ -92,9 +99,6 @@ function ChefHero() {
         animate="visible"
         className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-14 md:py-24 md:pt-32"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-5 md:mb-6">
-          N°01 Derrière les fourneaux
-        </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1 mb-6 md:mb-8">
           Pierrick Vasseur,
           <br />
@@ -123,7 +127,7 @@ function ChefHero() {
 
 function PullQuote() {
   return (
-    <section className="py-20 md:py-32 px-6">
+    <section className="py-28 md:py-36 px-6">
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -131,12 +135,20 @@ function PullQuote() {
         viewport={viewportOnce}
         className="max-w-2xl mx-auto text-center"
       >
-        <div className="gold-divider mx-auto mb-8 md:mb-12" />
+        <motion.div
+          variants={dividerReveal}
+          className="gold-divider mx-auto mb-8 md:mb-12"
+          style={{ transformOrigin: "center" }}
+        />
         <p className="pull-quote text-[1.65rem] md:text-[2.2rem] mb-6">
           "Tout est fait maison, jusqu'aux desserts."
         </p>
         <p className="text-[13px] md:text-[14px] text-ivory-muted">Chef Pierrick Vasseur</p>
-        <div className="gold-divider mx-auto mt-8 md:mt-12" />
+        <motion.div
+          variants={dividerReveal}
+          className="gold-divider mx-auto mt-8 md:mt-12"
+          style={{ transformOrigin: "center" }}
+        />
       </motion.div>
     </section>
   );
@@ -162,23 +174,22 @@ function Values() {
   ];
 
   return (
-    <section className="py-20 md:py-24 px-6">
+    <section className="py-28 md:py-40 px-6">
       <motion.div
-        variants={staggerContainer}
+        variants={staggerFast}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
         className="max-w-3xl mx-auto"
       >
-        <motion.p variants={staggerChild} className="eyebrow text-center mb-10 md:mb-12">
-          N°02 Nos engagements
-        </motion.p>
         <div>
           {rows.map(({ icon: Icon, label, body }, i) => (
             <motion.div
               key={label}
               variants={staggerChild}
-              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-3 md:gap-10 py-7 md:py-8 ${
+              whileHover={{ x: 6 }}
+              transition={spring}
+              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-3 md:gap-10 py-7 md:py-8 cursor-default ${
                 i === 0 ? "border-t border-hairline" : ""
               } border-b border-hairline`}
             >

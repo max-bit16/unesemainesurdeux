@@ -224,10 +224,10 @@
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 300;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
     color: var(--ivory);
-    font-size: clamp(1.85rem, 6vw, 3.25rem);
+    font-size: clamp(2rem, 6vw, 3.75rem);
   }
 
   .display-h3 {
@@ -257,6 +257,28 @@
   }
 
   /* Pill buttons — rounded-full only */
+  /* ── Nav link with animated underline ── */
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  /* ── Pill buttons with lift + press physics ── */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -270,13 +292,20 @@
     letter-spacing: 0.04em;
     padding: 0.75rem 1.75rem;
     border-radius: 9999px;
-    transition: background-color 0.25s ease;
+    transition: background-color 0.25s ease, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
     cursor: pointer;
     border: 1px solid var(--green);
+    transform: translateY(0);
   }
   .btn-primary:hover {
     background-color: var(--green-hover);
     border-color: var(--green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px oklch(0.500 0.034 150 / 0.22);
+  }
+  .btn-primary:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: none;
   }
 
   .btn-ghost-gold {
@@ -293,12 +322,17 @@
     letter-spacing: 0.04em;
     padding: 0.75rem 1.75rem;
     border-radius: 9999px;
-    transition: background-color 0.25s ease, border-color 0.25s ease;
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
     cursor: pointer;
+    transform: translateY(0);
   }
   .btn-ghost-gold:hover {
     background-color: var(--gold-dim);
     border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .btn-ghost-gold:active {
+    transform: translateY(1px) scale(0.98);
   }
 
   .btn-outline-green {
@@ -315,12 +349,17 @@
     letter-spacing: 0.04em;
     padding: 0.625rem 1.5rem;
     border-radius: 9999px;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
     cursor: pointer;
+    transform: translateY(0);
   }
   .btn-outline-green:hover {
     background-color: var(--green);
     color: oklch(0.985 0.003 90);
+    transform: translateY(-2px);
+  }
+  .btn-outline-green:active {
+    transform: translateY(1px) scale(0.98);
   }
 
   .gold-link {
@@ -349,6 +388,45 @@
     height: 1px;
     width: 100%;
     background-color: var(--hairline);
+  }
+}
+
+/* ─── Scroll progress bar — CSS-only, zero JS ───────────────── */
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--gold);
+    transform-origin: 0 center;
+    transform: scaleX(0);
+    z-index: 200;
+    animation: _scroll-grow linear both;
+    animation-timeline: scroll(root block);
+    pointer-events: none;
+    opacity: 0.65;
+  }
+  @keyframes _scroll-grow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+}
+
+/* ─── Reduced Motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { animation: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn-primary:hover,
+  .btn-ghost-gold:hover,
+  .btn-outline-green:hover {
+    transform: none !important;
   }
 }
 
