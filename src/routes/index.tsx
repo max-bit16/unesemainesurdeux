@@ -21,6 +21,7 @@ import {
 } from "@/lib/motion";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { BackgroundGradientAnimation } from "@/components/BackgroundGradientAnimation";
+import { Testimonials } from "@/components/Testimonials";
 
 import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
 import photoVolaille from "@/assets/photos/photo-volaille.jpg";
@@ -65,6 +66,7 @@ function HomePage() {
       <SignatureDish />
       <Esprit />
       <PhotoStrip />
+      <Testimonials />
       <SocialProof />
       <HoursReservation />
     </>
