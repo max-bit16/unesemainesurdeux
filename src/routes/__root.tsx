@@ -8,7 +8,7 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <p className="eyebrow">N°404 — INTROUVABLE</p>
+        <p className="eyebrow">N°404 INTROUVABLE</p>
         <h1 className="display-h1 mt-3">Page non trouvée</h1>
         <p className="mt-4 text-ivory-muted">
           La page que vous cherchez n'existe pas ou a été déplacée.
@@ -52,7 +52,7 @@ export const Route = createRootRoute({
       { name: "theme-color", content: "#FAFAF7" },
       {
         title:
-          "Restaurant Une Semaine Sur Deux à Grenoble — Cuisine Bistronomique · Gault & Millau 2026",
+          "Restaurant Une Semaine Sur Deux à Grenoble Cuisine Bistronomique · Gault & Millau 2026",
       },
       {
         name: "description",

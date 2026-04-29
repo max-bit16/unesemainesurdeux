@@ -15,13 +15,13 @@ import photoPavlova from "@/assets/photos/photo-pavlova.jpg";
 export const Route = createFileRoute("/menu")({
   head: () => ({
     meta: [
-      { title: "La Carte — Une Semaine Sur Deux · Restaurant à Grenoble" },
+      { title: "La Carte Une Semaine Sur Deux · Restaurant à Grenoble" },
       {
         name: "description",
         content:
           "Carte courte, renouvelée au fil des saisons. Entrées, plats, desserts faits maison. Plat du jour 13,50€, menu adulte dès 39€.",
       },
-      { property: "og:title", content: "La Carte — Une Semaine Sur Deux" },
+      { property: "og:title", content: "La Carte Une Semaine Sur Deux" },
       {
         property: "og:description",
         content:
@@ -73,7 +73,7 @@ function MenuHeader() {
     <section className="relative h-[55vh] md:h-[45vh] min-h-[420px] md:min-h-[380px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
       <img
         src={photoLegumes}
-        alt="Légumes du marché — carte saisonnière"
+        alt="Légumes du marché carte saisonnière"
         loading="eager"
         style={{ objectPosition: "center 30%" }}
         className="absolute inset-0 w-full h-full object-cover"
@@ -86,7 +86,7 @@ function MenuHeader() {
         className="relative z-10 text-center px-6 max-w-3xl"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-4">
-          N°01 — La Carte
+          N°01 La Carte
         </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1 mb-5 md:mb-6">
           Une carte courte,
@@ -190,7 +190,7 @@ function PhotoBreak() {
     >
       <motion.img
         src={photoPavlova}
-        alt="Pavlova mangue — desserts maison"
+        alt="Pavlova mangue desserts maison"
         loading="lazy"
         style={{ y }}
         className="absolute inset-0 w-full h-[120%] object-cover"

@@ -18,7 +18,7 @@ type Testimonial = {
 
 const FEATURED: Testimonial = {
   name: "E. Bagdassarian",
-  context: "En couple — Mars 2026",
+  context: "En couple Mars 2026",
   short: "On s'est régalés du début à la fin.",
   excerpt:
     "Le poulpe était incroyable : cuisson parfaite, tendre comme il faut, bien assaisonné. Et la souris d'agneau, fondante, savoureuse, pleine de goût. Un resto qui mérite d'être connu.",
@@ -41,7 +41,7 @@ const SIDE: Testimonial[] = [
 
 const FRAGMENTS: Testimonial[] = [
   { name: "Anthony Cascone", short: "Le lieu est plein de charme, la cuisine savoureuse et généreuse." },
-  { name: "Seulki Choi", short: "Le plat signature de poulpe — tout était parfait." },
+  { name: "Seulki Choi", short: "Le plat signature de poulpe tout était parfait." },
   { name: "S.D.", short: "Une cuisine délicieuse, fine et très gourmande." },
   { name: "E. Bagdassarian", short: "Ambiance chaleureuse, service au top." },
   { name: "Anthony Cascone", short: "La mousse au chocolat était tout simplement excellente." },
@@ -89,7 +89,7 @@ export function Testimonials() {
         >
           <motion.div variants={staggerChild} className="gold-divider mx-auto mb-6 md:mb-8" />
           <motion.p variants={staggerChild} className="eyebrow mb-5 md:mb-6">
-            N°06 — Ce qu'ils en disent
+            N°06 Ce qu'ils en disent
           </motion.p>
           <motion.h2 variants={staggerChild} className="display-h2">
             Une cuisine
@@ -175,7 +175,7 @@ export function Testimonials() {
                   </p>
                 )}
                 <figcaption className="eyebrow !text-ivory-muted mt-4 md:mt-5">
-                  — {t.name}
+                  {t.name}
                 </figcaption>
               </motion.figure>
             ))}
@@ -274,7 +274,7 @@ function Marquee({
             <span className="font-serif italic font-light text-ivory text-[1.05rem] md:text-[1.25rem]">
               «&nbsp;{t.short}&nbsp;»
             </span>
-            <span className="eyebrow !text-ivory-ghost">— {t.name}</span>
+            <span className="eyebrow !text-ivory-ghost">{t.name}</span>
             <span className="h-px w-12 bg-hairline" aria-hidden />
           </li>
         ))}
