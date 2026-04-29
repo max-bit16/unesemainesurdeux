@@ -75,6 +75,7 @@ function MenuHeader() {
         src={photoLegumes}
         alt="Légumes du marché carte saisonnière"
         loading="eager"
+        fetchPriority="high"
         style={{ objectPosition: "center 30%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />

@@ -61,6 +61,7 @@ function ChefHero() {
           src={photoSurfTurf}
           alt="Plat du chef viande et homard, cave à vin"
           loading="eager"
+          fetchPriority="high"
           style={{ y }}
           className="w-full h-[115%] object-cover absolute inset-0"
         />
