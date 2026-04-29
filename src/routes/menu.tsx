@@ -212,7 +212,7 @@ function PhotoBreak() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl"
+        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl text-ivory drop-shadow-[0_2px_12px_rgba(255,255,255,0.6)]"
       >
         "Tout est fait maison, jusqu'aux desserts."
       </motion.p>
