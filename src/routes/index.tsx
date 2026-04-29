@@ -68,7 +68,7 @@ function HomePage() {
       <Esprit />
       <PhotoStrip />
       <Testimonials />
-      <SocialProof />
+      
       <HoursReservation />
     </>
   );
@@ -445,43 +445,6 @@ function PhotoStrip() {
         </motion.div>
       ))}
     </motion.section>
-  );
-}
-
-/* ─── SOCIAL PROOF — no card, hairlines top/bottom ─────────── */
-function SocialProof() {
-  return (
-    <section className="py-20 md:py-28 px-6">
-      <div className="max-w-3xl mx-auto">
-        <div className="hairline mb-12 md:mb-16" />
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x divide-hairline"
-        >
-          <motion.div variants={staggerChild} className="text-center px-4">
-            <span className="stat-num">
-              <AnimatedCounter target={96} suffix="%" />
-            </span>
-            <p className="eyebrow mt-4 md:mt-5">recommandent ce restaurant</p>
-          </motion.div>
-          <motion.div variants={staggerChild} className="text-center px-4">
-            <span className="stat-num">
-              <AnimatedCounter target={204} />
-            </span>
-            <p className="eyebrow mt-4 md:mt-5">avis facebook</p>
-          </motion.div>
-          <motion.div variants={staggerChild} className="text-center px-4 flex flex-col items-center">
-            <Award size={32} className="text-green mb-4" strokeWidth={1.5} />
-            <p className="display-h3">Table Gourmande</p>
-            <p className="eyebrow mt-3">Gault &amp; Millau 2026</p>
-          </motion.div>
-        </motion.div>
-        <div className="hairline mt-12 md:mt-16" />
-      </div>
-    </section>
   );
 }
 
