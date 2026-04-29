@@ -111,7 +111,7 @@ for (const [page, rel] of Object.entries(PAGE_FILES)) {
 // Fichiers complémentaires (composants partagés) — agrégés sous "shared"
 const sharedFiles = SCAN_DIRS
   .flatMap((d) => walk(join(ROOT, d)))
-  .filter((f) => !Object.values(PAGE_FILES).some((p) => f.endsWith(p.replace(/\//g, require("node:path").sep)) || f.endsWith(p)));
+  .filter((f) => !Object.values(PAGE_FILES).some((p) => f === join(ROOT, p)));
 const sharedRefs = new Map();
 for (const f of sharedFiles) {
   for (const [k, v] of extractImages(f)) {
