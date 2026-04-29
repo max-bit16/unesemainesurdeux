@@ -50,6 +50,7 @@ function Header() {
         src={photoSaintJacques}
         alt="Saint-Jacques signature"
         loading="eager"
+        fetchPriority="high"
         style={{ objectPosition: "center 60%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
