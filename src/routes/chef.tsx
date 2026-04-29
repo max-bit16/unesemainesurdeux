@@ -14,13 +14,13 @@ import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
 export const Route = createFileRoute("/chef")({
   head: () => ({
     meta: [
-      { title: "Le Chef Pierrick Vasseur — Une Semaine Sur Deux · Grenoble" },
+      { title: "Le Chef Pierrick Vasseur Une Semaine Sur Deux · Grenoble" },
       {
         name: "description",
         content:
           "Pierrick Vasseur, Chef du restaurant Une Semaine Sur Deux à Grenoble. Cuisine bistronomique, produits de saison, fait maison. Toque Gault & Millau 2026.",
       },
-      { property: "og:title", content: "Le Chef Pierrick Vasseur — Une Semaine Sur Deux" },
+      { property: "og:title", content: "Le Chef Pierrick Vasseur Une Semaine Sur Deux" },
       {
         property: "og:description",
         content:
@@ -59,7 +59,7 @@ function ChefHero() {
       <div className="relative w-full md:w-1/2 h-[40vh] md:h-auto md:min-h-screen overflow-hidden">
         <motion.img
           src={photoSurfTurf}
-          alt="Plat du chef — viande et homard, cave à vin"
+          alt="Plat du chef viande et homard, cave à vin"
           loading="eager"
           style={{ y }}
           className="w-full h-[115%] object-cover absolute inset-0"
@@ -87,7 +87,7 @@ function ChefHero() {
         className="w-full md:w-1/2 flex flex-col justify-center px-6 md:px-16 py-14 md:py-0"
       >
         <motion.p variants={staggerChild} className="eyebrow mb-5 md:mb-6">
-          N°01 — Derrière les fourneaux
+          N°01 Derrière les fourneaux
         </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1 mb-6 md:mb-8">
           Pierrick Vasseur,
@@ -99,7 +99,7 @@ function ChefHero() {
           className="text-ivory-muted text-[15px] md:text-[16px] mb-5 max-w-md font-light leading-relaxed md:leading-loose"
         >
           Depuis l'ouverture, Pierrick Vasseur défend une cuisine bistronomique
-          ancrée dans la saison et le territoire. Pas de carte longue — une
+          ancrée dans la saison et le territoire. Pas de carte longue une
           sélection courte, où chaque plat est travaillé jusqu'à l'essentiel.
         </motion.p>
         <motion.p
@@ -137,7 +137,7 @@ function PullQuote() {
         <p className="pull-quote text-[1.65rem] md:text-[2.2rem] mb-6">
           "Tout est fait maison, jusqu'aux desserts."
         </p>
-        <p className="text-[13px] md:text-[14px] text-ivory-muted">— Chef Pierrick Vasseur</p>
+        <p className="text-[13px] md:text-[14px] text-ivory-muted">Chef Pierrick Vasseur</p>
         <div className="gold-divider mx-auto mt-8 md:mt-12" />
       </motion.div>
     </section>
@@ -173,7 +173,7 @@ function Values() {
         className="max-w-3xl mx-auto"
       >
         <motion.p variants={staggerChild} className="eyebrow text-center mb-10 md:mb-12">
-          N°02 — Nos engagements
+          N°02 Nos engagements
         </motion.p>
         <div>
           {rows.map(({ icon: Icon, label, body }, i) => (

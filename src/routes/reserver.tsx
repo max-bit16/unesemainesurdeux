@@ -14,13 +14,13 @@ import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 export const Route = createFileRoute("/reserver")({
   head: () => ({
     meta: [
-      { title: "Réserver — Une Semaine Sur Deux · Restaurant à Grenoble" },
+      { title: "Réserver Une Semaine Sur Deux · Restaurant à Grenoble" },
       {
         name: "description",
         content:
           "Réservez votre table au restaurant Une Semaine Sur Deux à Grenoble. Par téléphone : 04 76 27 13 75. Ouvert tous les jours, midi et soir.",
       },
-      { property: "og:title", content: "Réserver — Une Semaine Sur Deux" },
+      { property: "og:title", content: "Réserver Une Semaine Sur Deux" },
       {
         property: "og:description",
         content: "Réservation par téléphone · 04 76 27 13 75 · Ouvert 7/7.",
@@ -61,7 +61,7 @@ function Header() {
         className="relative z-10 text-center px-6"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-4">
-          N°01 — Venez nous voir
+          N°01 Venez nous voir
         </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1">
           Réservez votre table.
@@ -191,7 +191,7 @@ function Testimonials() {
         className="max-w-3xl mx-auto"
       >
         <motion.p variants={staggerChild} className="eyebrow text-center mb-10 md:mb-16">
-          N°02 — Ils en parlent
+          N°02 Ils en parlent
         </motion.p>
         <div>
           {items.map((t, i) => (
@@ -202,7 +202,7 @@ function Testimonials() {
             >
               <p className="pull-quote text-[1.15rem] md:text-[1.3rem] mb-4">"{t.quote}"</p>
               <p className="text-[12.5px] md:text-[13px] text-ivory-muted">
-                — {t.author} <span className="text-gold ml-1">★★★★★</span>
+                {t.author} <span className="text-gold ml-1">★★★★★</span>
               </p>
             </motion.div>
           ))}

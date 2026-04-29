@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "Restaurant Une Semaine Sur Deux à Grenoble — Cuisine Bistronomique · Gault & Millau 2026",
+          "Restaurant Une Semaine Sur Deux à Grenoble Cuisine Bistronomique · Gault & Millau 2026",
       },
       {
         name: "description",
@@ -44,7 +44,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:title",
         content:
-          "Une Semaine Sur Deux — Restaurant gastronomique à Grenoble",
+          "Une Semaine Sur Deux Restaurant gastronomique à Grenoble",
       },
       {
         property: "og:description",
@@ -123,7 +123,7 @@ function Hero() {
           className="gold-divider mx-auto mb-6 md:mb-8"
         />
         <motion.p variants={staggerChild} className="eyebrow mb-6 md:mb-8">
-          N°01 — Gastronomie Grenobloise
+          N°01 Gastronomie Grenobloise
         </motion.p>
         <motion.h1
           variants={staggerChild}
@@ -176,7 +176,7 @@ function AwardSection() {
         className="max-w-2xl mx-auto text-center"
       >
         <motion.p variants={staggerChild} className="eyebrow mb-6">
-          N°02 — Distinction
+          N°02 Distinction
         </motion.p>
         <motion.div variants={staggerChild} className="flex justify-center mb-6">
           <img
@@ -222,7 +222,7 @@ function SignatureDish() {
         className="relative z-10 flex flex-col justify-center px-6 py-16 md:px-14 md:py-24 lg:px-20 bg-[oklch(0.78_0.03_155)]"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-5">
-          N°03 — Plat Signature
+          N°03 Plat Signature
         </motion.p>
         <motion.h2 variants={staggerChild} className="display-h2 mb-5 md:mb-6">
           Le Poulpe à la crème
@@ -247,7 +247,7 @@ function SignatureDish() {
       <div className="relative w-full h-[60vw] max-h-[640px] md:h-auto md:max-h-none md:min-h-[560px] overflow-hidden">
         <motion.img
           src={photoMenuPoulpe}
-          alt="Le plat signature — poulpe à la crème d'ail noir"
+          alt="Le plat signature poulpe à la crème d'ail noir"
           loading="lazy"
           style={{ y }}
           className="absolute inset-0 w-full h-[110%] object-cover object-center"
@@ -300,7 +300,7 @@ function Esprit() {
         className="max-w-4xl mx-auto"
       >
         <motion.p variants={staggerChild} className="eyebrow mb-12 md:mb-16 text-center">
-          N°04 — L'Esprit du Lieu
+          N°04 L'Esprit du Lieu
         </motion.p>
 
         <div>
@@ -335,7 +335,7 @@ function PhotoStrip() {
   const items = [
     { src: photoVolaille, alt: "Volaille fermière, sauce crémée", caption: "Viandes & volailles" },
     { src: photoPoisson, alt: "Truite et légumes frais de saison", caption: "Poissons & saison" },
-    { src: photoSurfTurf, alt: "Surf & turf — viande et homard", caption: "Plats du moment" },
+    { src: photoSurfTurf, alt: "Surf & turf viande et homard", caption: "Plats du moment" },
   ];
 
   return (
@@ -427,7 +427,7 @@ function HoursReservation() {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <p className="eyebrow mb-5">N°05 — Informations</p>
+          <p className="eyebrow mb-5">N°05 Informations</p>
           <h3 className="font-serif italic font-light text-[1.75rem] md:text-[2rem] text-ivory mb-6">
             Nous retrouver
           </h3>

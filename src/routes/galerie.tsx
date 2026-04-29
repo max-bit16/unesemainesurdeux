@@ -15,13 +15,13 @@ import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 export const Route = createFileRoute("/galerie")({
   head: () => ({
     meta: [
-      { title: "Galerie — Une Semaine Sur Deux · Photos · Restaurant Grenoble" },
+      { title: "Galerie Une Semaine Sur Deux · Photos · Restaurant Grenoble" },
       {
         name: "description",
         content:
           "Galerie photo des plats du restaurant Une Semaine Sur Deux à Grenoble. Saint-Jacques, poulpe, pavlova et plats de saison.",
       },
-      { property: "og:title", content: "Galerie — Une Semaine Sur Deux" },
+      { property: "og:title", content: "Galerie Une Semaine Sur Deux" },
       {
         property: "og:description",
         content: "Photographies des plats du restaurant à Grenoble.",
@@ -50,7 +50,7 @@ function Header() {
         animate="visible"
       >
         <motion.p variants={staggerChild} className="eyebrow mb-4">
-          N°01 — Dans l'assiette
+          N°01 Dans l'assiette
         </motion.p>
         <motion.h1 variants={staggerChild} className="display-h1 mb-5">
           Un régal pour les yeux aussi.
