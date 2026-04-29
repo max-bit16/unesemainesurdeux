@@ -285,7 +285,7 @@ function Esprit() {
   ];
 
   return (
-    <section className="py-32 md:py-40 px-6">
+    <section className="py-24 md:py-40 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -293,7 +293,7 @@ function Esprit() {
         viewport={viewportOnce}
         className="max-w-4xl mx-auto"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-16 text-center">
+        <motion.p variants={staggerChild} className="eyebrow mb-12 md:mb-16 text-center">
           N°04 — L'Esprit du Lieu
         </motion.p>
 
@@ -302,17 +302,17 @@ function Esprit() {
             <motion.div
               key={label}
               variants={staggerChild}
-              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 md:gap-10 py-8 ${
+              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-3 md:gap-10 py-7 md:py-8 ${
                 i === 0 ? "border-t border-hairline" : ""
               } border-b border-hairline`}
             >
               <div className="flex items-center gap-3">
                 <Icon size={16} className="text-gold shrink-0" strokeWidth={1.5} />
-                <p className="font-serif italic text-[1.375rem] text-ivory font-light">
+                <p className="font-serif italic text-[1.25rem] md:text-[1.375rem] text-ivory font-light">
                   {label}
                 </p>
               </div>
-              <p className="text-[16px] text-ivory-muted font-light leading-relaxed">
+              <p className="text-[15px] md:text-[16px] text-ivory-muted font-light leading-relaxed">
                 {body}
               </p>
             </motion.div>
@@ -344,7 +344,7 @@ function PhotoStrip() {
         <motion.div
           key={item.caption}
           variants={staggerChild}
-          className="relative h-[240px] md:h-[340px] overflow-hidden group"
+          className="relative h-[200px] md:h-[340px] overflow-hidden group"
           whileHover="hovered"
           initial="initial"
         >
@@ -376,27 +376,27 @@ function PhotoStrip() {
 /* ─── SOCIAL PROOF — no card, hairlines top/bottom ─────────── */
 function SocialProof() {
   return (
-    <section className="py-28 px-6">
+    <section className="py-20 md:py-28 px-6">
       <div className="max-w-3xl mx-auto">
-        <div className="hairline mb-16" />
+        <div className="hairline mb-12 md:mb-16" />
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 md:divide-x divide-hairline"
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x divide-hairline"
         >
           <motion.div variants={staggerChild} className="text-center px-4">
             <span className="stat-num">
               <AnimatedCounter target={96} suffix="%" />
             </span>
-            <p className="eyebrow mt-5">recommandent ce restaurant</p>
+            <p className="eyebrow mt-4 md:mt-5">recommandent ce restaurant</p>
           </motion.div>
           <motion.div variants={staggerChild} className="text-center px-4">
             <span className="stat-num">
               <AnimatedCounter target={204} />
             </span>
-            <p className="eyebrow mt-5">avis facebook</p>
+            <p className="eyebrow mt-4 md:mt-5">avis facebook</p>
           </motion.div>
           <motion.div variants={staggerChild} className="text-center px-4 flex flex-col items-center">
             <Award size={32} className="text-green mb-4" strokeWidth={1.5} />
@@ -404,7 +404,7 @@ function SocialProof() {
             <p className="eyebrow mt-3">Gault &amp; Millau 2026</p>
           </motion.div>
         </motion.div>
-        <div className="hairline mt-16" />
+        <div className="hairline mt-12 md:mt-16" />
       </div>
     </section>
   );
@@ -413,8 +413,8 @@ function SocialProof() {
 /* ─── HOURS & RESERVATION — only bordered card on home ─────── */
 function HoursReservation() {
   return (
-    <section className="py-32 px-6 bg-background">
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+    <section className="py-24 md:py-32 px-6 bg-background">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-14 items-start">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -422,10 +422,10 @@ function HoursReservation() {
           viewport={viewportOnce}
         >
           <p className="eyebrow mb-5">N°05 — Informations</p>
-          <h3 className="font-serif italic font-light text-[2rem] text-ivory mb-6">
+          <h3 className="font-serif italic font-light text-[1.75rem] md:text-[2rem] text-ivory mb-6">
             Nous retrouver
           </h3>
-          <div className="space-y-2 text-[16px] text-ivory font-light leading-loose">
+          <div className="space-y-2 text-[15px] md:text-[16px] text-ivory font-light leading-loose">
             <p>4 Place Championnet, 38000 Grenoble</p>
             <p>
               <a href="tel:+33476271375" className="hover:text-gold transition-colors">
@@ -451,25 +451,25 @@ function HoursReservation() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="bg-surface border border-hairline rounded-3xl p-10"
+          className="bg-surface border border-hairline rounded-3xl p-7 md:p-10 w-full"
         >
-          <h3 className="font-serif italic font-light text-[1.75rem] text-ivory mb-4">
+          <h3 className="font-serif italic font-light text-[1.5rem] md:text-[1.75rem] text-ivory mb-3 md:mb-4">
             Réserver votre table
           </h3>
-          <p className="text-ivory-muted mb-7 text-[15px] font-light leading-relaxed">
+          <p className="text-ivory-muted mb-6 md:mb-7 text-[14.5px] md:text-[15px] font-light leading-relaxed">
             Sur place ou par téléphone. Confirmation immédiate.
           </p>
           <a
             href="tel:+33476271375"
-            className="btn-primary w-full !py-3.5"
+            className="btn-primary w-full !py-4"
           >
             <Phone size={16} /> Appeler le restaurant
           </a>
           <a
             href="mailto:restaurant1sur2@gmail.com"
-            className="gold-link mt-5 text-[13px]"
+            className="gold-link mt-5 text-[13px] break-all"
           >
-            <MapPin size={12} /><span>&nbsp;restaurant1sur2@gmail.com</span>
+            <MapPin size={12} className="shrink-0" /><span>&nbsp;restaurant1sur2@gmail.com</span>
           </a>
         </motion.div>
       </div>
