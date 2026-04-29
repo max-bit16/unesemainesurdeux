@@ -76,18 +76,27 @@ function HomePage() {
 /* ─── HERO — typographic, no photo ─────────────────────────── */
 function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 pt-24 pb-16 md:py-0 overflow-hidden">
       {/* Hero photograph — Grenoble bubbles */}
       <img
         src={heroGrenoble}
         alt="Téléphériques de Grenoble surplombant la ville au coucher de soleil"
         loading="eager"
         fetchPriority="high"
-        className="absolute inset-0 z-0 w-full h-full object-cover object-[70%_center] md:object-center"
+        className="absolute inset-0 z-0 w-full h-full object-cover object-[68%_center] md:object-center"
       />
-      {/* Refined ivory veil — keeps the photo readable but preserves atmosphere */}
+      {/* Mobile-first ivory veil — stronger center wash for full readability */}
       <div
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, rgba(250,250,247,0.72) 0%, rgba(250,250,247,0.86) 55%, rgba(242,241,236,0.94) 100%)",
+        }}
+        aria-hidden
+      />
+      {/* Desktop veil — lighter to keep atmosphere */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none hidden md:block"
         style={{
           background:
             "radial-gradient(ellipse at center, rgba(250,250,247,0.55) 0%, rgba(250,250,247,0.78) 65%, rgba(242,241,236,0.88) 100%)",
@@ -99,7 +108,7 @@ function Hero() {
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(250,250,247,0.35) 0%, rgba(250,250,247,0) 25%, rgba(250,250,247,0) 75%, rgba(250,250,247,0.6) 100%)",
+            "linear-gradient(to bottom, rgba(250,250,247,0.45) 0%, rgba(250,250,247,0) 25%, rgba(250,250,247,0) 75%, rgba(250,250,247,0.7) 100%)",
         }}
         aria-hidden
       />
@@ -107,18 +116,18 @@ function Hero() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-3xl text-center"
+        className="relative z-10 max-w-3xl text-center w-full"
       >
         <motion.div
           variants={staggerChild}
-          className="gold-divider mx-auto mb-8"
+          className="gold-divider mx-auto mb-6 md:mb-8"
         />
-        <motion.p variants={staggerChild} className="eyebrow mb-8">
+        <motion.p variants={staggerChild} className="eyebrow mb-6 md:mb-8">
           N°01 — Gastronomie Grenobloise
         </motion.p>
         <motion.h1
           variants={staggerChild}
-          className="display-h1 mb-8"
+          className="display-h1 mb-6 md:mb-8"
         >
           Cuisine vivante,
           <br />
@@ -126,18 +135,18 @@ function Hero() {
         </motion.h1>
         <motion.p
           variants={staggerChild}
-          className="text-[16px] text-ivory-muted mb-12"
+          className="text-[14px] md:text-[16px] text-ivory-muted mb-9 md:mb-12 px-2"
         >
           Restaurant · Grenoble · Gault &amp; Millau 2026
         </motion.p>
         <motion.div
           variants={staggerChild}
-          className="flex flex-wrap items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto"
         >
-          <a href="tel:+33476271375" className="btn-primary">
+          <a href="tel:+33476271375" className="btn-primary !py-3.5">
             Réserver une table
           </a>
-          <Link to="/menu" className="btn-ghost-gold">
+          <Link to="/menu" className="btn-ghost-gold !py-3.5">
             Voir la carte
           </Link>
         </motion.div>
@@ -146,7 +155,7 @@ function Hero() {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-ivory-muted"
+        className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 text-ivory-muted"
         aria-hidden
       >
         <ChevronDown size={18} strokeWidth={1.5} />
@@ -158,7 +167,7 @@ function Hero() {
 /* ─── AWARD — pure text on canvas ──────────────────────────── */
 function AwardSection() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-20 md:py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -185,7 +194,7 @@ function AwardSection() {
           Attribuée au Chef Pierrick Vasseur · Gault &amp; Millau 2026
         </motion.p>
       </motion.div>
-      <div className="hairline max-w-5xl mx-auto mt-24" />
+      <div className="hairline max-w-5xl mx-auto mt-16 md:mt-24" />
     </section>
   );
 }
@@ -202,7 +211,7 @@ function SignatureDish() {
   return (
     <section
       ref={ref}
-      className="relative h-[65vh] min-h-[480px] w-full overflow-hidden"
+      className="relative h-[70vh] md:h-[65vh] min-h-[520px] md:min-h-[480px] w-full overflow-hidden"
     >
       <motion.img
         src={photoMenuPoulpe}
@@ -215,7 +224,7 @@ function SignatureDish() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.25) 0%, oklch(0.985 0.003 90 / 0.88) 100%)",
+            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.20) 0%, oklch(0.985 0.003 90 / 0.55) 45%, oklch(0.985 0.003 90 / 0.92) 100%)",
         }}
       />
       <motion.div
@@ -223,19 +232,19 @@ function SignatureDish() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 h-full flex flex-col justify-end max-w-2xl px-8 md:px-14 pb-14"
+        className="relative z-10 h-full flex flex-col justify-end max-w-2xl px-6 md:px-14 pb-12 md:pb-14"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-5">
           N°03 — Plat Signature
         </motion.p>
-        <motion.h2 variants={staggerChild} className="display-h2 mb-6">
-          Le Poulpe à la crème d'ail noir,
-          <br />
-          risotto de riz vénéré.
+        <motion.h2 variants={staggerChild} className="display-h2 mb-5 md:mb-6">
+          Le Poulpe à la crème
+          <br className="hidden sm:block" />
+          {" "}d'ail noir.
         </motion.h2>
         <motion.p
           variants={staggerChild}
-          className="text-[16px] text-ivory-muted max-w-lg mb-7"
+          className="text-[15px] md:text-[16px] text-ivory-muted max-w-lg mb-6 md:mb-7"
         >
           Le plat qui revient dans tous les avis. Cuisson parfaite, produits de
           saison, fait maison.
@@ -276,7 +285,7 @@ function Esprit() {
   ];
 
   return (
-    <section className="py-32 md:py-40 px-6">
+    <section className="py-24 md:py-40 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -284,7 +293,7 @@ function Esprit() {
         viewport={viewportOnce}
         className="max-w-4xl mx-auto"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-16 text-center">
+        <motion.p variants={staggerChild} className="eyebrow mb-12 md:mb-16 text-center">
           N°04 — L'Esprit du Lieu
         </motion.p>
 
@@ -293,17 +302,17 @@ function Esprit() {
             <motion.div
               key={label}
               variants={staggerChild}
-              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 md:gap-10 py-8 ${
+              className={`grid grid-cols-1 md:grid-cols-[40%_60%] gap-3 md:gap-10 py-7 md:py-8 ${
                 i === 0 ? "border-t border-hairline" : ""
               } border-b border-hairline`}
             >
               <div className="flex items-center gap-3">
                 <Icon size={16} className="text-gold shrink-0" strokeWidth={1.5} />
-                <p className="font-serif italic text-[1.375rem] text-ivory font-light">
+                <p className="font-serif italic text-[1.25rem] md:text-[1.375rem] text-ivory font-light">
                   {label}
                 </p>
               </div>
-              <p className="text-[16px] text-ivory-muted font-light leading-relaxed">
+              <p className="text-[15px] md:text-[16px] text-ivory-muted font-light leading-relaxed">
                 {body}
               </p>
             </motion.div>
@@ -335,7 +344,7 @@ function PhotoStrip() {
         <motion.div
           key={item.caption}
           variants={staggerChild}
-          className="relative h-[240px] md:h-[340px] overflow-hidden group"
+          className="relative h-[200px] md:h-[340px] overflow-hidden group"
           whileHover="hovered"
           initial="initial"
         >
@@ -367,27 +376,27 @@ function PhotoStrip() {
 /* ─── SOCIAL PROOF — no card, hairlines top/bottom ─────────── */
 function SocialProof() {
   return (
-    <section className="py-28 px-6">
+    <section className="py-20 md:py-28 px-6">
       <div className="max-w-3xl mx-auto">
-        <div className="hairline mb-16" />
+        <div className="hairline mb-12 md:mb-16" />
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 md:divide-x divide-hairline"
+          className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0 md:divide-x divide-hairline"
         >
           <motion.div variants={staggerChild} className="text-center px-4">
             <span className="stat-num">
               <AnimatedCounter target={96} suffix="%" />
             </span>
-            <p className="eyebrow mt-5">recommandent ce restaurant</p>
+            <p className="eyebrow mt-4 md:mt-5">recommandent ce restaurant</p>
           </motion.div>
           <motion.div variants={staggerChild} className="text-center px-4">
             <span className="stat-num">
               <AnimatedCounter target={204} />
             </span>
-            <p className="eyebrow mt-5">avis facebook</p>
+            <p className="eyebrow mt-4 md:mt-5">avis facebook</p>
           </motion.div>
           <motion.div variants={staggerChild} className="text-center px-4 flex flex-col items-center">
             <Award size={32} className="text-green mb-4" strokeWidth={1.5} />
@@ -395,7 +404,7 @@ function SocialProof() {
             <p className="eyebrow mt-3">Gault &amp; Millau 2026</p>
           </motion.div>
         </motion.div>
-        <div className="hairline mt-16" />
+        <div className="hairline mt-12 md:mt-16" />
       </div>
     </section>
   );
@@ -404,8 +413,8 @@ function SocialProof() {
 /* ─── HOURS & RESERVATION — only bordered card on home ─────── */
 function HoursReservation() {
   return (
-    <section className="py-32 px-6 bg-background">
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+    <section className="py-24 md:py-32 px-6 bg-background">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-14 items-start">
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -413,10 +422,10 @@ function HoursReservation() {
           viewport={viewportOnce}
         >
           <p className="eyebrow mb-5">N°05 — Informations</p>
-          <h3 className="font-serif italic font-light text-[2rem] text-ivory mb-6">
+          <h3 className="font-serif italic font-light text-[1.75rem] md:text-[2rem] text-ivory mb-6">
             Nous retrouver
           </h3>
-          <div className="space-y-2 text-[16px] text-ivory font-light leading-loose">
+          <div className="space-y-2 text-[15px] md:text-[16px] text-ivory font-light leading-loose">
             <p>4 Place Championnet, 38000 Grenoble</p>
             <p>
               <a href="tel:+33476271375" className="hover:text-gold transition-colors">
@@ -442,25 +451,25 @@ function HoursReservation() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="bg-surface border border-hairline rounded-3xl p-10"
+          className="bg-surface border border-hairline rounded-3xl p-7 md:p-10 w-full"
         >
-          <h3 className="font-serif italic font-light text-[1.75rem] text-ivory mb-4">
+          <h3 className="font-serif italic font-light text-[1.5rem] md:text-[1.75rem] text-ivory mb-3 md:mb-4">
             Réserver votre table
           </h3>
-          <p className="text-ivory-muted mb-7 text-[15px] font-light leading-relaxed">
+          <p className="text-ivory-muted mb-6 md:mb-7 text-[14.5px] md:text-[15px] font-light leading-relaxed">
             Sur place ou par téléphone. Confirmation immédiate.
           </p>
           <a
             href="tel:+33476271375"
-            className="btn-primary w-full !py-3.5"
+            className="btn-primary w-full !py-4"
           >
             <Phone size={16} /> Appeler le restaurant
           </a>
           <a
             href="mailto:restaurant1sur2@gmail.com"
-            className="gold-link mt-5 text-[13px]"
+            className="gold-link mt-5 text-[13px] break-all"
           >
-            <MapPin size={12} /><span>&nbsp;restaurant1sur2@gmail.com</span>
+            <MapPin size={12} className="shrink-0" /><span>&nbsp;restaurant1sur2@gmail.com</span>
           </a>
         </motion.div>
       </div>

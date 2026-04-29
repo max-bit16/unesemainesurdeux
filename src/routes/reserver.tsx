@@ -45,7 +45,7 @@ function ReserverPage() {
 
 function Header() {
   return (
-    <section className="relative h-[40vh] min-h-[320px] overflow-hidden flex items-center justify-center">
+    <section className="relative h-[42vh] md:h-[40vh] min-h-[340px] md:min-h-[320px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
       <img
         src={photoSaintJacques}
         alt="Saint-Jacques signature"
@@ -53,12 +53,12 @@ function Header() {
         style={{ objectPosition: "center 60%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.55)] via-[oklch(0.985_0.003_90/0.7)] to-[oklch(0.985_0.003_90/0.92)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.7)] via-[oklch(0.985_0.003_90/0.8)] to-[oklch(0.985_0.003_90/0.95)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center px-6 pt-16"
+        className="relative z-10 text-center px-6"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-4">
           N°01 — Venez nous voir
@@ -73,16 +73,16 @@ function Header() {
 
 function Contact() {
   return (
-    <section className="py-32 px-6">
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+    <section className="py-20 md:py-32 px-6">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-14 items-start">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
         >
-          <p className="eyebrow mb-6">Coordonnées</p>
-          <div className="space-y-5 text-[16px] font-light">
+          <p className="eyebrow mb-5 md:mb-6">Coordonnées</p>
+          <div className="space-y-4 md:space-y-5 text-[15px] md:text-[16px] font-light">
             <Row icon={<MapPin size={15} className="text-gold" strokeWidth={1.5} />}>
               4 Place Championnet, 38000 Grenoble
             </Row>
@@ -94,7 +94,7 @@ function Contact() {
             <Row icon={<Mail size={15} className="text-gold" strokeWidth={1.5} />}>
               <a
                 href="mailto:restaurant1sur2@gmail.com"
-                className="text-ivory hover:text-gold transition-colors"
+                className="text-ivory hover:text-gold transition-colors break-all"
               >
                 restaurant1sur2@gmail.com
               </a>
@@ -118,12 +118,12 @@ function Contact() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="bg-surface rounded-3xl p-10 border border-hairline"
+          className="bg-surface rounded-3xl p-7 md:p-10 border border-hairline w-full"
         >
-          <h2 className="font-serif italic font-light text-[1.75rem] text-ivory mb-3">
+          <h2 className="font-serif italic font-light text-[1.5rem] md:text-[1.75rem] text-ivory mb-3">
             Par téléphone
           </h2>
-          <p className="text-ivory-muted text-[15px] font-light leading-relaxed mb-6">
+          <p className="text-ivory-muted text-[14.5px] md:text-[15px] font-light leading-relaxed mb-6">
             La meilleure façon de réserver. Nous confirmons immédiatement.
           </p>
           <a
@@ -133,12 +133,12 @@ function Contact() {
             <Phone size={16} /> Appeler maintenant
           </a>
 
-          <div className="hairline my-8" />
+          <div className="hairline my-7 md:my-8" />
 
-          <h3 className="font-serif italic font-light text-[1.5rem] text-ivory mb-3">
+          <h3 className="font-serif italic font-light text-[1.35rem] md:text-[1.5rem] text-ivory mb-3">
             Événements privés
           </h3>
-          <p className="text-ivory-muted text-[15px] font-light leading-relaxed mb-5">
+          <p className="text-ivory-muted text-[14.5px] md:text-[15px] font-light leading-relaxed mb-5">
             Le restaurant peut être privatisé pour vos événements.
           </p>
           <a
@@ -182,7 +182,7 @@ function Testimonials() {
   ];
 
   return (
-    <section className="py-32 px-6">
+    <section className="py-20 md:py-32 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -190,7 +190,7 @@ function Testimonials() {
         viewport={viewportOnce}
         className="max-w-3xl mx-auto"
       >
-        <motion.p variants={staggerChild} className="eyebrow text-center mb-16">
+        <motion.p variants={staggerChild} className="eyebrow text-center mb-10 md:mb-16">
           N°02 — Ils en parlent
         </motion.p>
         <div>
@@ -198,10 +198,10 @@ function Testimonials() {
             <motion.div
               key={t.author}
               variants={staggerChild}
-              className={`py-10 ${i === 0 ? "border-t border-hairline" : ""} border-b border-hairline`}
+              className={`py-8 md:py-10 ${i === 0 ? "border-t border-hairline" : ""} border-b border-hairline`}
             >
-              <p className="pull-quote text-[1.3rem] mb-4">"{t.quote}"</p>
-              <p className="text-[13px] text-ivory-muted">
+              <p className="pull-quote text-[1.15rem] md:text-[1.3rem] mb-4">"{t.quote}"</p>
+              <p className="text-[12.5px] md:text-[13px] text-ivory-muted">
                 — {t.author} <span className="text-gold ml-1">★★★★★</span>
               </p>
             </motion.div>
@@ -209,7 +209,7 @@ function Testimonials() {
         </div>
         <motion.p
           variants={staggerChild}
-          className="text-center text-ivory-muted text-[13px] font-light mt-12"
+          className="text-center text-ivory-muted text-[12.5px] md:text-[13px] font-light mt-10 md:mt-12"
         >
           96% des clients recommandent · 204 avis Facebook
         </motion.p>

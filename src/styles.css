@@ -141,9 +141,14 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-weight: 300;
-    line-height: 1.9;
+    line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  html, body {
+    max-width: 100vw;
   }
 
   ::selection {
@@ -171,17 +176,17 @@
     line-height: 1.05;
     letter-spacing: -0.015em;
     color: var(--ivory);
-    font-size: clamp(3.25rem, 7.5vw, 5.5rem);
+    font-size: clamp(2.5rem, 9vw, 5.5rem);
   }
 
   .display-h2 {
     font-family: var(--font-serif);
     font-style: italic;
     font-weight: 300;
-    line-height: 1.08;
+    line-height: 1.1;
     letter-spacing: -0.01em;
     color: var(--ivory);
-    font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+    font-size: clamp(1.85rem, 6vw, 3.25rem);
   }
 
   .display-h3 {
@@ -207,7 +212,7 @@
     font-weight: 300;
     color: var(--gold);
     line-height: 1;
-    font-size: clamp(3.5rem, 7vw, 5rem);
+    font-size: clamp(2.75rem, 9vw, 5rem);
   }
 
   /* Pill buttons — rounded-full only */

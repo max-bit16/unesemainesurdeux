@@ -70,7 +70,7 @@ function MenuPage() {
 
 function MenuHeader() {
   return (
-    <section className="relative h-[45vh] min-h-[380px] overflow-hidden flex items-center justify-center">
+    <section className="relative h-[55vh] md:h-[45vh] min-h-[420px] md:min-h-[380px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
       <img
         src={photoLegumes}
         alt="Légumes du marché — carte saisonnière"
@@ -78,22 +78,22 @@ function MenuHeader() {
         style={{ objectPosition: "center 30%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.5)] via-[oklch(0.985_0.003_90/0.7)] to-[oklch(0.985_0.003_90/0.9)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.65)] via-[oklch(0.985_0.003_90/0.78)] to-[oklch(0.985_0.003_90/0.95)]" />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center px-6 max-w-3xl pt-20"
+        className="relative z-10 text-center px-6 max-w-3xl"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-4">
           N°01 — La Carte
         </motion.p>
-        <motion.h1 variants={staggerChild} className="display-h1 mb-6">
+        <motion.h1 variants={staggerChild} className="display-h1 mb-5 md:mb-6">
           Une carte courte,
           <br />
           qui dit l'essentiel.
         </motion.h1>
-        <motion.p variants={staggerChild} className="text-ivory-muted text-[16px] max-w-xl mx-auto">
+        <motion.p variants={staggerChild} className="text-ivory-muted text-[14px] md:text-[16px] max-w-xl mx-auto">
           Renouvelée au fil des saisons. Tout est fait maison.
         </motion.p>
       </motion.div>
@@ -143,7 +143,7 @@ function MenuSection({
             variants={staggerChild}
             whileHover="hovered"
             initial="initial"
-            className="relative pl-5 py-4 cursor-default flex items-center justify-between gap-4 group"
+            className="relative pl-4 md:pl-5 py-3.5 md:py-4 cursor-default flex items-start justify-between gap-3 md:gap-4 group"
           >
             <motion.div
               className="absolute left-0 top-3 bottom-3 w-[2px] bg-gold"
@@ -155,7 +155,7 @@ function MenuSection({
               transition={{ duration: 0.25 }}
             />
             <motion.span
-              className="font-serif text-[1.25rem] font-light leading-snug transition-colors"
+              className="font-serif text-[1.1rem] md:text-[1.25rem] font-light leading-snug transition-colors flex-1 min-w-0"
               variants={{
                 initial: { color: "oklch(0.300 0.005 160)" },
                 hovered: { color: "oklch(0.570 0.030 150)" },
@@ -164,7 +164,7 @@ function MenuSection({
               {item.name}
             </motion.span>
             {item.signature && (
-              <span className="inline-flex items-center text-[9px] uppercase tracking-[0.2em] px-2 py-0.5 rounded-full border border-green text-green ml-3 shrink-0">
+              <span className="inline-flex items-center text-[9px] uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border border-green text-green shrink-0 mt-1.5">
                 Signature
               </span>
             )}
@@ -186,7 +186,7 @@ function PhotoBreak() {
   return (
     <section
       ref={ref}
-      className="relative h-[40vh] min-h-[320px] overflow-hidden flex items-center justify-center"
+      className="relative h-[34vh] md:h-[40vh] min-h-[260px] md:min-h-[320px] overflow-hidden flex items-center justify-center"
     >
       <motion.img
         src={photoPavlova}
@@ -207,7 +207,7 @@ function PhotoBreak() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 pull-quote text-[2rem] text-center px-6 max-w-2xl"
+        className="relative z-10 pull-quote text-[1.5rem] md:text-[2rem] text-center px-6 max-w-2xl"
       >
         "Tout est fait maison, jusqu'aux desserts."
       </motion.p>
@@ -222,7 +222,7 @@ function Prices() {
     { icon: Users, label: "Menu enfant", price: "15 €" },
   ];
   return (
-    <section className="py-24 px-6">
+    <section className="py-20 md:py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -237,7 +237,7 @@ function Prices() {
             className="text-center px-6"
           >
             <Icon size={16} className="text-gold mx-auto mb-4" strokeWidth={1.5} />
-            <p className="font-serif italic font-light text-[3rem] text-ivory leading-none mb-3">
+            <p className="font-serif italic font-light text-[2.5rem] md:text-[3rem] text-ivory leading-none mb-3">
               {price}
             </p>
             <p className="eyebrow">{label}</p>

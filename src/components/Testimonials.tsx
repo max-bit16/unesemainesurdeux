@@ -65,7 +65,7 @@ export function Testimonials() {
   return (
     <section
       ref={ref}
-      className="relative py-32 md:py-40 px-6 overflow-hidden"
+      className="relative py-24 md:py-40 px-6 overflow-hidden"
       aria-label="Témoignages clients"
     >
       {/* soft mineral wash */}
@@ -85,10 +85,10 @@ export function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="text-center mb-20 md:mb-28"
+          className="text-center mb-14 md:mb-28"
         >
-          <motion.div variants={staggerChild} className="gold-divider mx-auto mb-8" />
-          <motion.p variants={staggerChild} className="eyebrow mb-6">
+          <motion.div variants={staggerChild} className="gold-divider mx-auto mb-6 md:mb-8" />
+          <motion.p variants={staggerChild} className="eyebrow mb-5 md:mb-6">
             N°06 — Ce qu'ils en disent
           </motion.p>
           <motion.h2 variants={staggerChild} className="display-h2">
@@ -99,7 +99,7 @@ export function Testimonials() {
         </motion.div>
 
         {/* Featured + Side composition */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-24 md:mb-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-16 items-start mb-20 md:mb-32">
           {/* Featured testimonial */}
           <motion.figure
             variants={staggerContainer}
@@ -110,13 +110,12 @@ export function Testimonials() {
           >
             <motion.div
               variants={staggerChild}
-              className="absolute -top-6 -left-2 md:-top-10 md:-left-6 text-green/15"
+              className="absolute -top-4 -left-1 md:-top-10 md:-left-6 text-green/15 pointer-events-none"
               aria-hidden
             >
               <Quote
-                size={120}
+                className="rotate-180 w-[72px] h-[72px] md:w-[120px] md:h-[120px]"
                 strokeWidth={0.6}
-                className="rotate-180"
               />
             </motion.div>
 
@@ -126,21 +125,21 @@ export function Testimonials() {
 
             <motion.blockquote
               variants={staggerChild}
-              className="relative font-serif italic font-light text-ivory text-[1.75rem] md:text-[2.5rem] leading-[1.18] tracking-tight mt-6"
+              className="relative font-serif italic font-light text-ivory text-[1.5rem] md:text-[2.5rem] leading-[1.2] tracking-tight mt-5 md:mt-6"
             >
               «&nbsp;{FEATURED.short}&nbsp;»
             </motion.blockquote>
 
             <motion.p
               variants={staggerChild}
-              className="relative text-[16px] md:text-[17px] text-ivory-muted font-light leading-relaxed mt-8 max-w-xl"
+              className="relative text-[15px] md:text-[17px] text-ivory-muted font-light leading-relaxed mt-6 md:mt-8 max-w-xl"
             >
               {FEATURED.excerpt}
             </motion.p>
 
             <motion.figcaption
               variants={staggerChild}
-              className="relative mt-10 flex items-center gap-4"
+              className="relative mt-8 md:mt-10 flex flex-wrap items-center gap-x-4 gap-y-2"
             >
               <span className="h-px w-10 bg-gold" aria-hidden />
               <span className="eyebrow !text-ivory">{FEATURED.name}</span>
@@ -158,26 +157,24 @@ export function Testimonials() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="lg:col-span-5 lg:pl-10 lg:border-l border-hairline space-y-12"
+            className="lg:col-span-5 lg:pl-10 lg:border-l border-hairline space-y-10 md:space-y-12"
           >
             {SIDE.map((t) => (
               <motion.figure
                 key={t.name + t.short}
                 variants={staggerChild}
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 className="group"
               >
                 <Stars small />
-                <blockquote className="font-serif italic font-light text-ivory text-[1.25rem] md:text-[1.375rem] leading-snug mt-4">
+                <blockquote className="font-serif italic font-light text-ivory text-[1.15rem] md:text-[1.375rem] leading-snug mt-3 md:mt-4">
                   «&nbsp;{t.short}&nbsp;»
                 </blockquote>
                 {t.excerpt && (
-                  <p className="text-[14.5px] text-ivory-muted font-light leading-relaxed mt-4">
+                  <p className="text-[14px] md:text-[14.5px] text-ivory-muted font-light leading-relaxed mt-3 md:mt-4">
                     {t.excerpt}
                   </p>
                 )}
-                <figcaption className="eyebrow !text-ivory-muted mt-5">
+                <figcaption className="eyebrow !text-ivory-muted mt-4 md:mt-5">
                   — {t.name}
                 </figcaption>
               </motion.figure>
@@ -186,18 +183,18 @@ export function Testimonials() {
         </div>
 
         {/* Hairlines + meta */}
-        <div className="hairline mb-10" />
+        <div className="hairline mb-8 md:mb-10" />
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-center mb-16"
+          className="flex flex-wrap items-center justify-center gap-x-5 md:gap-x-8 gap-y-3 text-center mb-12 md:mb-16"
         >
           <span className="eyebrow !text-ivory">96% de recommandations</span>
-          <span className="text-ivory-ghost">·</span>
+          <span className="text-ivory-ghost hidden sm:inline">·</span>
           <span className="eyebrow !text-ivory">204 avis ★ 5/5</span>
-          <span className="text-ivory-ghost">·</span>
+          <span className="text-ivory-ghost hidden sm:inline">·</span>
           <span className="eyebrow !text-ivory">Gault &amp; Millau 2026</span>
         </motion.div>
       </div>
