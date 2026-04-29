@@ -37,17 +37,17 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Restaurant bistronomique à Grenoble. Produits frais, circuit court, fait maison. Toque Gault & Millau 2026. Chef Pierrick Vasseur. ☎ 04 76 27 13 75",
+          "Restaurant bistronomique à Grenoble. Produits frais, circuit court, cuisine faite maison. Toque Gault & Millau 2026. Chef Pierrick Vasseur. ☎ 04 76 27 13 75",
       },
       {
         property: "og:title",
         content:
-          "Une Semaine Sur Deux Restaurant gastronomique à Grenoble",
+          "Restaurant Une Semaine Sur Deux à Grenoble Cuisine Bistronomique · Gault & Millau 2026",
       },
       {
         property: "og:description",
         content:
-          "Cuisine bistronomique, produits frais, circuit court. Toque Gault & Millau 2026.",
+          "Restaurant bistronomique à Grenoble. Produits frais, circuit court, cuisine faite maison. Toque Gault & Millau 2026.",
       },
       { property: "og:image", content: photoMenuPoulpe },
       { name: "twitter:image", content: photoMenuPoulpe },
@@ -127,9 +127,9 @@ function Hero() {
           variants={staggerChild}
           className="display-h1 mb-6 md:mb-8"
         >
-          Cuisine vivante,
+          Restaurant à Grenoble,
           <br />
-          saisons intactes.
+          cuisine vivante.
         </motion.h1>
         <motion.p
           variants={staggerChild}
