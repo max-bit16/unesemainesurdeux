@@ -54,6 +54,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: photoMenuPoulpe },
       { name: "twitter:image", content: photoMenuPoulpe },
     ],
+    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/" }],
   }),
   component: HomePage,
 });

@@ -28,6 +28,7 @@ export const Route = createFileRoute("/reserver")({
       { property: "og:image", content: photoSaintJacques },
       { name: "twitter:image", content: photoSaintJacques },
     ],
+    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/reserver" }],
   }),
   component: ReserverPage,
 });

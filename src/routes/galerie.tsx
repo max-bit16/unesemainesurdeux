@@ -26,7 +26,10 @@ export const Route = createFileRoute("/galerie")({
         property: "og:description",
         content: "Photographies des plats du restaurant à Grenoble.",
       },
+      { property: "og:image", content: photoSaintJacques },
+      { name: "twitter:image", content: photoSaintJacques },
     ],
+    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/galerie" }],
   }),
   component: GaleriePage,
 });
