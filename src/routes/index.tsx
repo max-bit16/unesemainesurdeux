@@ -304,7 +304,7 @@ function SignatureDish() {
         </motion.p>
         <motion.div variants={staggerChild}>
           <Link to="/menu" className="gold-link">
-            Voir la carte complète <ArrowRight size={14} />
+            Voir la carte complète <ArrowRight size={14} aria-hidden="true" />
           </Link>
         </motion.div>
       </motion.div>
@@ -477,7 +477,7 @@ function HoursReservation() {
             rel="noreferrer noopener"
             className="gold-link mt-6"
           >
-            Voir sur Google Maps <ArrowRight size={14} />
+            Voir sur Google Maps <ArrowRight size={14} aria-hidden="true" />
           </a>
         </motion.div>
 
@@ -498,13 +498,13 @@ function HoursReservation() {
             href="tel:+33476271375"
             className="btn-primary w-full !py-4"
           >
-            <Phone size={16} /> Appeler le restaurant
+            <Phone size={16} aria-hidden="true" /> Appeler le restaurant
           </a>
           <a
             href="mailto:restaurant1sur2@gmail.com"
             className="gold-link mt-5 text-[13px] break-all"
           >
-            <MapPin size={12} className="shrink-0" /><span>&nbsp;restaurant1sur2@gmail.com</span>
+            <MapPin size={12} className="shrink-0" aria-hidden="true" /><span>&nbsp;restaurant1sur2@gmail.com</span>
           </a>
         </motion.div>
       </div>

@@ -148,7 +148,7 @@ function CtaStrip() {
         rel="noreferrer noopener"
         className="gold-link"
       >
-        @1semainesur2restaurant <ExternalLink size={14} />
+        @1semainesur2restaurant <ExternalLink size={14} aria-hidden="true" />
       </a>
     </section>
   );
