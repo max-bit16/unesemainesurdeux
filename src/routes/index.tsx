@@ -456,7 +456,7 @@ function HoursReservation() {
             href="mailto:restaurant1sur2@gmail.com"
             className="gold-link mt-5 text-[13px]"
           >
-            <MapPin size={12} /> restaurant1sur2@gmail.com
+            <MapPin size={12} /> <span>restaurant1sur2@gmail.com</span>
           </a>
         </motion.div>
       </div>
