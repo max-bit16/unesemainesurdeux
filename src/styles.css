@@ -305,3 +305,35 @@
     background-color: var(--hairline);
   }
 }
+
+/* ─── Background Gradient Animation (Aceternity, recolored) ─── */
+@keyframes bga-first {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(0, 50%); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes bga-second {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes bga-third {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes bga-fourth {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes bga-fifth {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-first  { animation: bga-first 30s ease infinite; }
+.animate-second { animation: bga-second 40s reverse infinite; }
+.animate-third  { animation: bga-third 40s linear infinite; }
+.animate-fourth { animation: bga-fourth 40s ease infinite; }
+.animate-fifth  { animation: bga-fifth 30s ease infinite; }
