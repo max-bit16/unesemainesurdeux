@@ -18,7 +18,7 @@ type Testimonial = {
 
 const FEATURED: Testimonial = {
   name: "E. Bagdassarian",
-  context: "En couple Mars 2026",
+  context: "Mars 2026",
   short: "On s'est régalés du début à la fin.",
   excerpt:
     "Le poulpe était incroyable : cuisson parfaite, tendre comme il faut, bien assaisonné. Et la souris d'agneau, fondante, savoureuse, pleine de goût. Un resto qui mérite d'être connu.",
