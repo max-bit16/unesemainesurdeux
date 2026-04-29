@@ -167,7 +167,7 @@ function Hero() {
 /* ─── AWARD — pure text on canvas ──────────────────────────── */
 function AwardSection() {
   return (
-    <section className="py-24 px-6">
+    <section className="py-20 md:py-24 px-6">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
