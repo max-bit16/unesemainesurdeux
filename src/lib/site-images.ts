@@ -125,8 +125,8 @@ export function galleryPool(slots: GallerySlot[]): GallerySlot[] {
  * apparaissent déjà sur /reserver et /chef.
  */
 export const GALLERY_ONLY = {
-  saintJacques: photoSaintJacques,
-  gaultMillau: photoGaultMillau,
+  saintJacques: PEXELS.saintJacques,
+  gaultMillau: PEXELS.gaultMillau,
   tartare: PEXELS.tartare,
   cave: PEXELS.cave,
   dressageGros: PEXELS.dressageGros,
