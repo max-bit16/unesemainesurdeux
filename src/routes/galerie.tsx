@@ -5,12 +5,13 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 
 // Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
-const photoPavlova = "https://images.pexels.com/photos/31500975/pexels-photo-31500975.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
-const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
-const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
-const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-const photoLegumes = "https://images.pexels.com/photos/32615777/pexels-photo-32615777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+const photoDessert = "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
+const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
+const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1";
+const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
+const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1200&h=1500&dpr=1";
+const photoMarche = "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
+const photoSalle = "https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
 export const Route = createFileRoute("/galerie")({
@@ -69,12 +70,13 @@ function Header() {
 
 const SLOTS = [
   { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]" },
-  { src: photoPavlova, alt: "Pavlova mangue, sphères glacées", caption: "Pavlova mangue", aspect: "aspect-square" },
-  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square" },
-  { src: photoPoisson, alt: "Truite, légumes frais de saison", caption: "Truite & légumes", aspect: "aspect-[4/5]" },
+  { src: photoDessert, alt: "Dessert maison, dressage soigné", caption: "Desserts maison", aspect: "aspect-[4/3]" },
+  { src: photoMenuPoulpe, alt: "Plat signature : poulpe à la crème d'ail noir", caption: "Poulpe · signature", aspect: "aspect-[4/5]" },
+  { src: photoPoisson, alt: "Poisson grillé, légumes frais de saison", caption: "Poisson & saison", aspect: "aspect-[4/5]" },
   { src: photoVolaille, alt: "Pièce de viande, légumes de saison & sauce poivre", caption: "Viande & légumes", aspect: "aspect-square" },
-  { src: photoMenuPoulpe, alt: "Menu signature et plat de poulpe", caption: "Menu · Poulpe", aspect: "aspect-[4/5]" },
-  { src: photoLegumes, alt: "Légumes du marché et champignons", caption: "Légumes du marché", aspect: "aspect-square" },
+  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square" },
+  { src: photoSalle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]" },
+  { src: photoMarche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]" },
   { src: photoGaultMillau, alt: "Plaque Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square" },
 ];
 
