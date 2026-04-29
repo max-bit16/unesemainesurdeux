@@ -65,7 +65,7 @@ export function Testimonials() {
   return (
     <section
       ref={ref}
-      className="relative py-32 md:py-40 px-6 overflow-hidden"
+      className="relative py-24 md:py-40 px-6 overflow-hidden"
       aria-label="Témoignages clients"
     >
       {/* soft mineral wash */}
@@ -85,10 +85,10 @@ export function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="text-center mb-20 md:mb-28"
+          className="text-center mb-14 md:mb-28"
         >
-          <motion.div variants={staggerChild} className="gold-divider mx-auto mb-8" />
-          <motion.p variants={staggerChild} className="eyebrow mb-6">
+          <motion.div variants={staggerChild} className="gold-divider mx-auto mb-6 md:mb-8" />
+          <motion.p variants={staggerChild} className="eyebrow mb-5 md:mb-6">
             N°06 — Ce qu'ils en disent
           </motion.p>
           <motion.h2 variants={staggerChild} className="display-h2">
