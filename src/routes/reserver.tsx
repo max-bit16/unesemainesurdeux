@@ -9,9 +9,10 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 
-import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
+
 // Hero "Réserver votre table" : salle bistronomique chaleureuse (générée IA)
 import photoTable from "@/assets/photos/photo-salle.jpg";
+import ogReserver from "@/assets/photos/og-reserver.jpg";
 
 export const Route = createFileRoute("/reserver")({
   head: () => ({
@@ -27,8 +28,10 @@ export const Route = createFileRoute("/reserver")({
         property: "og:description",
         content: "Réservation par téléphone 04 76 27 13 75. Ouvert 7/7 à Grenoble.",
       },
-      { property: "og:image", content: photoSaintJacques },
-      { name: "twitter:image", content: photoSaintJacques },
+      { property: "og:image", content: ogReserver },
+      { name: "twitter:image", content: ogReserver },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
     ],
     links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/reserver" }],
   }),
@@ -57,7 +60,15 @@ function Header() {
         style={{ objectPosition: "center 55%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.45)] via-[oklch(0.985_0.003_90/0.55)] to-[oklch(0.985_0.003_90/0.85)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.72)] via-[oklch(0.985_0.003_90/0.82)] to-[oklch(0.985_0.003_90/0.95)]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, oklch(0.985 0.003 90 / 0.45) 0%, oklch(0.985 0.003 90 / 0) 70%)",
+        }}
+        aria-hidden
+      />
       <motion.div
         variants={staggerContainer}
         initial="hidden"

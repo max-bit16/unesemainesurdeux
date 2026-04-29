@@ -13,6 +13,7 @@ const photoCave = "https://images.pexels.com/photos/1283219/pexels-photo-1283219
 const photoDressageGrosPlan = "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1";
 const photoMarche = "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
+import ogGalerie from "@/assets/photos/og-galerie.jpg";
 
 export const Route = createFileRoute("/galerie")({
   head: () => ({
@@ -28,8 +29,10 @@ export const Route = createFileRoute("/galerie")({
         property: "og:description",
         content: "Photos des plats et de l'ambiance du restaurant à Grenoble.",
       },
-      { property: "og:image", content: photoSaintJacques },
-      { name: "twitter:image", content: photoSaintJacques },
+      { property: "og:image", content: ogGalerie },
+      { name: "twitter:image", content: ogGalerie },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
     ],
     links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/galerie" }],
   }),

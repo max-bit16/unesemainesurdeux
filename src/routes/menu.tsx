@@ -82,7 +82,15 @@ function MenuHeader() {
         style={{ objectPosition: "center 30%" }}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.65)] via-[oklch(0.985_0.003_90/0.78)] to-[oklch(0.985_0.003_90/0.95)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.82)] via-[oklch(0.985_0.003_90/0.90)] to-[oklch(0.985_0.003_90/0.98)]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, oklch(0.985 0.003 90 / 0.55) 0%, oklch(0.985 0.003 90 / 0) 70%)",
+        }}
+        aria-hidden
+      />
       <motion.div
         variants={staggerContainer}
         initial="hidden"
