@@ -105,7 +105,7 @@ function Hero() {
         className="absolute inset-0 z-0 pointer-events-none hidden md:block"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(250,250,247,0.55) 0%, rgba(250,250,247,0.78) 65%, rgba(242,241,236,0.88) 100%)",
+            "radial-gradient(ellipse at center, rgba(250,250,247,0.72) 0%, rgba(250,250,247,0.88) 65%, rgba(242,241,236,0.95) 100%)",
         }}
         aria-hidden
       />
