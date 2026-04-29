@@ -165,37 +165,104 @@ function Hero() {
   );
 }
 
-/* ─── AWARD — pure text on canvas ──────────────────────────── */
+/* ─── AWARD — horizontal editorial split ───────────────────── */
 function AwardSection() {
+  const fadeUp = {
+    hidden: { opacity: 0, y: 32 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+  };
+  const fadeUpDelayed = {
+    hidden: { opacity: 0, y: 32 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] } },
+  };
+  const scaleUp = {
+    hidden: { opacity: 0, scale: 0.92 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] } },
+  };
+  const statsContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
+  };
+  const statItem = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  };
+
   return (
-    <section className="py-20 md:py-24 px-6">
+    <section className="w-full grid grid-cols-1 md:grid-cols-[45%_55%] min-h-[280px]">
+      {/* LEFT — pearl surface, editorial copy */}
       <motion.div
-        variants={staggerContainer}
+        variants={fadeUp}
         initial="hidden"
         whileInView="visible"
-        viewport={viewportOnce}
-        className="max-w-2xl mx-auto text-center"
+        viewport={{ once: true, margin: "-60px" }}
+        className="bg-surface flex flex-col justify-center px-6 py-12 md:px-16 md:py-20"
       >
-        <motion.p variants={staggerChild} className="eyebrow mb-6">
-          N°02 Distinction
-        </motion.p>
-        <motion.div variants={staggerChild} className="flex justify-center mb-6">
-          <img
-            src={photoGaultMillau}
-            alt="Plaque Gault & Millau Table Gourmande 2026"
-            loading="lazy"
-            className="h-20 object-contain"
-          />
-        </motion.div>
-        <motion.div variants={staggerChild} className="gold-divider mx-auto mb-6" />
-        <motion.h2 variants={staggerChild} className="display-h2 mb-4">
-          Table Gourmande
-        </motion.h2>
-        <motion.p variants={staggerChild} className="text-[15px] text-ivory-muted">
-          Attribuée au Chef Pierrick Vasseur · Gault &amp; Millau 2026
-        </motion.p>
+        <p className="eyebrow">N°02 Distinction</p>
+        <div className="my-4 h-px w-10 bg-gold opacity-60" />
+        <h2 className="display-h2">Table Gourmande</h2>
+        <p className="mt-4 max-w-xs text-[15px] text-ivory-muted font-light leading-relaxed">
+          Distinction attribuée au Chef Pierrick Vasseur pour la qualité de sa cuisine bistronomique à Grenoble.
+        </p>
+        <p className="mt-8 text-[12px] uppercase tracking-[0.15em] text-gold font-light">
+          Gault &amp; Millau · 2026
+        </p>
       </motion.div>
-      <div className="hairline max-w-5xl mx-auto mt-16 md:mt-24" />
+
+      {/* RIGHT — mineral surface, plaque + stats */}
+      <motion.div
+        variants={fadeUpDelayed}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        className="bg-surface-deep flex flex-col md:flex-row items-center md:justify-start gap-10 md:gap-12 px-6 py-10 md:px-16 md:py-20"
+      >
+        <motion.img
+          variants={scaleUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          src={photoGaultMillau}
+          alt="Plaque Gault & Millau Table Gourmande 2026"
+          loading="lazy"
+          className="h-[120px] md:h-[160px] w-auto object-contain shrink-0"
+          style={{ filter: "drop-shadow(0 0 32px oklch(0.570 0.030 150 / 0.18))" }}
+        />
+
+        <motion.div
+          variants={statsContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          className="flex flex-row md:flex-col gap-0 w-full md:w-auto"
+        >
+          {[
+            { value: "96%", label: "clients satisfaits", serif: "italic", size: "text-[2.25rem] md:text-[3.5rem]", color: "text-gold" },
+            { value: "204", label: "avis facebook", serif: "italic", size: "text-[2.25rem] md:text-[3.5rem]", color: "text-gold" },
+            { value: "Toque", label: "Gault & Millau 2026", serif: "italic", size: "text-[1.5rem] md:text-[2rem]", color: "text-ivory" },
+          ].map((s, i, arr) => (
+            <motion.div
+              key={s.value}
+              variants={statItem}
+              className={`flex-1 md:flex-none py-3 md:py-4 px-3 md:px-0 text-center md:text-left ${
+                // dividers: vertical between items on mobile, horizontal between items on desktop
+                i < arr.length - 1
+                  ? "border-r md:border-r-0 md:border-b border-[oklch(0.570_0.030_150_/_0.20)]"
+                  : ""
+              } md:min-w-[200px]`}
+            >
+              <div
+                className={`font-serif font-light leading-none ${s.serif === "italic" ? "italic" : ""} ${s.size} ${s.color}`}
+              >
+                {s.value}
+              </div>
+              <div className="mt-2 text-[10px] uppercase tracking-[0.2em] text-ivory-muted font-light">
+                {s.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
