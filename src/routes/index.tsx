@@ -167,17 +167,18 @@ function Hero() {
 
 /* ─── AWARD — horizontal editorial split ───────────────────── */
 function AwardSection() {
+  const ease = [0.22, 1, 0.36, 1] as const;
   const fadeUp = {
     hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease } },
   };
   const fadeUpDelayed = {
     hidden: { opacity: 0, y: 32 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.9, delay: 0.15, ease } },
   };
   const scaleUp = {
     hidden: { opacity: 0, scale: 0.92 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] } },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, delay: 0.2, ease } },
   };
   const statsContainer = {
     hidden: {},
@@ -185,7 +186,7 @@ function AwardSection() {
   };
   const statItem = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
   };
 
   return (
