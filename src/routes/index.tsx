@@ -66,7 +66,6 @@ function HomePage() {
       <Esprit />
       <PhotoStrip />
       <Testimonials />
-      
       <HoursReservation />
     </>
   );
