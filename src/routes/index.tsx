@@ -9,7 +9,6 @@ import {
   ChefHat,
   Phone,
   MapPin,
-  Award,
 } from "lucide-react";
 import { useRef } from "react";
 import {
@@ -19,7 +18,6 @@ import {
   staggerChild,
   viewportOnce,
 } from "@/lib/motion";
-import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { Testimonials } from "@/components/Testimonials";
 
 import heroGrenoble from "@/assets/photos/hero-grenoble.jpg";
