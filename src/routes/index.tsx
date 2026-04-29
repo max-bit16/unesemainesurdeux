@@ -194,7 +194,7 @@ function AwardSection() {
           Attribuée au Chef Pierrick Vasseur · Gault &amp; Millau 2026
         </motion.p>
       </motion.div>
-      <div className="hairline max-w-5xl mx-auto mt-24" />
+      <div className="hairline max-w-5xl mx-auto mt-16 md:mt-24" />
     </section>
   );
 }
@@ -211,7 +211,7 @@ function SignatureDish() {
   return (
     <section
       ref={ref}
-      className="relative h-[65vh] min-h-[480px] w-full overflow-hidden"
+      className="relative h-[70vh] md:h-[65vh] min-h-[520px] md:min-h-[480px] w-full overflow-hidden"
     >
       <motion.img
         src={photoMenuPoulpe}
@@ -224,7 +224,7 @@ function SignatureDish() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.25) 0%, oklch(0.985 0.003 90 / 0.88) 100%)",
+            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.20) 0%, oklch(0.985 0.003 90 / 0.55) 45%, oklch(0.985 0.003 90 / 0.92) 100%)",
         }}
       />
       <motion.div
@@ -232,19 +232,19 @@ function SignatureDish() {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 h-full flex flex-col justify-end max-w-2xl px-8 md:px-14 pb-14"
+        className="relative z-10 h-full flex flex-col justify-end max-w-2xl px-6 md:px-14 pb-12 md:pb-14"
       >
         <motion.p variants={staggerChild} className="eyebrow text-gold mb-5">
           N°03 — Plat Signature
         </motion.p>
-        <motion.h2 variants={staggerChild} className="display-h2 mb-6">
-          Le Poulpe à la crème d'ail noir,
-          <br />
-          risotto de riz vénéré.
+        <motion.h2 variants={staggerChild} className="display-h2 mb-5 md:mb-6">
+          Le Poulpe à la crème
+          <br className="hidden sm:block" />
+          {" "}d'ail noir.
         </motion.h2>
         <motion.p
           variants={staggerChild}
-          className="text-[16px] text-ivory-muted max-w-lg mb-7"
+          className="text-[15px] md:text-[16px] text-ivory-muted max-w-lg mb-6 md:mb-7"
         >
           Le plat qui revient dans tous les avis. Cuisson parfaite, produits de
           saison, fait maison.
