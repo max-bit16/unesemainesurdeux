@@ -14,16 +14,16 @@ import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 export const Route = createFileRoute("/reserver")({
   head: () => ({
     meta: [
-      { title: "Réserver Une Semaine Sur Deux · Restaurant à Grenoble" },
+      { title: "Réserver une table Restaurant Une Semaine Sur Deux · Grenoble" },
       {
         name: "description",
         content:
-          "Réservez votre table au restaurant Une Semaine Sur Deux à Grenoble. Par téléphone : 04 76 27 13 75. Ouvert tous les jours, midi et soir.",
+          "Réservez votre table au restaurant Une Semaine Sur Deux, 4 Place Championnet, Grenoble. ☎ 04 76 27 13 75. Ouvert tous les jours.",
       },
-      { property: "og:title", content: "Réserver Une Semaine Sur Deux" },
+      { property: "og:title", content: "Réserver une table Restaurant Une Semaine Sur Deux Grenoble" },
       {
         property: "og:description",
-        content: "Réservation par téléphone · 04 76 27 13 75 · Ouvert 7/7.",
+        content: "Réservation par téléphone 04 76 27 13 75. Ouvert 7/7 à Grenoble.",
       },
       { property: "og:image", content: photoSaintJacques },
       { name: "twitter:image", content: photoSaintJacques },

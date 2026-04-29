@@ -14,17 +14,17 @@ import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
 export const Route = createFileRoute("/chef")({
   head: () => ({
     meta: [
-      { title: "Le Chef Pierrick Vasseur Une Semaine Sur Deux · Grenoble" },
+      { title: "Chef Pierrick Vasseur Restaurant Une Semaine Sur Deux · Grenoble" },
       {
         name: "description",
         content:
-          "Pierrick Vasseur, Chef du restaurant Une Semaine Sur Deux à Grenoble. Cuisine bistronomique, produits de saison, fait maison. Toque Gault & Millau 2026.",
+          "Pierrick Vasseur, chef du restaurant Une Semaine Sur Deux à Grenoble. Cuisine bistronomique, produits locaux et de saison. Toque Gault & Millau 2026.",
       },
-      { property: "og:title", content: "Le Chef Pierrick Vasseur Une Semaine Sur Deux" },
+      { property: "og:title", content: "Chef Pierrick Vasseur Restaurant Une Semaine Sur Deux Grenoble" },
       {
         property: "og:description",
         content:
-          "Cuisine bistronomique, ancrée dans la saison et le territoire. Toque Gault & Millau 2026.",
+          "Cuisine bistronomique, produits locaux et de saison. Toque Gault & Millau 2026.",
       },
       { property: "og:image", content: photoSurfTurf },
       { name: "twitter:image", content: photoSurfTurf },
