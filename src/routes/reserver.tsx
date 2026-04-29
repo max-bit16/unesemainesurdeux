@@ -12,6 +12,7 @@ import {
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 // Hero "Réserver votre table" : salle bistronomique chaleureuse (générée IA)
 import photoTable from "@/assets/photos/photo-salle.jpg";
+import ogReserver from "@/assets/photos/og-reserver.jpg";
 
 export const Route = createFileRoute("/reserver")({
   head: () => ({
