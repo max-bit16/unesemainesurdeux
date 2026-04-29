@@ -16,6 +16,7 @@ import photoSalle from "@/assets/photos/photo-salle.jpg";
 import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
+
 // ─── URLs Pexels partagées ──────────────────────────────────────────
 export const PEXELS = {
   poulpe:        "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
