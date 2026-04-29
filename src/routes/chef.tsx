@@ -9,9 +9,9 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 
-// Photo temporaire — Pexels CDN (libre de droits). À remplacer par photo originale du restaurant.
-// Chef au travail : geste, dressage, lumière chaude — cohérent avec la section "Derrière les fourneaux".
-const photoChef = "https://images.pexels.com/photos/4253302/pexels-photo-4253302.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1750&dpr=1";
+// Photo temporaire — Pexels CDN (libre de droits). À remplacer par photo originale du chef.
+// Geste de cuisine (sans visage identifiable) — pour ne pas se faire passer pour le chef Pierrick Vasseur.
+const photoChef = "https://images.pexels.com/photos/3217156/pexels-photo-3217156.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1750&dpr=1";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
