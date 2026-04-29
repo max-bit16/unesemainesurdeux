@@ -207,7 +207,7 @@
     font-weight: 300;
     color: var(--gold);
     line-height: 1;
-    font-size: clamp(3.5rem, 7vw, 5rem);
+    font-size: clamp(2.75rem, 9vw, 5rem);
   }
 
   /* Pill buttons — rounded-full only */
