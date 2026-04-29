@@ -138,9 +138,9 @@ function MenuSection({
       </motion.p>
       <div className="hairline mb-2" />
 
-      <div>
+      <ul className="list-none p-0 m-0">
         {items.map((item) => (
-          <motion.div
+          <motion.li
             key={item.name}
             variants={staggerChild}
             whileHover="hovered"
@@ -155,6 +155,7 @@ function MenuSection({
               }}
               style={{ originY: 0 }}
               transition={{ duration: 0.25 }}
+              aria-hidden="true"
             />
             <motion.span
               className="font-serif text-[1.1rem] md:text-[1.25rem] font-light leading-snug transition-colors flex-1 min-w-0"
@@ -170,9 +171,9 @@ function MenuSection({
                 Signature
               </span>
             )}
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ul>
     </motion.div>
   );
 }
