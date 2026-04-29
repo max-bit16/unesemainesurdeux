@@ -65,7 +65,7 @@ function ChefHero() {
           alt="Saint-Jacques, plat signature du chef Pierrick Vasseur"
           loading="eager"
           fetchPriority="high"
-          style={{ y, objectPosition: "center center" }}
+          style={{ y, objectPosition: "center 80%" }}
           className="w-full h-[115%] object-cover absolute inset-0"
         />
         <div
