@@ -33,7 +33,7 @@ const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-
 const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
-import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
