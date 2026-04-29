@@ -20,9 +20,9 @@ import {
   viewportOnce,
 } from "@/lib/motion";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-import { BackgroundGradientAnimation } from "@/components/BackgroundGradientAnimation";
 import { Testimonials } from "@/components/Testimonials";
 
+import heroGrenoble from "@/assets/photos/hero-grenoble.jpg";
 import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
 import photoVolaille from "@/assets/photos/photo-volaille.jpg";
 import photoPoisson from "@/assets/photos/photo-poisson.jpg";
@@ -76,17 +76,30 @@ function HomePage() {
 /* ─── HERO — typographic, no photo ─────────────────────────── */
 function Hero() {
   return (
-    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 bg-background overflow-hidden">
-      <BackgroundGradientAnimation
-        containerClassName="absolute inset-0 z-0"
-        interactive={false}
+    <section className="relative min-h-[100svh] flex flex-col items-center justify-center px-6 overflow-hidden">
+      {/* Hero photograph — Grenoble bubbles */}
+      <img
+        src={heroGrenoble}
+        alt="Téléphériques de Grenoble surplombant la ville au coucher de soleil"
+        loading="eager"
+        fetchPriority="high"
+        className="absolute inset-0 z-0 w-full h-full object-cover object-[70%_center] md:object-center"
       />
-      {/* soft ivory veil to keep text crisp */}
+      {/* Refined ivory veil — keeps the photo readable but preserves atmosphere */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(250,250,247,0.55) 0%, rgba(250,250,247,0.85) 70%, rgba(250,250,247,0.95) 100%)",
+            "radial-gradient(ellipse at center, rgba(250,250,247,0.55) 0%, rgba(250,250,247,0.78) 65%, rgba(242,241,236,0.88) 100%)",
+        }}
+        aria-hidden
+      />
+      {/* Subtle top/bottom fade to blend with page */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(250,250,247,0.35) 0%, rgba(250,250,247,0) 25%, rgba(250,250,247,0) 75%, rgba(250,250,247,0.6) 100%)",
         }}
         aria-hidden
       />
