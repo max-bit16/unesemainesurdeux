@@ -10,7 +10,8 @@ import {
 } from "@/lib/motion";
 
 // Photo temporaire — Pexels CDN (libre de droits). À remplacer par photo originale du restaurant.
-const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+// Chef au travail : geste, dressage, lumière chaude — cohérent avec la section "Derrière les fourneaux".
+const photoChef = "https://images.pexels.com/photos/4253302/pexels-photo-4253302.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1750&dpr=1";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
@@ -27,8 +28,8 @@ export const Route = createFileRoute("/chef")({
         content:
           "Cuisine bistronomique, produits locaux et de saison. Toque Gault & Millau 2026.",
       },
-      { property: "og:image", content: photoSurfTurf },
-      { name: "twitter:image", content: photoSurfTurf },
+      { property: "og:image", content: photoChef },
+      { name: "twitter:image", content: photoChef },
     ],
     links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/chef" }],
   }),
@@ -60,11 +61,11 @@ function ChefHero() {
     >
       <div className="relative w-full md:w-1/2 h-[40vh] md:h-auto md:min-h-screen overflow-hidden">
         <motion.img
-          src={photoSurfTurf}
-          alt="Plat du chef viande et homard, cave à vin"
+          src={photoChef}
+          alt="Chef Pierrick Vasseur dressant une assiette en cuisine"
           loading="eager"
           fetchPriority="high"
-          style={{ y }}
+          style={{ y, objectPosition: "center 35%" }}
           className="w-full h-[115%] object-cover absolute inset-0"
         />
         <div
