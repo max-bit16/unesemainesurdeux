@@ -28,7 +28,7 @@ import { Testimonials } from "@/components/Testimonials";
   Contact : restaurant1sur2@gmail.com
   Date de remplacement prévue : à confirmer avec le client
 */
-const heroGrenoble = "https://images.pexels.com/photos/3534750/pexels-photo-3534750.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1";
+import heroGrenoble from "@/assets/photos/hero-grenoble-bulles.jpg";
 const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
