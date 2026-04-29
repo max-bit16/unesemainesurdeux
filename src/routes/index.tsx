@@ -33,7 +33,7 @@ const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-
 const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
 const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
-import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -223,17 +223,27 @@ function AwardSection() {
         viewport={{ once: true, margin: "-60px" }}
         className="bg-surface-deep flex flex-col md:flex-row items-center md:justify-start gap-10 md:gap-12 px-6 py-10 md:px-16 md:py-20"
       >
-        <motion.img
+        <motion.div
           variants={scaleUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          src={photoGaultMillau}
-          alt="Plaque Gault & Millau Table Gourmande 2026"
-          loading="lazy"
-          className="h-[120px] md:h-[160px] w-auto object-contain shrink-0"
-          style={{ filter: "drop-shadow(0 0 32px oklch(0.570 0.030 150 / 0.18))" }}
-        />
+          className="shrink-0 flex flex-col items-center justify-center text-center px-6 py-8 border border-[oklch(0.570_0.030_150_/_0.35)] rounded-full w-[140px] h-[140px] md:w-[180px] md:h-[180px]"
+          style={{ boxShadow: "0 0 32px oklch(0.570 0.030 150 / 0.18)" }}
+          aria-label="Plaque Gault & Millau Table Gourmande 2026"
+        >
+          <span className="text-[9px] md:text-[10px] uppercase tracking-[0.22em] text-gold font-light">
+            Gault &amp; Millau
+          </span>
+          <span className="font-serif italic font-light text-[1.25rem] md:text-[1.6rem] text-ivory leading-tight mt-1">
+            Table
+            <br />
+            Gourmande
+          </span>
+          <span className="text-[10px] md:text-[11px] tracking-[0.18em] text-gold font-light mt-2">
+            2026
+          </span>
+        </motion.div>
 
         <motion.div
           variants={statsContainer}
