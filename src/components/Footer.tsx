@@ -3,20 +3,20 @@ import { Instagram, Facebook } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-surface-deep pt-16 pb-8 px-6">
+    <footer className="bg-surface-deep pt-14 md:pt-16 pb-8 px-6">
       <div className="max-w-[1200px] mx-auto">
-        <div className="gold-divider mx-auto mb-8" />
+        <div className="gold-divider mx-auto mb-7 md:mb-8" />
 
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 md:mb-12">
           <Link
             to="/"
-            className="font-serif italic text-[20px] font-light text-ivory hover:text-gold transition-colors"
+            className="font-serif italic text-[18px] md:text-[20px] font-light text-ivory hover:text-gold transition-colors"
           >
             Une Semaine Sur Deux
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-10 md:mb-12 text-center md:text-left">
           <div className="space-y-2">
             <p className="eyebrow mb-3">Adresse</p>
             <p className="text-ivory-muted text-[13px] font-light leading-loose">
