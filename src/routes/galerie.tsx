@@ -120,7 +120,7 @@ function Masonry() {
                   loading="lazy"
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${s.position}`}
                 />
                 <motion.div
                   className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end"
