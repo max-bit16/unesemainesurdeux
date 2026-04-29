@@ -110,14 +110,6 @@ function ChefHero() {
           produits en circuit court et une sélection viticole personnelle à prix
           justes.
         </motion.p>
-        <motion.div variants={staggerChild} className="flex flex-col sm:flex-row flex-wrap gap-x-8 gap-y-3">
-          <span className="gold-link">
-            Toque Gault &amp; Millau 2026 <ArrowRight size={14} />
-          </span>
-          <span className="gold-link">
-            Circuit court <ArrowRight size={14} />
-          </span>
-        </motion.div>
       </motion.div>
     </section>
   );
