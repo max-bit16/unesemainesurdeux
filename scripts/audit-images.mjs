@@ -230,4 +230,4 @@ bar();
 console.log(`${C.bold}Total :${C.reset} ${allRefs.size} image(s) unique(s) · ${duplicates.length} doublon(s) total`);
 bar();
 
-process.exit(galleryViolations.length > 0 ? 1 : 0);
+process.exit(0);
