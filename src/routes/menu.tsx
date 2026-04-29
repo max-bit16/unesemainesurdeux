@@ -30,6 +30,7 @@ export const Route = createFileRoute("/menu")({
       { property: "og:image", content: photoLegumes },
       { name: "twitter:image", content: photoLegumes },
     ],
+    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/menu" }],
   }),
   component: MenuPage,
 });

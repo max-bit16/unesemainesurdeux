@@ -29,6 +29,7 @@ export const Route = createFileRoute("/chef")({
       { property: "og:image", content: photoSurfTurf },
       { name: "twitter:image", content: photoSurfTurf },
     ],
+    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/chef" }],
   }),
   component: ChefPage,
 });
