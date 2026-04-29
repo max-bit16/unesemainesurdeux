@@ -57,13 +57,13 @@ export function Navigation() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-9">
+          <div className="hidden md:flex items-center gap-9" role="navigation" aria-label="Navigation principale">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
                 className="text-[13px] tracking-[0.1em] uppercase text-ivory-muted hover:text-ivory transition-colors font-light"
-                activeProps={{ className: "text-ivory" }}
+                activeProps={{ className: "text-ivory", "aria-current": "page" }}
               >
                 {l.label}
               </Link>
@@ -146,7 +146,7 @@ export function Navigation() {
                     to={l.to}
                     onClick={() => setOpen(false)}
                     className="block py-4 px-2 font-serif italic font-light text-[2rem] text-ivory hover:text-gold transition-colors"
-                    activeProps={{ className: "text-gold" }}
+                    activeProps={{ className: "text-gold", "aria-current": "page" }}
                   >
                     {l.label}
                   </Link>

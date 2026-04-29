@@ -66,7 +66,6 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "canonical", href: "https://restaurant1sur2.fr/" },
     ],
     scripts: [
       {
@@ -97,8 +96,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   return (
     <div className="min-h-screen bg-background text-ivory">
+      <a href="#main-content" className="skip-link">Aller au contenu</a>
       <Navigation />
-      <main>
+      <main id="main-content">
         <Outlet />
       </main>
       <Footer />
