@@ -73,7 +73,7 @@ const POOL: GallerySlot[] = [
   { src: GALLERY_ONLY.chefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
   { src: GALLERY_ONLY.tartare, alt: "Tartare de poisson, dressage soigné", caption: "Tartare & fraîcheur", aspect: "aspect-[4/5]", position: "object-center" },
   { src: GALLERY_ONLY.salle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
-  { src: GALLERY_ONLY.dressageGros, alt: "Gros plan d'une assiette finale, sauce dressée", caption: "Détail dressage", aspect: "aspect-square", position: "object-center" },
+  
   { src: GALLERY_ONLY.marche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]", position: "object-center" },
   { src: GALLERY_ONLY.cave, alt: "Cave personnelle, sélection viticole du chef", caption: "Cave & vins", aspect: "aspect-[4/5]", position: "object-center" },
   { src: GALLERY_ONLY.gaultMillau, alt: "Plat dressé à l'assiette, distinction Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
