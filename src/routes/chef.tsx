@@ -11,6 +11,7 @@ import {
 
 // Photo générée — geste de dressage du chef, ambiance bistronomique premium.
 import photoChef from "@/assets/photos/photo-chef-dressage.jpg";
+import ogChef from "@/assets/photos/og-chef.jpg";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
