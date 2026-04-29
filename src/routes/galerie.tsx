@@ -70,15 +70,16 @@ function Header() {
 }
 
 const SLOTS = [
-  { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]" },
-  { src: photoDessert, alt: "Dessert maison, dressage soigné", caption: "Desserts maison", aspect: "aspect-[4/3]" },
-  { src: photoMenuPoulpe, alt: "Plat signature : poulpe à la crème d'ail noir", caption: "Poulpe · signature", aspect: "aspect-[4/5]" },
-  { src: photoPoisson, alt: "Poisson grillé, légumes frais de saison", caption: "Poisson & saison", aspect: "aspect-[4/5]" },
-  { src: photoVolaille, alt: "Pièce de viande, légumes de saison & sauce poivre", caption: "Viande & légumes", aspect: "aspect-square" },
-  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square" },
-  { src: photoSalle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]" },
-  { src: photoMarche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]" },
-  { src: photoGaultMillau, alt: "Plaque Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square" },
+  { src: photoSaintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
+  { src: photoChefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoDessert, alt: "Dessert maison, dressage soigné", caption: "Desserts maison", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: photoMenuPoulpe, alt: "Plat signature : poulpe à la crème d'ail noir", caption: "Poulpe · signature", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoSalle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: photoPoisson, alt: "Poisson grillé, légumes frais de saison", caption: "Poisson & saison", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoVolaille, alt: "Pièce de viande, légumes de saison & sauce poivre", caption: "Viande & légumes", aspect: "aspect-square", position: "object-center" },
+  { src: photoSurfTurf, alt: "Viande, homard, sauce crémée", caption: "Surf & turf", aspect: "aspect-square", position: "object-center" },
+  { src: photoMarche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]", position: "object-center" },
+  { src: photoGaultMillau, alt: "Plaque Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
 ];
 
 function Masonry() {
