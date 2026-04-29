@@ -217,14 +217,23 @@ function SignatureDish() {
         src={photoMenuPoulpe}
         alt="Le plat signature — poulpe à la crème d'ail noir"
         loading="lazy"
-        style={{ y, objectPosition: "center 40%" }}
-        className="absolute inset-0 w-full h-[115%] object-cover"
+        style={{ y, objectPosition: "30% 75%" }}
+        className="absolute inset-0 w-full h-[115%] object-cover md:object-[center_70%]"
       />
+      {/* Right-side ivory veil keeps text readable while the dish stays visible on the left */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 hidden md:block"
         style={{
           background:
-            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.20) 0%, oklch(0.985 0.003 90 / 0.55) 45%, oklch(0.985 0.003 90 / 0.92) 100%)",
+            "linear-gradient(to right, oklch(0.985 0.003 90 / 0.92) 0%, oklch(0.985 0.003 90 / 0.78) 35%, oklch(0.985 0.003 90 / 0.20) 70%, oklch(0.985 0.003 90 / 0.05) 100%)",
+        }}
+      />
+      {/* Mobile: vertical veil — text sits at the bottom over the plate, so we lift contrast there */}
+      <div
+        className="absolute inset-0 md:hidden"
+        style={{
+          background:
+            "linear-gradient(to bottom, oklch(0.985 0.003 90 / 0.15) 0%, oklch(0.985 0.003 90 / 0.55) 40%, oklch(0.985 0.003 90 / 0.94) 100%)",
         }}
       />
       <motion.div
