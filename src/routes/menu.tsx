@@ -130,12 +130,12 @@ function MenuSection({
       viewport={viewportOnce}
       className="py-12"
     >
-      <motion.p
+      <motion.h2
         variants={staggerChild}
         className="text-[10px] uppercase tracking-[0.3em] text-gold pb-6 font-normal"
       >
         {title}
-      </motion.p>
+      </motion.h2>
       <div className="hairline mb-2" />
 
       <ul className="list-none p-0 m-0">
