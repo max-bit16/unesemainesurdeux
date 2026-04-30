@@ -88,6 +88,7 @@ export function reservedImages(): Set<string> {
 
 export type GallerySlot = {
   src: ImageKey;
+  srcWebp?: string;
   alt: string;
   caption: string;
   aspect: string;

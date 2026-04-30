@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { SITE_URL } from "@/config/site";
 import {
   ArrowRight,
   ChevronDown,
@@ -64,7 +65,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: photoMenuPoulpe },
       { name: "twitter:image", content: photoMenuPoulpe },
     ],
-    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
   }),
   component: HomePage,
 });

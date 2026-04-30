@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { SITE_URL } from "@/config/site";
 import { ArrowLeft } from "lucide-react";
 
 export const Route = createFileRoute("/mentions-legales")({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/mentions-legales")({
         content: "Éditeur, hébergeur et conception du site.",
       },
     ],
-    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/mentions-legales" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/mentions-legales` }],
   }),
   component: MentionsLegales,
 });

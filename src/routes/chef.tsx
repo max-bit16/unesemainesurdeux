@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL } from "@/config/site";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Sprout, Sun, ChefHat } from "lucide-react";
@@ -15,7 +16,6 @@ import {
 // Photo générée — geste de dressage du chef, ambiance bistronomique premium.
 import photoChef from "@/assets/photos/photo-chef-dressage.jpg";
 import photoChefWebp from "@/assets/photos/photo-chef-dressage.webp";
-import ogChef from "@/assets/photos/og-chef.jpg";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
@@ -32,12 +32,12 @@ export const Route = createFileRoute("/chef")({
         content:
           "Cuisine bistronomique, produits locaux et de saison. Toque Gault & Millau 2026.",
       },
-      { property: "og:image", content: ogChef },
-      { name: "twitter:image", content: ogChef },
+      { property: "og:image", content: `${SITE_URL}/og-chef.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-chef.jpg` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
     ],
-    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/chef" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/chef` }],
   }),
   component: ChefPage,
 });

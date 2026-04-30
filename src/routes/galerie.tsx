@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL } from "@/config/site";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
@@ -7,7 +8,10 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 // est appliquée automatiquement par galleryPool() qui filtre les slots déjà utilisés
 // ailleurs (registre central : src/lib/site-images.ts).
 import { galleryPool, GALLERY_ONLY, type GallerySlot } from "@/lib/site-images";
-import ogGalerie from "@/assets/photos/og-galerie.jpg";
+import photoSaintJacquesWebp from "@/assets/photos/photo-saint-jacques.webp";
+import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
+import photoGaultMillauWebp from "@/assets/photos/photo-gaultmillau.webp";
+import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
 
 export const Route = createFileRoute("/galerie")({
   head: () => ({
@@ -23,12 +27,12 @@ export const Route = createFileRoute("/galerie")({
         property: "og:description",
         content: "Photos des plats et de l'ambiance du restaurant à Grenoble.",
       },
-      { property: "og:image", content: ogGalerie },
-      { name: "twitter:image", content: ogGalerie },
+      { property: "og:image", content: `${SITE_URL}/og-galerie.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-galerie.jpg` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
     ],
-    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/galerie" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/galerie` }],
   }),
   component: GaleriePage,
 });
@@ -66,14 +70,13 @@ function Header() {
 // automatiquement ceux qui sont déjà affichés sur les autres pages
 // (chef-dressage et salle p.ex. seront retirés ici à la compile).
 const POOL: GallerySlot[] = [
-  { src: GALLERY_ONLY.saintJacques, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
+  { src: photoSaintJacques, srcWebp: photoSaintJacquesWebp, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
   { src: GALLERY_ONLY.chefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
   { src: GALLERY_ONLY.tartare, alt: "Tartare de poisson, dressage soigné", caption: "Tartare & fraîcheur", aspect: "aspect-[4/5]", position: "object-center" },
   { src: GALLERY_ONLY.salle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
-  
   { src: GALLERY_ONLY.marche, alt: "Marché, produits frais de saison", caption: "Marché & saison", aspect: "aspect-[4/3]", position: "object-center" },
   { src: GALLERY_ONLY.cave, alt: "Cave personnelle, sélection viticole du chef", caption: "Cave & vins", aspect: "aspect-[4/5]", position: "object-center" },
-  { src: GALLERY_ONLY.gaultMillau, alt: "Plat dressé à l'assiette, distinction Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
+  { src: photoGaultMillau, srcWebp: photoGaultMillauWebp, alt: "Plat dressé à l'assiette, distinction Gault & Millau 2026", caption: "Toque Gault & Millau 2026", aspect: "aspect-square", position: "object-center" },
 ];
 
 // Filtre runtime : la galerie ne montre QUE les visuels qui lui sont propres.
@@ -111,15 +114,33 @@ function Masonry() {
               <div
                 className={`relative overflow-hidden group cursor-default ${s.aspect}`}
               >
-                <motion.img
-                  src={s.src}
-                  alt={s.alt}
-                  loading="lazy"
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.99 }}
-                  transition={{ type: "spring", stiffness: 280, damping: 26 }}
-                  className={`w-full h-full object-cover ${s.position}`}
-                />
+                {s.srcWebp ? (
+                  <picture>
+                    <source srcSet={s.srcWebp} type="image/webp" />
+                    <motion.img
+                      src={s.src}
+                      alt={s.alt}
+                      loading={s === SLOTS[0] ? "eager" : "lazy"}
+                      fetchPriority={s === SLOTS[0] ? "high" : undefined}
+                      decoding={s === SLOTS[0] ? undefined : "async"}
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.99 }}
+                      transition={{ type: "spring", stiffness: 280, damping: 26 }}
+                      className={`w-full h-full object-cover ${s.position}`}
+                    />
+                  </picture>
+                ) : (
+                  <motion.img
+                    src={s.src}
+                    alt={s.alt}
+                    loading="lazy"
+                    decoding="async"
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.99 }}
+                    transition={{ type: "spring", stiffness: 280, damping: 26 }}
+                    className={`w-full h-full object-cover ${s.position}`}
+                  />
+                )}
                 <motion.div
                   className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end"
                   initial={{ opacity: 0 }}

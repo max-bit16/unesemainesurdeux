@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import { SITE_URL } from "@/config/site";
 
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -28,8 +29,8 @@ const jsonLd = {
   name: "Une Semaine Sur Deux",
   description:
     "Restaurant bistronomique à Grenoble. Cuisine faite maison, produits frais en circuit court. Toque Gault & Millau 2026.",
-  image: "https://restaurant1sur2.fr/og.jpg",
-  url: "https://restaurant1sur2.fr/",
+  image: `${SITE_URL}/og-home.jpg`,
+  url: `${SITE_URL}/`,
   telephone: "+33476271375",
   email: "restaurant1sur2@gmail.com",
   servesCuisine: ["French", "Bistronomique"],
@@ -84,13 +85,13 @@ export const Route = createRootRoute({
       },
       { name: "author", content: "Une Semaine Sur Deux" },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://restaurant1sur2.fr/" },
+      { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:locale", content: "fr_FR" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:description", content: "Restaurant bistronomique à Grenoble. Cuisine faite maison, produits de saison. Toque Gault & Millau 2026. Réservations : 04 76 27 13 75." },
       { name: "twitter:description", content: "Restaurant bistronomique à Grenoble. Cuisine faite maison, produits de saison. Toque Gault & Millau 2026. Réservations : 04 76 27 13 75." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/89896d88-a1c4-4050-a008-f962707d5464" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/89896d88-a1c4-4050-a008-f962707d5464" },
+      { property: "og:image", content: `${SITE_URL}/og-home.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-home.jpg` },
     ],
     scripts: [
       {

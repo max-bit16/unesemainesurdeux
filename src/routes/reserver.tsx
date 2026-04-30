@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, ArrowRight, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ArrowRight, ExternalLink, Star } from "lucide-react";
+import { SITE_URL } from "@/config/site";
 import {
   fadeUp,
   scaleUp,
@@ -13,7 +14,6 @@ import {
 // Hero "Réserver votre table" : salle bistronomique chaleureuse (générée IA)
 import photoTable from "@/assets/photos/photo-salle.jpg";
 import photoTableWebp from "@/assets/photos/photo-salle.webp";
-import ogReserver from "@/assets/photos/og-reserver.jpg";
 
 export const Route = createFileRoute("/reserver")({
   head: () => ({
@@ -29,12 +29,12 @@ export const Route = createFileRoute("/reserver")({
         property: "og:description",
         content: "Réservation par téléphone 04 76 27 13 75. Ouvert 7/7 à Grenoble.",
       },
-      { property: "og:image", content: ogReserver },
-      { name: "twitter:image", content: ogReserver },
+      { property: "og:image", content: `${SITE_URL}/og-reserver.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-reserver.jpg` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
     ],
-    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/reserver" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/reserver` }],
   }),
   component: ReserverPage,
 });
@@ -169,6 +169,16 @@ function Contact() {
   );
 }
 
+function StarRating({ count = 5 }: { count?: number }) {
+  return (
+    <span className="inline-flex gap-0.5 ml-1" aria-label={`${count} étoiles sur 5`}>
+      {Array.from({ length: count }).map((_, i) => (
+        <Star key={i} size={11} className="fill-[var(--gold)] text-[var(--gold)]" aria-hidden="true" />
+      ))}
+    </span>
+  );
+}
+
 function Row({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
     <div className="flex items-start gap-4">
@@ -214,8 +224,8 @@ function Testimonials() {
               className={`py-8 md:py-10 ${i === 0 ? "border-t border-hairline" : ""} border-b border-hairline`}
             >
               <p className="pull-quote text-[1.15rem] md:text-[1.3rem] mb-4">"{t.quote}"</p>
-              <p className="text-[13px] text-ivory-muted">
-                {t.author} <span className="text-gold ml-1">★★★★★</span>
+              <p className="text-[13px] text-ivory-muted flex items-center gap-1 flex-wrap">
+                {t.author} <StarRating />
               </p>
             </motion.div>
           ))}

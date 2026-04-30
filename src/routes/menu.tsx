@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SITE_URL } from "@/config/site";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Utensils, ChefHat, Users } from "lucide-react";
@@ -10,10 +11,10 @@ import {
   spring,
 } from "@/lib/motion";
 
-// Photos temporaires — Pexels CDN (libre de droits). À remplacer par photos originales du restaurant.
-const photoLegumes = "https://images.pexels.com/photos/32615777/pexels-photo-32615777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-// Dessert horizontal net (gros plan assiette)
-const photoDessert = "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1";
+import photoLegumes from "@/assets/photos/photo-legumes.jpg";
+import photoLegumesWebp from "@/assets/photos/photo-legumes.webp";
+import photoDessert from "@/assets/photos/photo-pavlova.jpg";
+import photoDessertWebp from "@/assets/photos/photo-pavlova.webp";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({
@@ -30,10 +31,10 @@ export const Route = createFileRoute("/menu")({
         content:
           "Entrées, plats, desserts faits maison. Bistronomie de saison à Grenoble.",
       },
-      { property: "og:image", content: photoLegumes },
-      { name: "twitter:image", content: photoLegumes },
+      { property: "og:image", content: `${SITE_URL}/og-home.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-home.jpg` },
     ],
-    links: [{ rel: "canonical", href: "https://restaurant1sur2.fr/menu" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/menu` }],
   }),
   component: MenuPage,
 });
@@ -75,14 +76,17 @@ function MenuPage() {
 function MenuHeader() {
   return (
     <section className="relative h-[55vh] md:h-[45vh] min-h-[420px] md:min-h-[380px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
-      <img
-        src={photoLegumes}
-        alt="Légumes du marché carte saisonnière"
-        loading="eager"
-        fetchPriority="high"
-        style={{ objectPosition: "center 30%" }}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <picture>
+        <source srcSet={photoLegumesWebp} type="image/webp" />
+        <img
+          src={photoLegumes}
+          alt="Légumes du marché carte saisonnière"
+          loading="eager"
+          fetchPriority="high"
+          style={{ objectPosition: "center 30%" }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
       <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.82)] via-[oklch(0.985_0.003_90/0.90)] to-[oklch(0.985_0.003_90/0.98)]" />
       <div
         className="absolute inset-0"
@@ -199,13 +203,17 @@ function PhotoBreak() {
       ref={ref}
       className="relative h-[34vh] md:h-[40vh] min-h-[260px] md:min-h-[320px] overflow-hidden flex items-center justify-center"
     >
-      <motion.img
-        src={photoDessert}
-        alt="Dessert maison, gros plan dressage"
-        loading="lazy"
-        style={{ y, objectPosition: "center center" }}
-        className="absolute inset-0 w-full h-[120%] object-cover"
-      />
+      <picture>
+        <source srcSet={photoDessertWebp} type="image/webp" />
+        <motion.img
+          src={photoDessert}
+          alt="Dessert maison, gros plan dressage"
+          loading="lazy"
+          decoding="async"
+          style={{ y, objectPosition: "center center" }}
+          className="absolute inset-0 w-full h-[120%] object-cover"
+        />
+      </picture>
       <div
         className="absolute inset-0"
         style={{
