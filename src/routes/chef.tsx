@@ -73,6 +73,9 @@ function ChefHero() {
             alt="Le chef dressant une assiette signature"
             loading="eager"
             fetchPriority="high"
+            decoding="sync"
+            width={768}
+            height={1376}
             style={{ y, objectPosition: "center center" }}
             className="w-full h-[115%] object-cover absolute inset-0"
           />

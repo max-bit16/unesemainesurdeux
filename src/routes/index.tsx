@@ -34,10 +34,14 @@ import { Testimonials } from "@/components/Testimonials";
 */
 import heroGrenoble from "@/assets/photos/hero-grenoble-bulles.jpg";
 import heroGrenobleWebp from "@/assets/photos/hero-grenoble-bulles.webp";
-const photoMenuPoulpe = "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-const photoVolaille = "https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
-const photoPoisson = "https://images.pexels.com/photos/20802561/pexels-photo-20802561.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
-const photoSurfTurf = "https://images.pexels.com/photos/4553378/pexels-photo-4553378.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1";
+import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
+import photoMenuPoulpeWebp from "@/assets/photos/photo-menu-poulpe.webp";
+import photoVolaille from "@/assets/photos/photo-volaille.jpg";
+import photoVolailleWebp from "@/assets/photos/photo-volaille.webp";
+import photoPoisson from "@/assets/photos/photo-poisson.jpg";
+import photoPoissonWebp from "@/assets/photos/photo-poisson.webp";
+import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
+import photoSurfTurfWebp from "@/assets/photos/photo-surf-turf.webp";
 
 
 export const Route = createFileRoute("/")({
@@ -62,8 +66,8 @@ export const Route = createFileRoute("/")({
         content:
           "Restaurant bistronomique à Grenoble. Produits frais, circuit court, cuisine faite maison. Toque Gault & Millau 2026.",
       },
-      { property: "og:image", content: photoMenuPoulpe },
-      { name: "twitter:image", content: photoMenuPoulpe },
+      { property: "og:image", content: `${SITE_URL}/og-home.jpg` },
+      { name: "twitter:image", content: `${SITE_URL}/og-home.jpg` },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/` }],
   }),
@@ -126,6 +130,9 @@ function Hero() {
             alt="Téléphériques de Grenoble surplombant la ville au coucher de soleil"
             loading="eager"
             fetchPriority="high"
+            decoding="sync"
+            width={1920}
+            height={1280}
             className="w-full h-full object-cover object-[68%_center] md:object-center"
           />
         </picture>
@@ -377,13 +384,19 @@ function SignatureDish() {
 
       {/* RIGHT — photo, naturally framed (square asset, contained height) */}
       <div className="relative w-full h-[60vw] max-h-[640px] md:h-auto md:max-h-none md:min-h-[560px] overflow-hidden">
-        <motion.img
-          src={photoMenuPoulpe}
-          alt="Le plat signature poulpe à la crème d'ail noir"
-          loading="lazy"
-          style={{ y }}
-          className="absolute inset-0 w-full h-[110%] object-cover object-center"
-        />
+        <picture>
+          <source srcSet={photoMenuPoulpeWebp} type="image/webp" />
+          <motion.img
+            src={photoMenuPoulpe}
+            alt="Le plat signature poulpe à la crème d'ail noir"
+            loading="lazy"
+            decoding="async"
+            width={1324}
+            height={1324}
+            style={{ y }}
+            className="absolute inset-0 w-full h-[110%] object-cover object-center"
+          />
+        </picture>
         {/* Subtle blend toward the sage panel on the left edge */}
         <div
           className="absolute inset-y-0 left-0 w-16 hidden md:block pointer-events-none"
@@ -464,9 +477,9 @@ function Esprit() {
 /* ─── PHOTO STRIP — 3 columns, no gap, contained height ────── */
 function PhotoStrip() {
   const items = [
-    { src: photoVolaille, alt: "Pièce de viande, légumes & sauce poivre", caption: "Viandes & saison" },
-    { src: photoPoisson, alt: "Truite et légumes frais de saison", caption: "Poissons & saison" },
-    { src: photoSurfTurf, alt: "Surf & turf viande et homard", caption: "Plats du moment" },
+    { src: photoVolaille, srcWebp: photoVolailleWebp, alt: "Pièce de viande, légumes & sauce poivre", caption: "Viandes & saison" },
+    { src: photoPoisson, srcWebp: photoPoissonWebp, alt: "Truite et légumes frais de saison", caption: "Poissons & saison" },
+    { src: photoSurfTurf, srcWebp: photoSurfTurfWebp, alt: "Surf & turf viande et homard", caption: "Plats du moment" },
   ];
 
   return (
@@ -485,16 +498,22 @@ function PhotoStrip() {
           whileHover="hovered"
           initial="initial"
         >
-          <motion.img
-            src={item.src}
-            alt={item.alt}
-            loading="lazy"
-            variants={{
-              initial: { scale: 1 },
-              hovered: { scale: 1.03, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
-            }}
-            className="w-full h-full object-cover"
-          />
+          <picture>
+            <source srcSet={item.srcWebp} type="image/webp" />
+            <motion.img
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+              width={1324}
+              height={1324}
+              variants={{
+                initial: { scale: 1 },
+                hovered: { scale: 1.03, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+              }}
+              className="w-full h-full object-cover"
+            />
+          </picture>
           <motion.div
             className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end justify-center pb-6"
             variants={{ initial: { opacity: 0 }, hovered: { opacity: 1 } }}

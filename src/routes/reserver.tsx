@@ -60,6 +60,9 @@ function Header() {
           alt="Table dressée au restaurant Une Semaine Sur Deux à Grenoble"
           loading="eager"
           fetchPriority="high"
+          decoding="sync"
+          width={1920}
+          height={1080}
           style={{ objectPosition: "center 55%" }}
           className="absolute inset-0 w-full h-full object-cover"
         />

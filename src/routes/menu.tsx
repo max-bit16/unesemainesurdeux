@@ -83,6 +83,9 @@ function MenuHeader() {
           alt="Légumes du marché carte saisonnière"
           loading="eager"
           fetchPriority="high"
+          decoding="sync"
+          width={1324}
+          height={1324}
           style={{ objectPosition: "center 30%" }}
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -210,6 +213,8 @@ function PhotoBreak() {
           alt="Dessert maison, gros plan dressage"
           loading="lazy"
           decoding="async"
+          width={1324}
+          height={1324}
           style={{ y, objectPosition: "center center" }}
           className="absolute inset-0 w-full h-[120%] object-cover"
         />

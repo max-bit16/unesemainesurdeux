@@ -122,7 +122,9 @@ function Masonry() {
                       alt={s.alt}
                       loading={s === SLOTS[0] ? "eager" : "lazy"}
                       fetchPriority={s === SLOTS[0] ? "high" : undefined}
-                      decoding={s === SLOTS[0] ? undefined : "async"}
+                      decoding={s === SLOTS[0] ? "sync" : "async"}
+                      width={1324}
+                      height={1324}
                       whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.99 }}
                       transition={{ type: "spring", stiffness: 280, damping: 26 }}
@@ -135,6 +137,8 @@ function Masonry() {
                     alt={s.alt}
                     loading="lazy"
                     decoding="async"
+                    width={1324}
+                    height={1324}
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.99 }}
                     transition={{ type: "spring", stiffness: 280, damping: 26 }}
