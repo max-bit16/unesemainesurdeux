@@ -11,8 +11,6 @@ import {
   spring,
 } from "@/lib/motion";
 
-import photoLegumes from "@/assets/photos/photo-legumes.jpg";
-import photoLegumesWebp from "@/assets/photos/photo-legumes.webp";
 import photoDessert from "@/assets/photos/photo-pavlova.jpg";
 import photoDessertWebp from "@/assets/photos/photo-pavlova.webp";
 
@@ -76,11 +74,9 @@ function MenuPage() {
 function MenuHeader() {
   return (
     <section className="relative h-[55vh] md:h-[45vh] min-h-[420px] md:min-h-[380px] overflow-hidden flex items-center justify-center pt-[60px] md:pt-0">
-      <picture>
-        <source srcSet={photoLegumesWebp} type="image/webp" />
-        <img
-          src={photoLegumes}
-          alt="Légumes du marché carte saisonnière"
+      <img
+          src="https://images.pexels.com/photos/4253317/pexels-photo-4253317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="Salle et ambiance — restaurant Une Semaine Sur Deux Grenoble"
           loading="eager"
           fetchPriority="high"
           decoding="sync"
@@ -89,7 +85,6 @@ function MenuHeader() {
           style={{ objectPosition: "center 30%" }}
           className="absolute inset-0 w-full h-full object-cover"
         />
-      </picture>
       <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.985_0.003_90/0.82)] via-[oklch(0.985_0.003_90/0.90)] to-[oklch(0.985_0.003_90/0.98)]" />
       <div
         className="absolute inset-0"
