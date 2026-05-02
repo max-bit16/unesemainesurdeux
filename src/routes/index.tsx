@@ -34,7 +34,14 @@ import { Testimonials } from "@/components/Testimonials";
 */
 import heroGrenoble from "@/assets/photos/hero-grenoble-bulles.jpg";
 import heroGrenobleWebp from "@/assets/photos/hero-grenoble-bulles.webp";
-import { PEXELS } from "@/lib/site-images";
+import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
+import photoMenuPoulpeWebp from "@/assets/photos/photo-menu-poulpe.webp";
+import photoVolaille from "@/assets/photos/photo-volaille.jpg";
+import photoVolailleWebp from "@/assets/photos/photo-volaille.webp";
+import photoPoisson from "@/assets/photos/photo-poisson.jpg";
+import photoPoissonWebp from "@/assets/photos/photo-poisson.webp";
+import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
+import photoSurfTurfWebp from "@/assets/photos/photo-surf-turf.webp";
 
 
 export const Route = createFileRoute("/")({
@@ -377,16 +384,20 @@ function SignatureDish() {
 
       {/* RIGHT — photo, naturally framed (square asset, contained height) */}
       <div className="relative w-full h-[60vw] max-h-[640px] md:h-auto md:max-h-none md:min-h-[560px] overflow-hidden">
-        <motion.img
-            src={PEXELS.poulpe}
+        <picture>
+          <source srcSet={photoMenuPoulpeWebp} type="image/webp" />
+          <motion.img
+            src={photoMenuPoulpe}
             alt="Poulpe à la crème d'ail noir — plat signature du Chef Pierrick Vasseur"
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
             decoding="async"
             width={1324}
             height={1324}
             style={{ y, objectPosition: "center 40%" }}
             className="absolute inset-0 w-full h-[110%] object-cover"
           />
+        </picture>
         {/* Subtle blend toward the sage panel on the left edge */}
         <div
           className="absolute inset-y-0 left-0 w-16 hidden md:block pointer-events-none"
@@ -467,9 +478,9 @@ function Esprit() {
 /* ─── PHOTO STRIP — 3 columns, no gap, contained height ────── */
 function PhotoStrip() {
   const items = [
-    { src: PEXELS.volaille, alt: "Viandes & plats du moment — restaurant Une Semaine Sur Deux", caption: "Viandes & plats", position: "center 35%" },
-    { src: PEXELS.poisson, alt: "Poissons & fruits de mer — bistronomie Grenoble", caption: "Poissons & saison", position: "center center" },
-    { src: PEXELS.surfTurf, alt: "Plats du moment — Une Semaine Sur Deux Grenoble", caption: "Plats du moment", position: "center 40%" },
+    { src: photoVolaille, srcWebp: photoVolailleWebp, alt: "Viandes & plats du moment — restaurant Une Semaine Sur Deux", caption: "Viandes & plats", position: "center 35%" },
+    { src: photoPoisson, srcWebp: photoPoissonWebp, alt: "Poissons & fruits de mer — bistronomie Grenoble", caption: "Poissons & saison", position: "center center" },
+    { src: photoSurfTurf, srcWebp: photoSurfTurfWebp, alt: "Plats du moment — Une Semaine Sur Deux Grenoble", caption: "Plats du moment", position: "center 40%" },
   ];
 
   return (
@@ -488,7 +499,9 @@ function PhotoStrip() {
           whileHover="hovered"
           initial="initial"
         >
-          <motion.img
+          <picture>
+            <source srcSet={item.srcWebp} type="image/webp" />
+            <motion.img
               src={item.src}
               alt={item.alt}
               loading="lazy"
@@ -502,6 +515,7 @@ function PhotoStrip() {
               style={{ objectPosition: item.position }}
               className="w-full h-full object-cover"
             />
+          </picture>
           <motion.div
             className="absolute inset-0 bg-[oklch(0.985_0.003_90/0.78)] flex items-end justify-center pb-6"
             variants={{ initial: { opacity: 0 }, hovered: { opacity: 1 } }}

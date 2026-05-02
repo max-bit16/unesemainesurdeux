@@ -10,6 +10,8 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 import { galleryPool, GALLERY_ONLY, type GallerySlot } from "@/lib/site-images";
 import photoGaultMillauWebp from "@/assets/photos/photo-gaultmillau.webp";
 import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
+import photoSaintJacquesWebp from "@/assets/photos/photo-saint-jacques.webp";
+import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
 
 export const Route = createFileRoute("/galerie")({
   head: () => ({
@@ -68,7 +70,7 @@ function Header() {
 // automatiquement ceux qui sont déjà affichés sur les autres pages
 // (chef-dressage et salle p.ex. seront retirés ici à la compile).
 const POOL: GallerySlot[] = [
-  { src: "https://images.pexels.com/photos/30469688/pexels-photo-30469688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", alt: "Dressage gastronomique — restaurant Une Semaine Sur Deux", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-center" },
+  { src: photoSaintJacques, srcWebp: photoSaintJacquesWebp, alt: "Saint-Jacques, riz noir vénéré et moules", caption: "Saint-Jacques, riz vénéré", aspect: "aspect-[4/5]", position: "object-bottom" },
   { src: GALLERY_ONLY.chefDressage, alt: "Le chef dressant une assiette à la pince", caption: "Dressage", aspect: "aspect-[4/5]", position: "object-center" },
   { src: GALLERY_ONLY.tartare, alt: "Tartare de poisson, dressage soigné", caption: "Tartare & fraîcheur", aspect: "aspect-[4/5]", position: "object-center" },
   { src: GALLERY_ONLY.salle, alt: "Salle du restaurant, table dressée", caption: "Ambiance & salle", aspect: "aspect-[4/3]", position: "object-center" },
