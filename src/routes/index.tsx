@@ -32,16 +32,19 @@ import { Testimonials } from "@/components/Testimonials";
   Contact : restaurant1sur2@gmail.com
   Date de remplacement prévue : à confirmer avec le client
 */
-import heroGrenoble from "@/assets/photos/hero-grenoble-bulles.jpg";
-import heroGrenobleWebp from "@/assets/photos/hero-grenoble-bulles.webp";
-import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
-import photoMenuPoulpeWebp from "@/assets/photos/photo-menu-poulpe.webp";
-import photoVolaille from "@/assets/photos/photo-volaille.jpg";
-import photoVolailleWebp from "@/assets/photos/photo-volaille.webp";
-import photoPoisson from "@/assets/photos/photo-poisson.jpg";
-import photoPoissonWebp from "@/assets/photos/photo-poisson.webp";
-import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
-import photoSurfTurfWebp from "@/assets/photos/photo-surf-turf.webp";
+import { PEXELS } from "@/lib/site-images";
+
+const heroGrenoble     = "/photos/hero-grenoble-bulles.jpg";
+const heroGrenobleWebp = "/photos/hero-grenoble-bulles.webp";
+
+const photoMenuPoulpe     = PEXELS.poulpe;
+const photoMenuPoulpeWebp = PEXELS.poulpe;
+const photoVolaille       = PEXELS.volaille;
+const photoVolailleWebp   = PEXELS.volaille;
+const photoPoisson        = PEXELS.poisson;
+const photoPoissonWebp    = PEXELS.poisson;
+const photoSurfTurf       = PEXELS.surfTurf;
+const photoSurfTurfWebp   = PEXELS.surfTurf;
 
 
 export const Route = createFileRoute("/")({

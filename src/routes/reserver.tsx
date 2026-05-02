@@ -11,9 +11,8 @@ import {
 } from "@/lib/motion";
 
 
-// Hero "Réserver votre table" : salle bistronomique chaleureuse (générée IA)
-import photoTable from "@/assets/photos/photo-salle.jpg";
-import photoTableWebp from "@/assets/photos/photo-salle.webp";
+const photoTable    = "/photos/photo-salle.jpg";
+const photoTableWebp = "/photos/photo-salle.webp";
 
 export const Route = createFileRoute("/reserver")({
   head: () => ({

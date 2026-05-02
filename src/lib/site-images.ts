@@ -8,41 +8,39 @@
  * Les images "OG" (méta sociales) sont volontairement exclues : elles ne
  * sont pas rendues visuellement sur la page, elles ne créent pas de doublon
  * perceptible.
+ *
+ * PERF : les vraies photos restaurant sont dans /public/photos/ (servies par CDN,
+ * non bundlées). Les photos fictives menu/galerie sont sur Pexels CDN dpr=1.
  */
 
-import heroGrenoble from "@/assets/photos/hero-grenoble-bulles.jpg";
-import photoChefDressage from "@/assets/photos/photo-chef-dressage.jpg";
-import photoSalle from "@/assets/photos/photo-salle.jpg";
-import photoMenuPoulpe from "@/assets/photos/photo-menu-poulpe.jpg";
-import photoVolaille from "@/assets/photos/photo-volaille.jpg";
-import photoPoisson from "@/assets/photos/photo-poisson.jpg";
-import photoSurfTurf from "@/assets/photos/photo-surf-turf.jpg";
-import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
-import photoLegumes from "@/assets/photos/photo-legumes.jpg";
+// Photos restaurant : chemins /public/ (pas d'import JS = pas bundlé)
+const heroGrenoble      = "/photos/hero-grenoble-bulles.jpg";
+const heroGrenobleWebp  = "/photos/hero-grenoble-bulles.webp";
+const photoChefDressage = "/photos/photo-chef-dressage.jpg";
+const photoSalle        = "/photos/photo-salle.jpg";
+const photoGaultMillau  = "/photos/photo-gaultmillau.jpg";
+const photoDessert      = "/photos/photo-pavlova.jpg";
 
+export { heroGrenoble, heroGrenobleWebp, photoChefDressage, photoSalle, photoGaultMillau, photoDessert };
 
-// ─── URLs Pexels partagées ──────────────────────────────────────────
+// ─── URLs Pexels dpr=1 (photos fictives menu / galerie) ───────────────
 export const PEXELS = {
-  saintJacques: photoSaintJacques,
+  saintJacques: "https://images.pexels.com/photos/30469688/pexels-photo-30469688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   gaultMillau:  "https://images.pexels.com/photos/3217156/pexels-photo-3217156.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1",
-  poulpe:        photoMenuPoulpe,
-  volaille:      photoVolaille,
-  poisson:       photoPoisson,
-  surfTurf:      photoSurfTurf,
-  legumes:       photoLegumes,
-  dessertBowl:   "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1",
-  marche:        "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1",
-  cave:          photoSalle,
-  tartare:       "https://images.pexels.com/photos/8969237/pexels-photo-8969237.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1",
-  dressageGros:  "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1",
+  poulpe:       "https://images.pexels.com/photos/14885388/pexels-photo-14885388.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  volaille:     "https://images.pexels.com/photos/8697542/pexels-photo-8697542.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1",
+  poisson:      "https://images.pexels.com/photos/3655916/pexels-photo-3655916.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1",
+  surfTurf:     "https://images.pexels.com/photos/323682/pexels-photo-323682.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&dpr=1",
+  legumes:      "https://images.pexels.com/photos/4253317/pexels-photo-4253317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  dessertBowl:  "https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=1",
+  marche:       "https://images.pexels.com/photos/375896/pexels-photo-375896.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&dpr=1",
+  cave:         "https://images.pexels.com/photos/4254039/pexels-photo-4254039.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  tartare:      "https://images.pexels.com/photos/8969237/pexels-photo-8969237.jpeg?auto=compress&cs=tinysrgb&w=900&h=1100&dpr=1",
+  dressageGros: "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=900&h=900&dpr=1",
 } as const;
 
-const photoGaultMillau = PEXELS.gaultMillau;
-
 /**
- * Identifiant logique d'une image (la valeur Vite-importée OU l'URL Pexels).
- * Utiliser cette clé pour déduplication. Pour les imports locaux, Vite renvoie
- * un chemin haché stable comparable par égalité stricte.
+ * Identifiant logique d'une image.
  */
 export type ImageKey = string;
 
@@ -102,10 +100,7 @@ export type GallerySlot = {
 
 /**
  * Filtre un pool de slots de galerie pour n'en garder que ceux qui
- * n'apparaissent pas déjà ailleurs sur le site. Garantit la règle
- * "pas de doublon inter-pages" automatiquement à la compilation/render.
- *
- * En dev, log un avertissement si un slot a été retiré.
+ * n'apparaissent pas déjà ailleurs sur le site.
  */
 export function galleryPool(slots: GallerySlot[]): GallerySlot[] {
   const reserved = reservedImages();
@@ -128,19 +123,15 @@ export function galleryPool(slots: GallerySlot[]): GallerySlot[] {
 }
 
 /**
- * Pool propre à la galerie. Les clés `salle` et `chefDressage` sont
- * volontairement présentes pour rappeler ces visuels existent — mais elles
- * seront automatiquement filtrées par `galleryPool()` puisqu'elles
- * apparaissent déjà sur /reserver et /chef.
+ * Pool propre à la galerie.
  */
 export const GALLERY_ONLY = {
-  saintJacques: photoSaintJacques,
-  gaultMillau: photoGaultMillau,
-  tartare: PEXELS.tartare,
-  cave: PEXELS.cave,
+  saintJacques: PEXELS.saintJacques,
+  gaultMillau:  photoGaultMillau,
+  tartare:      PEXELS.tartare,
+  cave:         PEXELS.cave,
   dressageGros: PEXELS.dressageGros,
-  marche: PEXELS.marche,
-  // Filtrés automatiquement (doublons /chef et /reserver) :
-  salle: photoSalle,
+  marche:       PEXELS.marche,
+  salle:        photoSalle,
   chefDressage: photoChefDressage,
 } as const;

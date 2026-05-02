@@ -11,10 +11,12 @@ import {
   spring,
 } from "@/lib/motion";
 
-import photoLegumes from "@/assets/photos/photo-legumes.jpg";
-import photoLegumesWebp from "@/assets/photos/photo-legumes.webp";
-import photoDessert from "@/assets/photos/photo-pavlova.jpg";
-import photoDessertWebp from "@/assets/photos/photo-pavlova.webp";
+import { PEXELS } from "@/lib/site-images";
+
+const photoLegumes    = PEXELS.legumes;
+const photoLegumesWebp = PEXELS.legumes;
+const photoDessert    = "/photos/photo-pavlova.jpg";
+const photoDessertWebp = "/photos/photo-pavlova.webp";
 
 export const Route = createFileRoute("/menu")({
   head: () => ({

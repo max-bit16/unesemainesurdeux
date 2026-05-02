@@ -8,10 +8,12 @@ import { staggerContainer, staggerChild, viewportOnce } from "@/lib/motion";
 // est appliquée automatiquement par galleryPool() qui filtre les slots déjà utilisés
 // ailleurs (registre central : src/lib/site-images.ts).
 import { galleryPool, GALLERY_ONLY, type GallerySlot } from "@/lib/site-images";
-import photoGaultMillauWebp from "@/assets/photos/photo-gaultmillau.webp";
-import photoGaultMillau from "@/assets/photos/photo-gaultmillau.jpg";
-import photoSaintJacquesWebp from "@/assets/photos/photo-saint-jacques.webp";
-import photoSaintJacques from "@/assets/photos/photo-saint-jacques.jpg";
+import { PEXELS } from "@/lib/site-images";
+
+const photoGaultMillau     = "/photos/photo-gaultmillau.jpg";
+const photoGaultMillauWebp = "/photos/photo-gaultmillau.webp";
+const photoSaintJacques    = PEXELS.saintJacques;
+const photoSaintJacquesWebp = PEXELS.saintJacques;
 
 export const Route = createFileRoute("/galerie")({
   head: () => ({

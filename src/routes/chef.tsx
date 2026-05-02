@@ -13,9 +13,8 @@ import {
   dividerReveal,
 } from "@/lib/motion";
 
-// Photo générée — geste de dressage du chef, ambiance bistronomique premium.
-import photoChef from "@/assets/photos/photo-chef-dressage.jpg";
-import photoChefWebp from "@/assets/photos/photo-chef-dressage.webp";
+const photoChef    = "/photos/photo-chef-dressage.jpg";
+const photoChefWebp = "/photos/photo-chef-dressage.webp";
 
 export const Route = createFileRoute("/chef")({
   head: () => ({
